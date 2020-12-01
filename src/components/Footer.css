@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+body {
+    font-family: 'Josefin Sans', cursive;
+  }
+
+.line {
+    border-top: #8F48EA solid 1px;
+}
+
+.rowFooter {
+    padding: 1%;
+}
+
+.footer {
+    background-color: #E0E0E0;
+    padding-bottom: 0.5%;
+    bottom: 0;
+    left: 0;
+}
+
+.footerTable {
+    font-size: 1em;
+}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from 'react';
 import './App.css';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
@@ -33,6 +34,19 @@ function App(){
     </Switch>
     </>
   )
+=======
+import React from 'react'
+import Profile from './components/Profile.js'
+import Footer from './components/Footer.js'
+
+function App() {
+  return (
+    <div className="App">
+     <Profile/>
+     <Footer/>
+    </div>
+  );
+>>>>>>> origin/profilePage
 }
 
 export default withRouter(App);

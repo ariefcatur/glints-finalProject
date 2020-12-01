@@ -130,7 +130,8 @@ const History = () =>{
                         <Row>
                         <Button
                             onClick={toggle}
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id ="button"
                         >
                             Unsubcribe
                         </Button>
@@ -154,7 +155,8 @@ const History = () =>{
                         <Row>
                         <Link
                             to=""
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id="button"
                         >
                             Unsubscribe
                         </Link>
@@ -178,7 +180,8 @@ const History = () =>{
                         <Row>
                         <Link
                             to=""
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id="button"
                         >
                             Unsubscribe
                         </Link>
@@ -226,21 +229,15 @@ const History = () =>{
                 
                 <Card style={{marginTop: '20px'}}>
                     <CardTitle tag="h6" className="text-dark font-weight-bold">Disney</CardTitle>
-                    <CardBody tag="h4">
-                        $400.0
-                    </CardBody>
+                      <h4>  $400.0 </h4>
                 </Card>
                 <Card style={{marginTop: '20px'}}>
                     <CardTitle tag="h6" className="text-dark font-weight-bold">Disney</CardTitle>
-                    <CardBody tag="h4">
-                        $400.0
-                    </CardBody>
+                        <h4>$400.0</h4>
                 </Card>
                 <Card style={{marginTop: '20px'}}>
                     <CardTitle tag="h6" className="text-dark font-weight-bold">Disney</CardTitle>
-                    <CardBody tag="h4">
-                        $400.0
-                    </CardBody>
+                    <h4>$400.0</h4>
                 </Card>   
             </Col>
             </Row>

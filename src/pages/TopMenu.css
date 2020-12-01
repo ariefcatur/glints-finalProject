@@ -1,0 +1,8 @@
+.Container {
+    width: auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}

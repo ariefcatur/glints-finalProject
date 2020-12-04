@@ -12,7 +12,6 @@ import {
     Modal,
     ModalHeader,
     Collapse
-    
 } from 'reactstrap';
 import youtube from './img/youtube.jpg'
 import hulu from './img/hulu-logo.jpg'

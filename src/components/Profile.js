@@ -64,7 +64,7 @@ const Profile = () => {
                 </Col>
             </Row>
             <Row className="row">   
-                <Col md="6" sm="12">
+                <Col md="12" sm="12">
                     <Container className="const">
                         <p><CreditCard size={22}/> Your AddExpenses</p>
                         <hr className="line"/>

@@ -1,4 +1,4 @@
-import Cookies from "cookies";
+import Cookies from "js-cookie";
 
 
 export function checkLogin() {

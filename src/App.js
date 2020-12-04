@@ -5,11 +5,12 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import History from "./pages/History";
 import TopMenu from "./pages/TopMenu";
-
+// import TopUser from "./pages/TopUser";
 function App() {
   return (
     <>
-      <TopMenu />
+      <TopMenu class="fixed-top" />
+      {/* <TopUser /> */}
       <ul>
         <li>
           <Link to="/Dashboard"> Dashboard </Link>

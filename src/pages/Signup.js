@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "./Signup.css";
 import { Modal, ModalHeader, ModalBody, Button, Alert } from "reactstrap";
 import { useHistory } from "react-router-dom";
+import Login from "./Login";
+import Dashboard from "./Dashboard";
+import Axios from "axios";
 
 const SignUp = (props) => {
   let history = useHistory();
@@ -24,17 +27,15 @@ const SignUp = (props) => {
   };
 
   const [fullName, setFullName] = useState("");
-  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
 
-    const urlSignUp = "";
+    const urlSignUp = "http://3.0.91.163/auth/register";
     const bodyData = {
-      full_name: fullName,
-      user_name: userName,
+      fullName: fullName,
       email: email,
       password: password,
     };
@@ -48,20 +49,20 @@ const SignUp = (props) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        localStorage.setItem("token", result.token);
-        localStorage.setItem("username", result.user_name);
-        localStorage.setItem("fullName", result.full_name);
-        localStorage.setItem("email", result.email);
         localStorage.setItem("id", result.id);
+        localStorage.setItem("fullName", result.fullName);
+        localStorage.setItem("email", result.email);
+        localStorage.setItem("status", result.status);
+        localStorage.setItem("token", result.token);
       })
-      .then(() => history.push("/"));
-    // .then((res) => <Alert color="primary">Sudah berhasil</Alert>)
+      .then(() => history.push({Login}));
+    // .then((res) => <Alert color="primary">Mantav</Alert>);
   };
 
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
 
-    const urlSignIn = "";
+    const urlSignIn = "http://3.0.91.163/auth/login";
     const bodyData = {
       email: email,
       password: password,
@@ -76,13 +77,13 @@ const SignUp = (props) => {
     })
       .then((res) => res.json())
       .then((result) => {
-        localStorage.setItem("token", result.token);
-        localStorage.setItem("username", result.userName);
         localStorage.setItem("fullName", result.fullName);
         localStorage.setItem("email", result.email);
         localStorage.setItem("id", result.id);
+        localStorage.setItem("status", result.status);
+        localStorage.setItem("token", result.token);
       })
-      .then(() => history.push("/"));
+      .then(() => history.push({Dashboard}));
     checker();
   };
 
@@ -90,14 +91,8 @@ const SignUp = (props) => {
     <div>
       <div className="SignUpModal">
         <div className="navigation">
-          {/* <Button
-            className="signUpButton"
-            // color="primary"
-            onClick={toggleSignUp}
-          >
-            {buttonLabel}Sign Up
-          </Button> */}
-          <a className="signUpButton" onClick={toggleSignUp}>
+        
+          <a  onClick={toggleSignUp}>
             {buttonLabel}Sign Up
           </a>
         </div>

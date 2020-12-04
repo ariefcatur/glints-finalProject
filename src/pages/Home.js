@@ -16,12 +16,6 @@ import {
     Spinner,
     
 } from 'reactstrap';
-import youtube from './img/youtube.jpg'
-import hulu from './img/hulu-logo.jpg'
-import disney from './img/disney.jpeg'
-import sportify from './img/spotify.jpg'
-import netflix from './img/netflix.jpeg'
-import logo from './img/Rectangle.png'
 import subscribe from './img/subscribe.svg'
 import expense from './img/expense.svg'
 import budgetting from './img/budgetting.svg'

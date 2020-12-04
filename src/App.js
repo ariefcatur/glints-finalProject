@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './App.css';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
@@ -7,11 +6,13 @@ import Dashboard from './pages/Dashboard'
 import History from './pages/History'
 import Profile from './components/Profile.js'
 import Footer from './components/Footer.js'
+import TopMenu from "./pages/TopMenu";
 
 
 function App(){
   return(
     <>
+     <TopMenu class="fixed-top" />
           <ul>
             <li>
               <Link to="/Dashboard"> Dashboard </Link>
@@ -42,7 +43,7 @@ function App(){
     </Switch>
     <Footer/>
     </>
-  )
+  );
 }
 
 

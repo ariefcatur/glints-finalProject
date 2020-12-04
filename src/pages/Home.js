@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     Container,
     Row,
@@ -13,15 +13,9 @@ import {
     Nav,
     NavItem,
     NavLink,
-
+    Spinner,
     
 } from 'reactstrap';
-import youtube from './img/youtube.jpg'
-import hulu from './img/hulu-logo.jpg'
-import disney from './img/disney.jpeg'
-import sportify from './img/spotify.jpg'
-import netflix from './img/netflix.jpeg'
-import logo from './img/Rectangle.png'
 import subscribe from './img/subscribe.svg'
 import expense from './img/expense.svg'
 import budgetting from './img/budgetting.svg'
@@ -30,9 +24,23 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faAd, faCoins, faDigitalTachograph, faClipboard} from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 const Home = () =>{
+    const urlSubscribe = 'http://3.0.91.163/service';
+    const [subscribes, setSubscribes] = useState([]);
     const [activeTab, setActiveTab] = useState('1');
+    const [loading, setLoading] = useState(false);
+    
+    
+    useEffect(() => {
+        setLoading(true);
+    
+        axios.get(urlSubscribe).then((res) => {
+          setSubscribes(res.data);
+          setLoading(false);
+        });
+      }, []);
 
     const toggle = tab => {
         if(activeTab !== tab) setActiveTab(tab);
@@ -42,6 +50,19 @@ const Home = () =>{
     const addCoins = <FontAwesomeIcon icon ={faCoins}/>;
     const addDigital = <FontAwesomeIcon icon ={faDigitalTachograph}/>;
     const addClipboard = <FontAwesomeIcon icon={faClipboard}/>;
+
+    if (loading) {
+        return (
+          <div>
+            <Row className="justify-content-center mt-5">
+              <Spinner type="grow" color="warning" />
+            </Row>
+            <Row className="justify-content-center mt-3 font-weight-bold">
+              Sedang memuat data...
+            </Row>
+          </div>
+        );
+    }
     return(
         <>
             <Container fluid>
@@ -51,12 +72,14 @@ const Home = () =>{
                         <h1><b>Stress Free</b></h1>
                         <h1><b>Subscription Manager</b></h1>
                         <Button 
+                            width="80px"
                             to=""
-                            className="btn btn-primary" 
+                            className="btn " 
                             id="button"
                         >
-                            Join Now
+                            Try For Free
                         </Button>
+
                         </div>
                     </Col>
                     <Col xs="7"> 
@@ -65,6 +88,18 @@ const Home = () =>{
                         </Row>  
                     </Col>
                 </Row>
+            </Container>
+            <Container className="about">
+            <h1 className="section" >About US</h1>
+            <div className="section-title-divider "></div>
+            
+                <div className="aboutIntro">
+                    <h3><span className="text-green">Manage</span> your subscription business from anywhere
+                    <br />
+                    You can easily keep a pulse on your subscription business in one platform, from anywhere.</h3>
+                
+                </div>
+            
             </Container>
             <Container fluid className="content">
             <section id="features" className="features">
@@ -88,7 +123,7 @@ const Home = () =>{
                                     <NavLink className={classnames({active: activeTab === '2'})}
                                     onClick={()=>{toggle('2');}}
                                 >
-                                   <Row><Col sm="8" ><h4>Expanse</h4></Col> 
+                                   <Row><Col sm="8" ><h4>Expense</h4></Col> 
                                    <Col sm="4" className="icon"> {addCoins} </Col></Row> 
                                     </NavLink>
                                 </NavItem>
@@ -127,7 +162,12 @@ const Home = () =>{
                                 <Col lg="12">
                                     <Row>
                                     <Col lg="6">
-                                         <h4>subcribe</h4>
+                                        <div className="intro">
+                                         <h3>Easily create a subscription website</h3>
+                                         <h4>Simply put in the items you wish to purchase on subscription, and the website builder will generate a subscription website for you 
+                                            right away. Join a member and create your own management subscription service you want to make.
+                                        </h4>
+                                        </div>
                                     </Col>
                                     <Col lg="6" style={{marginTop:'20px', marginBottom:'20px'}}>
                                         <img 
@@ -145,7 +185,11 @@ const Home = () =>{
                                 <Col lg="12">
                                 <Row>
                                     <Col lg="6">
+                                        <div className="intro">
+                                            <h3>Control your own daily expense</h3>
+                                            
                                          <h4>Expense</h4>
+                                        </div>
                                     </Col>
                                     <Col lg="6" style={{marginTop:'20px', marginBottom:'20px'}}>
                                         <img 
@@ -163,7 +207,10 @@ const Home = () =>{
                                 <Col lg="12">
                                 <Row>
                                     <Col lg="6">
+                                        <div className="intro">
+                                        <h3></h3>
                                          <h4>Budgetting</h4>
+                                         </div>
                                     </Col>
                                     <Col lg="6" style={{marginTop:'20px', marginBottom:'20px'}}>
                                         <img 
@@ -181,7 +228,12 @@ const Home = () =>{
                                 <Col lg="12">
                                 <Row>
                                     <Col lg="6">
-                                         <h4>history</h4>
+                                        <div className="intro">
+                                         <h3>Real-time reporting for finance and subscribtion</h3>
+                                         <h4>With full visibility of all business expenditure and powerful reporting features at your disposal,
+                                            SubsIt empowers you to make smarter financial decisions.
+                                            Process expenses as they are approved and post to your accounting package with ease.</h4>
+                                         </div>
                                     </Col>
                                     <Col lg="6" style={{marginTop:'20px', marginBottom:'20px'}}>
                                         <img 
@@ -198,70 +250,36 @@ const Home = () =>{
                 </Container>
             </section>
             </Container>
-            <Container fluid className="content">
+            <Container fluid className="popular">
                 <Container>
-                    <h3 className="section" >Popular Apps</h3>
+                    <h1 className="section" >Popular Apps</h1>
                     <div className="section-title-divider "></div>
                 <Row>
-                    <Col sm="3">
-                    <Card>
-                        <CardImg
-                            top
-                            width="100%"
-                            height="170px"
-                            src={disney}
-                            alt="subscribtion"
-                        />
-                        <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
-                            <h4>Disney</h4>
-                        </CardTitle>
-                    </Card>
-                    </Col>   
-                    <Col sm="3">
+                    {subscribes.slice(0,4).map((subscribes, i) =>(
+                        <Col sm="3" key={i}>
                         <Card>
-                        <CardImg
-                            top
-                            width="100%"
-                            height="170px"
-                            src={youtube}
-                            alt="subscribtion"
-                        />
-                        
-                        <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
-                            <h4>Youtube Premium</h4>
-                        </CardTitle>
+                            <CardImg
+                                top
+                                width="100%"
+                                height="170px"
+                                src={subscribes.picture}
+                                alt="subscribtion"
+                            />
+                            <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
+                            <h4>{subscribes.name}</h4>
+                            </CardTitle>
                         </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card>
-                        <CardImg
-                            top
-                            width="100%"
-                            height="170px"
-                            src={netflix}
-                            alt="subscribtion"
-                        />
+                        </Col>
+                    ))}
                        
-                        <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
-                            <h4>Netflix</h4>
-                        </CardTitle>
-                        </Card>
-                    </Col>
-                    <Col sm="3">
-                        <Card>  
-                        <CardImg
-                            top
-                            width="100%"
-                            height="170px"
-                            src={sportify}
-                            alt="subscribtion"
-                        />
-                        <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
-                            <h4>Spotify</h4>
-                        </CardTitle>
-                        </Card>
-                    </Col>
                 </Row>
+                </Container>
+            
+            </Container>
+            <Container fluid className="team">
+                <Container>
+                    <h1 className="section" >Team</h1>
+                    <div className="section-title-divider "></div>
                 </Container>
             </Container>
         </>

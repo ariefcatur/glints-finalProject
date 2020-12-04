@@ -22,7 +22,7 @@ import netflix from './img/netflix.jpeg'
 import logo from './img/Rectangle.png'
 import { Link } from 'react-router-dom';
 import { Line } from '@reactchartjs/react-chart.js'
-
+import axios from 'axios';
 
 const dataMonth= {
     labels: ['January', 'February', 'March', 'April', 'May', 'Juny'],

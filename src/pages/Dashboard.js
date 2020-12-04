@@ -11,7 +11,13 @@ import {
     Button,
     Modal,
     ModalHeader,
+<<<<<<< HEAD
     Collapse
+=======
+    Collapse,
+    Spinner,
+    
+>>>>>>> 902523819aa50959c5701526c5f3b8fbf7f1bc91
 } from 'reactstrap';
 import youtube from './img/youtube.jpg'
 import hulu from './img/hulu-logo.jpg'
@@ -21,6 +27,7 @@ import netflix from './img/netflix.jpeg'
 import logo from './img/Rectangle.png'
 import { Link } from 'react-router-dom';
 import { Line } from '@reactchartjs/react-chart.js'
+import axios from 'axios';
 
 
 const dataMonth= {
@@ -66,18 +73,41 @@ const dataWeek= {
 
 
 const Dashboard = () =>{ 
-
+    const urlSubscribe = 'http://3.0.91.163/subscription'
+    const [subscribe, setSubscribe] = useState([]);
     const [modal, setModal] = useState(false);
     const [isOpen, setIsOpen] = useState(true);
     const [isOpenWeek, setIsOpenWeek] = useState(false);
-
+    const [loading, setLoading] = useState(false);
 
     const toggle = () =>setModal(!modal);
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
     const collapseWeek = () => {setIsOpenWeek(true); setIsOpen(false);}
 
+    // useEffect(() => {
+    //     setLoading(true);
+    
+    //     axios.get(urlSubscribe).then((res) => {
+    //       setSubscribe(res.data);
+    //       setLoading(false);
+    //     });
+    //   }, []);
+
+    // if (loading) {
+    //     return (
+    //       <div>
+    //         <Row className="justify-content-center mt-5">
+    //           <Spinner type="grow" color="warning" />
+    //         </Row>
+    //         <Row className="justify-content-center mt-3 font-weight-bold">
+    //           Sedang memuat data...
+    //         </Row>
+    //       </div>
+    //     );
+    //   }
+
     return(
-        <Container fluid>
+        <Container fluid className="content">
             <Container>
                 <Row className="shadow-sm p-3 mb-5 bg-white rounded">
                     <Col xs="12" className="bg-default">
@@ -213,14 +243,14 @@ const Dashboard = () =>{
                     </Col>
                 </Row>
                 <Modal isOpen={modal} toggle={toggle}>
-                    <ModalHeader toggle={toggle}> Disney </ModalHeader>
+                    <ModalHeader toggle={toggle}> Disney
+                    </ModalHeader>
                     <CardImg
                             top
-                            width="100%"
                             height="300px"
                             src={disney}
                             alt="subscribtion"
-                        />
+                        /> 
                     <CardBody>
                         <CardText>
                             <h5>
@@ -236,7 +266,7 @@ const Dashboard = () =>{
                         <Row>
                         <Button
                             to=""
-                            className="btn btn-primary"
+                            className="btn btn-primary btn-block"
                             id="button"
                         >
                             Subscribe

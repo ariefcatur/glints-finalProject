@@ -103,7 +103,7 @@ const Dashboard = () =>{
     //   }
 
     return(
-        <Container fluid>
+        <Container fluid className="content">
             <Container>
                 <Row className="shadow-sm p-3 mb-5 bg-white rounded">
                     <Col xs="12" className="bg-default">

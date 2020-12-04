@@ -7,6 +7,10 @@
     text-align: center;
 } */
 /* @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital@1&display=swap"); */
+.barnav {
+  background: linear-gradient(269.56deg, rgba(105, 8, 134, 0.21) -4.24%, #FAFAFA 80.53%);
+
+}
 
 .body {
   display: flex;

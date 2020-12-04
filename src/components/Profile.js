@@ -5,6 +5,7 @@ import '../components/Profile.css'
 import {User, Mail, MapPin, CreditCard, Activity, Smile} from 'react-feather'
 import Edit from './EditProfile'
 import AddCard from './AddCard'
+import AddExpenses from './AddExpenses'
 
 const Profile = () => {
     
@@ -59,6 +60,15 @@ const Profile = () => {
                     <Container className="const">
                         <p><Activity size={22}/> Card Status</p>
                         <hr className="line"/>
+                    </Container>
+                </Col>
+            </Row>
+            <Row className="row">   
+                <Col md="6" sm="12">
+                    <Container className="const">
+                        <p><CreditCard size={22}/> Your AddExpenses</p>
+                        <hr className="line"/>
+                        <p className="plus"><AddExpenses/></p>
                     </Container>
                 </Col>
             </Row>

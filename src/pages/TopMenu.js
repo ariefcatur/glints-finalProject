@@ -19,8 +19,8 @@ const TopMenu = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Container fluid>
-      <Navbar color="light" light expand="md">
+    <Container fluid className="barnav">
+      <Navbar  expand="md">
       <NavbarBrand className="lognav" href="/">
           <img src={subsit}></img>
         </NavbarBrand>

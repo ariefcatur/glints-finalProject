@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import Axios from "axios";
+import Cookies from "cookies";
+import {checkLogin} from "../Helper";
 
 const SignUp = (props) => {
   let history = useHistory();

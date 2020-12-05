@@ -1,0 +1,46 @@
+#header {
+  background: linear-gradient(269.56deg, rgba(105, 8, 134, 0.21) -4.24%, #FAFAFA 80.53%);
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+
+/* #header.header-scrolled,
+#header.header-inner-pages {
+  background: rgba(40, 58, 90, 0.9);
+} */
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: #111; */
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5;
+}
+
+#Menu {
+  position: relative;
+  border: none;
+  border-radius: 10em;
+  display: flex;
+  list-style: none;
+  /* background: #111;
+  box-shadow: 40px 40px 40px 40px #000000; */
+  /* border: 2px solid white; */
+  padding: 10px;
+  overflow: visible;
+}
+
+#Menu li {
+  position: relative;
+  padding: 0.6em 2em;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  color: black;
+ 
+  border-radius: 3px;
+  text-decoration: none;
+  
+}

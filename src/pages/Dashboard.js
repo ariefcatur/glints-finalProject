@@ -11,7 +11,8 @@ import {
     Button,
     Modal,
     ModalHeader,
-    Collapse
+    Collapse,
+    Spinner,
     
 } from 'reactstrap';
 import youtube from './img/youtube.jpg'
@@ -22,6 +23,7 @@ import netflix from './img/netflix.jpeg'
 import logo from './img/Rectangle.png'
 import { Link } from 'react-router-dom';
 import { Line } from '@reactchartjs/react-chart.js'
+import axios from 'axios';
 
 
 const dataMonth= {
@@ -67,20 +69,43 @@ const dataWeek= {
 
 
 const Dashboard = () =>{ 
-
+    const urlSubscribe = 'http://3.0.91.163/subscription'
+    const [subscribe, setSubscribe] = useState([]);
     const [modal, setModal] = useState(false);
     const [isOpen, setIsOpen] = useState(true);
     const [isOpenWeek, setIsOpenWeek] = useState(false);
-
+    const [loading, setLoading] = useState(false);
 
     const toggle = () =>setModal(!modal);
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
     const collapseWeek = () => {setIsOpenWeek(true); setIsOpen(false);}
 
+    // useEffect(() => {
+    //     setLoading(true);
+    
+    //     axios.get(urlSubscribe).then((res) => {
+    //       setSubscribe(res.data);
+    //       setLoading(false);
+    //     });
+    //   }, []);
+
+    // if (loading) {
+    //     return (
+    //       <div>
+    //         <Row className="justify-content-center mt-5">
+    //           <Spinner type="grow" color="warning" />
+    //         </Row>
+    //         <Row className="justify-content-center mt-3 font-weight-bold">
+    //           Sedang memuat data...
+    //         </Row>
+    //       </div>
+    //     );
+    //   }
+
     return(
-        <Container fluid>
+        <Container fluid className="content">
             <Container>
-                <Row>
+                <Row className="shadow-sm p-3 mb-5 bg-white rounded">
                     <Col xs="12" className="bg-default">
                         <Row>
                         <Col xs="6">
@@ -88,8 +113,8 @@ const Dashboard = () =>{
                         </Col>
                         <Col xs="6">   
                         <div style={{float :'right', position:'relative',  }}> 
-                        <Button color="primary" onClick={collapse} style={{ marginBottom: '1rem',marginRight:'20px' }}>Month</Button>
-                        <Button color="primary" onClick={collapseWeek} style={{ marginBottom: '1rem', marginRight:'30px'}}>Week</Button>
+                        <Button  id="button" onClick={collapse} style={{ marginBottom: '1rem',marginRight:'20px' }}>Month</Button>
+                        <Button  id="button" onClick={collapseWeek} style={{ marginBottom: '1rem', marginRight:'30px'}}>Week</Button>
                         </div>
                         </Col>
                         </Row>
@@ -127,7 +152,8 @@ const Dashboard = () =>{
                         <Row>
                         <Button
                             onClick={toggle}
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id="button"
                         >
                             Subcribe
                         </Button>
@@ -150,12 +176,13 @@ const Dashboard = () =>{
                         </CardTitle>
                         
                         <Row>
-                        <Link
+                        <Button
                             to=""
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id="button"
                         >
                             Subscribe
-                        </Link>
+                        </Button>
                         </Row>
                         </CardBody>
                         </Card>
@@ -174,12 +201,13 @@ const Dashboard = () =>{
                             <h4>Netflix</h4>
                         </CardTitle>
                         <Row>
-                        <Link
+                        <Button
                             to=""
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id="button"
                         >
                             Subscribe
-                        </Link>
+                        </Button>
                         </Row>
                         </CardBody>
                         </Card>
@@ -200,7 +228,8 @@ const Dashboard = () =>{
                         <Row>
                         <Link
                             to=""
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id="button"
                         >
                             Subscribe
                         </Link>
@@ -210,15 +239,15 @@ const Dashboard = () =>{
                     </Col>
                 </Row>
                 <Modal isOpen={modal} toggle={toggle}>
-                    <ModalHeader toggle={toggle}> Disney </ModalHeader>
+                    <ModalHeader toggle={toggle}> Disney
+                    </ModalHeader>
                     <CardImg
                             top
-                            width="100%"
                             height="300px"
                             src={disney}
                             alt="subscribtion"
-                        />
-                    <CardBody className="bg-dangers">
+                        /> 
+                    <CardBody>
                         <CardText>
                             <h5>
                                 Next Payment:
@@ -231,12 +260,13 @@ const Dashboard = () =>{
                             </h5>
                         </CardText>
                         <Row>
-                        <Link
+                        <Button
                             to=""
-                            className="btn btn-warning btn-block"
+                            className="btn btn-primary btn-block"
+                            id="button"
                         >
                             Subscribe
-                        </Link>
+                        </Button>
                         </Row>
                     </CardBody>
                 </Modal>

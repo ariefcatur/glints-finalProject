@@ -1,0 +1,62 @@
+.signUpButton {
+    position: relative;
+    width: 97px;
+    height: 35px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px !important;
+    line-height: 27px;
+    color: white;
+    background-color: #8f48ea;
+    border-radius: 3px;
+    top: 8px;
+}
+
+.ModalHeader {
+  text-align: center;
+}
+
+#SignUp {
+  font-size: 20px;
+  margin-bottom: 0px;
+}
+
+#submitButton {
+  font-size: 20px;
+}
+
+.Login {
+  text-align: center !important;
+  padding-top: 25px;
+  font-size: 20px;
+}
+
+/* Desktop Version */
+/* 
+@media (min-width: 992px) {
+  .signUpButton {
+      position: absolute;
+    width: 97px;
+    height: 35px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px !important;
+    line-height: 27px;
+    color: white;
+    background-color: #8f48ea;
+    border-radius: 3px;
+    top: 15px;
+  }
+} */
+
+/* @media screen and (min-width: 1400px) {
+  .signUpButton {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 18px !important;
+    line-height: 50px;
+  }
+} */

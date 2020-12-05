@@ -1,19 +1,32 @@
+.container{
+  font-family: 'Avalon DemiOblique', sans-serif;
+  color: #003764 !important
+}
 .section-title{
   text-transform:uppercase;
   text-align:center;
   font-weight: 500;
 }
-
+.section{
+  text-align:center;
+  font-weight: bold;
+}
+.about{
+  margin-top: 100px;
+}
+.aboutIntro{
+  text-align:center;
+}
 .section-title-divider{
   width: 50px;
   height: 3px;
-  background: #B45C4D;
+  background: #48EA8F;
   margin: 0 auto;
   margin-bottom: 20px;
 }
 .logo-gambar{
   background-image:
-    linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%),url('./pages/img/Rectangle.png');
+    linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 90.53%),url('./pages/img/Rectangle.png');
     width: 900px;
     height: 420px;
     background-size: cover;
@@ -26,7 +39,6 @@
   padding-top:100px;
 }
 .expense {
-  background-color : #31B0D5;
   color: white;
   padding: 10px 20px;
   border-radius: 4px;
@@ -38,3 +50,66 @@
   bottom: 20px;
   right: 130px;
 }
+.banner{
+  background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
+  font-family: poppins;
+}
+.content{
+  padding-top: 20px;
+  margin-top:100px;
+  background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
+}
+#button{
+  background-color: #8F48EA;
+}
+.nav-link.active{
+  color: #fff!important;
+  background-color: #8F48EA;
+  height : 80px;
+  font-size: 25px;
+  text-align: center;
+}
+.nav-link h4{
+ padding: 20px 0;
+ text-align: center;
+}
+.nav-link{
+  color: #003764;
+  height :80px;
+  text-decoration: none;
+}
+.icon{
+font-size: 40px;
+padding: 5px 0;
+text-align: center;
+}
+.tabs{
+  margin-left:-15px;
+  background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
+}
+.intro {
+  margin-left:-15px;
+  margin-top:50px;
+  
+}
+.intro h4{
+  line-height: 40px;
+}
+.text-green{
+  color: #48EA8F;
+  font-size: 40px;
+  font-weight: 600;
+}
+.team{
+  padding-top: 20px;
+  margin-top:100px;
+  background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
+}
+.tabs a:hover{
+  color:  #8F48EA;
+}
+.popular{
+  padding-top: 20px;
+  margin-top:100px;
+}
+

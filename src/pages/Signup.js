@@ -4,9 +4,10 @@ import { Modal, ModalHeader, ModalBody, Button, Alert } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
-import Axios from "axios";
-import Cookies from "cookies";
-import {checkLogin} from "../Helper";
+import axios from "axios";
+import Cookies from "js-cookie";
+
+
 
 const SignUp = (props) => {
   let history = useHistory();
@@ -35,59 +36,43 @@ const SignUp = (props) => {
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
 
-    const urlSignUp = "http://3.0.91.163/auth/register";
+    const urlSignUp = " http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/register";
     const bodyData = {
       fullName: fullName,
       email: email,
       password: password,
     };
 
-    fetch(urlSignUp, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bodyData),
+    axios.post(urlSignUp, bodyData).then((ress)=>{
+      console.log(ress.bodyData);
+      history.push({toggleSignIn});
+      // <Alert color="primary">Mantav</Alert>;
     })
-      .then((res) => res.json())
-      .then((result) => {
-        localStorage.setItem("id", result.id);
-        localStorage.setItem("fullName", result.fullName);
-        localStorage.setItem("email", result.email);
-        localStorage.setItem("status", result.status);
-        localStorage.setItem("token", result.token);
-      })
-      .then(() => history.push({Login}));
-    // .then((res) => <Alert color="primary">Mantav</Alert>);
   };
+
 
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
 
-    const urlSignIn = "http://3.0.91.163/auth/login";
+    const urlSignIn = "http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/login";
     const bodyData = {
       email: email,
       password: password,
     };
 
-    fetch(urlSignIn, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(bodyData),
+    axios.post(urlSignIn, bodyData).then((res)=>{
+      console.log(res);
+      const email = res.data.email;
+      const token = res.data.token;
+      Cookies.set('email', email,{expires:1});
+      Cookies.set('token', token,{expires:1});
+      history.push("/Dashboard");
     })
-      .then((res) => res.json())
-      .then((result) => {
-        localStorage.setItem("fullName", result.fullName);
-        localStorage.setItem("email", result.email);
-        localStorage.setItem("id", result.id);
-        localStorage.setItem("status", result.status);
-        localStorage.setItem("token", result.token);
-      })
-      .then(() => history.push({Dashboard}));
-    checker();
+      
   };
+
+ 
+
 
   return (
     <div>
@@ -150,7 +135,7 @@ const SignUp = (props) => {
               <p className="Login">
                 Already have an account?{" "}
                 <Button color="primary" onClick={toggleSignIn}>
-                  {buttonLabel}Sign In
+                  {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}
               </p>
@@ -194,7 +179,7 @@ const SignUp = (props) => {
                 className="btn btn-primary btn-block"
                 onClick={toggleSignIn}
               >
-                Sign In
+                Login
               </button>
             </form>
           </ModalBody>

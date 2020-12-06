@@ -11,13 +11,9 @@ import {
     Button,
     Modal,
     ModalHeader,
-<<<<<<< HEAD
-    Collapse
-=======
     Collapse,
     Spinner,
     
->>>>>>> 902523819aa50959c5701526c5f3b8fbf7f1bc91
 } from 'reactstrap';
 import youtube from './img/youtube.jpg'
 import hulu from './img/hulu-logo.jpg'
@@ -31,7 +27,7 @@ import axios from 'axios';
 
 
 const dataMonth= {
-    labels: ['January', 'February', 'March', 'April', 'May', 'Juny', 'July', 'August', 'September', 'October', 'November'],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
     datasets:[
         {
             label: '# Month',

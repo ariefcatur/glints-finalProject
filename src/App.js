@@ -7,14 +7,16 @@ import History from './pages/History'
 import Profile from './components/Profile.js'
 import Footer from './components/Footer.js'
 import TopMenu from "./pages/TopMenu";
+import Logout from "./pages/Logout";
 
 
 
 function App(){
   return(
     <>
-     <TopMenu class="fixed-top" />
-          <ul>
+     <TopMenu />
+     {/* <TopUser /> */}
+          {/* <ul>
             <li>
               <Link to="/Dashboard"> Dashboard </Link>
             </li>
@@ -27,7 +29,7 @@ function App(){
             <li>
               <Link to="/Home"> Home </Link>
             </li>
-          </ul>
+          </ul> */}
     <Switch>
       <Route path ="/dashboard">
         <Dashboard />
@@ -37,6 +39,9 @@ function App(){
       </Route>
       <Route path ="/profile">
         <Profile />
+      </Route>
+      <Route path ="/logout">
+        <Logout />
       </Route>
       <Route path="/">
             <Home />

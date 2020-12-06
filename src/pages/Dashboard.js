@@ -26,6 +26,45 @@ import { Line } from '@reactchartjs/react-chart.js'
 import axios from 'axios';
 
 
+// const dataMonth= {
+//     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
+//     datasets:[
+//         {
+//             label: '# Month',
+//             data: [12, 19, 3, 5, 2, 3],
+//             fill: false,
+//             backgroundColor: 'rgb(255, 99, 132)',
+//             borderColor: 'rgba(255, 99, 132, 0.2)',
+//         },
+//     ],
+// }
+
+
+// const options = {
+//     scales: {
+//         yAxes: [
+//           {
+//             ticks: {
+//               beginAtZero: true,
+//             },
+//           },
+//         ],
+//       },
+// }
+
+// const dataWeek= {
+//     labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+//     datasets:[
+//         {
+//             label: '# Week',
+//             data: [12, 19, 3, 5],
+//             fill: false,
+//             backgroundColor: 'rgb(255, 99, 132)',
+//             borderColor: 'rgba(255, 99, 132, 0.2)',
+//         },
+//     ],
+// }
+
 
 
 

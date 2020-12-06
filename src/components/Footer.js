@@ -8,6 +8,7 @@ const Footer = () => {
 
     return (
         <Container fluid className="footer">
+            <Container>
             <Row md="6" sm="12" style={{padding:"1%", marginTop:"1%"}}>
                 <img 
                     src={logo}
@@ -60,6 +61,7 @@ const Footer = () => {
             </Row>
             <hr className="line"/>
             <p className="footerTable">Copyright &copy; 2020 SubsIt.com</p>     
+            </Container>
         </Container>
     )
 }

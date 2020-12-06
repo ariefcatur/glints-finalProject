@@ -6,7 +6,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import axios from "axios";
 import Cookies from "js-cookie";
-import {checkLogin} from "../Helper";
+
 
 
 const SignUp = (props) => {
@@ -45,9 +45,11 @@ const SignUp = (props) => {
 
     axios.post(urlSignUp, bodyData).then((ress)=>{
       console.log(ress.bodyData);
-      history.push('/');
+      history.push({toggleSignIn});
+      // <Alert color="primary">Mantav</Alert>;
     })
   };
+
 
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
@@ -64,9 +66,13 @@ const SignUp = (props) => {
       const token = res.data.token;
       Cookies.set('email', email,{expires:1});
       Cookies.set('token', token,{expires:1});
-      history.push("/Dashboard")
-    })    
+      history.push("/Dashboard");
+    })
+      
   };
+
+ 
+
 
   return (
     <div>
@@ -129,7 +135,7 @@ const SignUp = (props) => {
               <p className="Login">
                 Already have an account?{" "}
                 <Button color="primary" onClick={toggleSignIn}>
-                  {buttonLabel}Sign In
+                  {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}
               </p>
@@ -173,7 +179,7 @@ const SignUp = (props) => {
                 className="btn btn-primary btn-block"
                 onClick={toggleSignIn}
               >
-                Sign In
+                Login
               </button>
             </form>
           </ModalBody>

@@ -7,10 +7,10 @@ const ShowSubscriptions = () => {
 
     useEffect(() => {
         axios
-            .get("http://3.0.91.163/expense")
+            .get("http://3.0.91.163/subscription")
             .then((res) => {
-                console.log(res)
-                setResults(res);
+                console.log(res.data)
+                setResults(res.data);
             })
     }, []);
 

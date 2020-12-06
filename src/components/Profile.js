@@ -15,13 +15,13 @@ import { User, Mail, MapPin, Smile } from "react-feather";
 import Edit from "./EditProfile";
 import TabProfile from "./TabProfile";
 
-function Profile () {
+const Profile = () => {
   const [users, setUsers] = useState("");
 
   useEffect(() => {
     axios.get("http://3.0.91.163/auth/user").then((res) => {
-      console.log(res);
-      setUsers(res);
+      console.log(res.data);
+      setUsers(res.data);
     });
   }, []);
 

@@ -65,8 +65,7 @@ const SignUp = (props) => {
       Cookies.set('email', email,{expires:1});
       Cookies.set('token', token,{expires:1});
       history.push("/Dashboard")
-    })
-      
+    })    
   };
 
   return (

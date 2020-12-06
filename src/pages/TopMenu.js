@@ -20,7 +20,7 @@ const TopMenu = (props) => {
 
   return (
     <Container fluid className="barnav">
-      <Navbar  expand="md">
+      <Navbar >
       <NavbarBrand className="lognav" href="/">
           <img src={subsit}></img>
         </NavbarBrand>

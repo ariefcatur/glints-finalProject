@@ -24,6 +24,8 @@ import logo from './img/Rectangle.png'
 import { Link, useParams} from 'react-router-dom';
 import { Line } from '@reactchartjs/react-chart.js'
 import axios from 'axios';
+import {checkLogin} from '../Helper';
+import Cookies from 'js-cookie';
 
 
 // const dataMonth= {
@@ -76,8 +78,20 @@ const Dashboard = () =>{
     const [isOpenWeek, setIsOpenWeek] = useState(false);
     const [loading, setLoading] = useState(false);
     const [subscribeId, setSubscribeId] = useState([]);
-    const [chartDataMonth, setChartDataMonth] = useState({});
-    
+    const token = Cookies.get('token');
+    const [startDate, setStartDate] = useState(0)
+    const [serviceId, setServiceId] = useState([])
+    const [card,setCard] = useState([])
+    const [cardId,setCardId] = useState(null)
+    const urlCard = 'http://3.0.91.163/card'
+    const [chartData, setChartData] = useState({});
+    const [dates, setDates] = useState([]);
+    const [totals, setTotals] = useState([]);
+    const urlMonth='http://3.0.91.163/chart/monthly'
+    const [chartWeek, setChartWeek] = useState({});
+    const [weekMonth, setWeekMonth] = useState([]);
+    const [totalWeek, setTotalWeek] = useState([]);
+    const urlWeek='http://3.0.91.163/chart/weekly'
 
     const toggle = () =>setModal(!modal);
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
@@ -90,13 +104,9 @@ const Dashboard = () =>{
           setLoading(false);
         })
         .catch((err)=> console.log(err));
-
-        // axios.get(`${urlSubscribe}?id=${id}`).then((res)=>{
-        //     console.log(res.data.subscribeId)
-        //     setSubscribeId(res.data);
-        //     setLoading(false);
-        // })
-        // .catch((err)=> console.log(err));
+        
+        dataMonth();
+        dataWeek();
       }, []);
     
     const subscribeDetails = (id) => {
@@ -107,9 +117,34 @@ const Dashboard = () =>{
             setSubscribeId(res.data);
             setModal(!modal)
             setLoading(false);
-        }
-        )
-            
+            subscribeCard()
+        })
+        .catch((err)=> console.log(err));           
+    }
+
+    const subscribeCard = () =>{
+        setLoading(true);
+        axios.get(urlCard, {headers : {Authorization : `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res.data)
+            setCard(res.data);
+            setLoading(false);
+        })
+        .catch((err)=> console.log(err));
+    }
+
+    const subscribtion = (e)=>{
+        e.preventDefault();
+        const url =`http://3.0.91.163/${serviceId}/?cardId=${cardId}`
+        
+        axios
+        .post(url, {headers:{Authorization: `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res.data)
+        })
+        .catch((error)=>{
+            console.error(error);
+        });
     }
 
     if (loading) {
@@ -125,29 +160,65 @@ const Dashboard = () =>{
         );
       }
 
-      const dataMonth = {
-    //     // axios.get("http://3.0.91.163/chart/monthly")
-    //     // .then((res)=>{
-    //     //     console.log(res)
-    //     // }).catch((err)=>{
-    //     //     console.log(err)
-    //     // });
+      const dataMonth =()=>  {
+        let month = [];
+        let pay = [];
+         axios
+         .get(urlMonth, {headers:{Authorization: `Bearer ${token}`}})
+         .then((res)=>{
+             console.log(res);
+             for(const dataObj of res.data){
+                 month.push(dataObj.dates)
+                 pay.push(dataObj.totals)
+             }
+             setChartData({
+                labels: month,
+                datasets:[
+                    {
+                        label: '# Month',
+                        data: pay,
+                        fill: false,
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgba(255, 99, 132, 0.2)',
+                    },
+                ],  
+            })
+         }).catch((err)=>{
+             console.log(err)
+        });
+        console.log(dates, totals)
         
-    //     setChartDataMonth({
-            labels: ['January',  'February', 'March', 'April', 'May', 'Juny', 'July', 'August', 'September', 'October', 'November'],
-            datasets:[
-                {
-                    label: '# Month',
-                    data: [12, 19, 3, 5, 2, 3],
-                    fill: false,
-                    backgroundColor: 'rgb(255, 99, 132)',
-                    borderColor: 'rgba(255, 99, 132, 0.2)',
-                },
-            ],  
-        // })
     }
     
-    
+    const dataWeek =()=> {
+        let week = [];
+        let pay = [];
+        axios
+        .get(urlWeek, {headers:{Authorization: `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res);
+            for(const dataObj of res.data){
+                week.push(dataObj.weekMonth)
+                pay.push(dataObj.totals)
+            }
+            setChartWeek({
+               labels: week,
+               datasets:[
+                   {
+                       label: '# Week',
+                       data: pay,
+                       fill: false,
+                       backgroundColor: 'rgb(255, 99, 132)',
+                       borderColor: 'rgba(255, 99, 132, 0.2)',
+                   },
+               ],  
+           })
+        }).catch((err)=>{
+            console.log(err)
+       });
+       console.log(dates, totals)
+    }
+
     const options = {
         scales: {
             yAxes: [
@@ -160,18 +231,7 @@ const Dashboard = () =>{
           },
     }
     
-    const dataWeek= {
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-        datasets:[
-            {
-                label: '# Week',
-                data: [12, 19, 3, 5],
-                fill: false,
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgba(255, 99, 132, 0.2)',
-            },
-        ],
-    }
+   
     return(
         <Container fluid className="content">
             <Container>
@@ -191,10 +251,10 @@ const Dashboard = () =>{
                     </Col>
                     <Col xs="12" className="bg-default">
                         <Collapse isOpen={isOpen}>
-                            <Line data={dataMonth}  options={options} />
+                            <Line data={chartData}  options={options} />
                         </Collapse>
                         <Collapse isOpen={isOpenWeek}>
-                            <Line data={dataWeek}  options={options} />
+                            <Line data={chartWeek}  options={options} />
                         </Collapse>
                     </Col>
                 </Row>
@@ -255,6 +315,10 @@ const Dashboard = () =>{
                                 <h5>
                                     Cost: {subscribe.cost}
                                 </h5>
+                                {card.map((cards)=>(
+                                <h5>Card : {cards.cardBank} </h5>    
+                                ))}
+                                
                             </CardText>
                             <Row>
                             <Button

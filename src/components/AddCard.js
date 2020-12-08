@@ -55,7 +55,6 @@ const AddCard = (props) => {
       })
       .then((res) => {
         console.log(res.data);
-        return window.location.reload();
       })
       .catch((error) =>{
         console.log(error);

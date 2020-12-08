@@ -5,7 +5,6 @@ import classnames from 'classnames';
 import './Profile.css'
 import AddCard from './AddCard'
 import AddExpenses from './AddExpenses'
-import ShowSubscriptions from './ShowSubscriptions'
 import ShowExpenses from './ShowExpense'
 import ShowCard from './ShowCard'
 
@@ -122,7 +121,6 @@ const TabProfile = (props) => {
             <ShowExpenses/>
         </Row>
         <Row>
-        <ShowSubscriptions/>    
         </Row>
         </TabPane>
       </TabContent>

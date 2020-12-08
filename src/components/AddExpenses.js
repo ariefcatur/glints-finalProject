@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { ShoppingCart } from "react-feather";
+// import { ShoppingCart } from "react-feather";
+import './Profile.css'
 import {
   Button,
   Modal,
@@ -66,7 +67,7 @@ const AddExpenses = (props) => {
       })
       .then((res) => {
         console.log(res.data);
-        return window.location.reload();
+        // return window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -78,14 +79,14 @@ const AddExpenses = (props) => {
   const toggle = () => setModal(!modal);
 
   return (
-    <div>
+    <div className="expense">
       <Button
-        size="sm"
+        size="l"
         className="mt-2 mr-2 mb-sm-0"
         style={{ color: "white", backgroundColor: "#8F48EA" }}
         onClick={toggle}
       >
-        <ShoppingCart size={15} />
+      Add Expense 
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>

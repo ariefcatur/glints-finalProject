@@ -27,7 +27,6 @@ const ShowSubscriptions = () => {
       .then((res) => {
         console.log(res.data);
         setResults(res.data);
-        return window.location.reload();
       })
       .catch((error) => {
         console.log(error);

@@ -74,11 +74,17 @@ const History = () =>{
         .then((res)=>{
             console.log(res.data);
             setHistory(res.data);
-            setIsLoading(false);
-            expenses();
+            setIsLoading(false);    
         })
         .catch((err)=>console.log(err))
 
+        axios.get(urlExpense, {headers : {Authorization : `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res.data)
+            setExpense(res.data);
+            setIsLoading(false);
+        })
+        .catch((err)=> console.log(err));
         dataMonth();
         dataWeek();
     }, [])
@@ -142,16 +148,16 @@ const History = () =>{
        console.log(dates, totals)
     }
 
-    const expenses = () =>{
-        setIsLoading(true);
-        axios.get(urlExpense, {headers : {Authorization : `Bearer ${token}`}})
-        .then((res)=>{
-            console.log(res.data)
-            setExpense(res.data);
-            setIsLoading(false);
-        })
-        .catch((err)=> console.log(err));
-    }
+    // const expenses = () =>{
+    //     setIsLoading(true);
+    //     axios.get(urlExpense, {headers : {Authorization : `Bearer ${token}`}})
+    //     .then((res)=>{
+    //         console.log(res.data)
+    //         setExpense(res.data);
+    //         setIsLoading(false);
+    //     })
+    //     .catch((err)=> console.log(err));
+    // }
 
     const deleteSubscribe = () =>{
 
@@ -272,8 +278,6 @@ const History = () =>{
             </Col>
             <Col xs="4" style={{backgroundColor: 'white'}}> 
                 <h4>history</h4>
-
-                
                 {history.map((subscribtion, i)=>(
                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
                     <Row>
@@ -288,15 +292,14 @@ const History = () =>{
                 </Card>
                 ))}
                 {expense.map((expenses, i )=>(
-                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
+                <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
                 <Row>
                     <Col xs="8">
                     <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title} <br/> {expenses.purchaseDate}</h6></CardTitle>
                     </Col>
                     <Col xs="4">
                     <h6>Rp.  {expenses.total} </h6>
-                    </Col>
-                    
+                    </Col>  
                 </Row>  
                 </Card> 
                 ))}

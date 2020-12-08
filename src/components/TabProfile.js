@@ -122,7 +122,7 @@ const TabProfile = (props) => {
             <ShowExpenses/>
         </Row>
         <Row>
-        <ShowSubscriptions/>    
+        {/* <ShowSubscriptions/>     */}
         </Row>
         </TabPane>
       </TabContent>

@@ -121,6 +121,7 @@ const TabProfile = (props) => {
             <ShowExpenses/>
         </Row>
         <Row>
+        {/* <ShowSubscriptions/>     */}
         </Row>
         </TabPane>
       </TabContent>

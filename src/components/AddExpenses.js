@@ -104,7 +104,7 @@ const AddExpenses = (props) => {
                     id="title"
                     onChange={(e) => setTitle(e.target.value)}
                   >
-                    <option>Selec Expense</option>
+                    <option>Select Expense</option>
                     <option>Housing</option>
                     <option>Transportation</option>
                     <option>Food and Beverages</option>

@@ -36,6 +36,7 @@ const ShowExpenses = () => {
                   <CardBody className="d-flex flex-column align-items-center">
                     <CardTitle style={{marginTop:"15px"}}><strong>{result.cardBank}</strong></CardTitle>
                     <CardText>{result.cardNumber}</CardText>
+                    <CardText>Rp {result.saldo}</CardText>
                     <CardText>{result.cardHolder}</CardText>
                   </CardBody>
                 </Card>

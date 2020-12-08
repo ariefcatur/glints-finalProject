@@ -32,6 +32,7 @@ const SignUp = (props) => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [user, setUser] = useState()
 
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
@@ -62,17 +63,17 @@ const SignUp = (props) => {
 
     axios.post(urlSignIn, bodyData).then((res)=>{
       console.log(res);
+      const fullname = res.data.fullName;
       const email = res.data.email;
       const token = res.data.token;
+      Cookies.set('fullname', fullname, {expires:1});
       Cookies.set('email', email,{expires:1});
       Cookies.set('token', token,{expires:1});
-      history.push("/Dashboard");
+      setUser(res.data);
+      history.push(`/Dashboard`);
     })
       
   };
-
- 
-
 
   return (
     <div>

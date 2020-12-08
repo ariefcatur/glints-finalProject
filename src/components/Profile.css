@@ -42,6 +42,7 @@ body {
 
 .rowright {
     text-align: right;
+    margin-bottom: 2%;
 }
 
 .const {
@@ -51,4 +52,10 @@ body {
     margin-right: 1%;
     margin-bottom: 2%;
     border: #8F48EA 0.5px solid;
+}
+
+.nav-link.active {
+    color: #222222!important;
+    font-size: medium;
+
 }

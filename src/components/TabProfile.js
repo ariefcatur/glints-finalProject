@@ -7,6 +7,7 @@ import AddCard from './AddCard'
 import AddExpenses from './AddExpenses'
 import ShowSubscriptions from './ShowSubscriptions'
 import ShowExpenses from './ShowExpense'
+import ShowCard from './ShowCard'
 
 const TabProfile = (props) => {
   const [activeTab, setActiveTab] = useState('1');
@@ -51,11 +52,11 @@ const TabProfile = (props) => {
             </Container>
         </Row>
         <Row>
-            <Col xl="4" sm="12">
+          <ShowCard/>
+            {/* <Col xl="4" sm="12">
                 <Card>
                     <CardBody>
                         <CardTitle>
-                            <h5>BNI</h5>
                         </CardTitle>
                         <CardText>
                             <p>Card Number: 1122334455667788</p>
@@ -92,12 +93,12 @@ const TabProfile = (props) => {
                         </CardText>
                     </CardBody>
                 </Card>
-            </Col>
+            </Col> */}
         </Row>
         </TabPane>
         <TabPane tabId="2">
           <Row>
-            <Col sm="6">
+            {/* <Col sm="6">
               <Card body>
                 <CardTitle>Special Title Treatment</CardTitle>
                 <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
@@ -110,96 +111,18 @@ const TabProfile = (props) => {
                 <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
                 <Button>Go somewhere</Button>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
         </TabPane>
         <TabPane tabId="3">
-        <Row className="rowright">
-            <Container>
+        <Row >
+            <Container className="rowright">
             <AddExpenses/>
-            <ShowExpenses/>
             </Container>
+            <ShowExpenses/>
         </Row>
         <Row>
         <ShowSubscriptions/>    
-        {/* <Col xl="4" sm="12">
-            <Card className="cards">
-                <CardBody>
-                    <CardTitle>
-                        <h5>Housing</h5>
-                    </CardTitle>
-                    <CardText>
-                        <p>Description: Renting Room No. XXX</p>
-                        <p>Total: Rp 1000000</p>
-                    </CardText>
-                </CardBody>
-            </Card>
-        </Col>
-        <Col xl="4" sm="12">
-            <Card className="cards">
-                <CardBody>
-                    <CardTitle>
-                        <h5>Housing</h5>
-                    </CardTitle>
-                    <CardText>
-                        <p>Description: Renting Room No. XXX</p>
-                        <p>Total: Rp 1000000</p>
-                    </CardText>
-                </CardBody>
-            </Card>
-        </Col>
-        <Col xl="4" sm="12">
-            <Card className="cards">
-                <CardBody>
-                    <CardTitle>
-                        <h5>Housing</h5>
-                    </CardTitle>
-                    <CardText>
-                        <p>Description: Renting Room No. XXX</p>
-                        <p>Total: Rp 1000000</p>
-                    </CardText>
-                </CardBody>
-            </Card>
-        </Col>
-        <Col xl="4" sm="12">
-            <Card className="cards">
-                <CardBody>
-                    <CardTitle>
-                        <h5>Housing</h5>
-                    </CardTitle>
-                    <CardText>
-                        <p>Description: Renting Room No. XXX</p>
-                        <p>Total: Rp 1000000</p>
-                    </CardText>
-                </CardBody>
-            </Card>
-        </Col>
-        <Col xl="4" sm="12">
-            <Card className="cards">
-                <CardBody>
-                    <CardTitle>
-                        <h5>Housing</h5>
-                    </CardTitle>
-                    <CardText>
-                        <p>Description: Renting Room No. XXX</p>
-                        <p>Total: Rp 1000000</p>
-                    </CardText>
-                </CardBody>
-            </Card>
-        </Col>
-        <Col xl="4" sm="12">
-            <Card className="cards">
-                <CardBody>
-                    <CardTitle>
-                        <h5>Housing</h5>
-                    </CardTitle>
-                    <CardText>
-                        <p>Description: Renting Room No. XXX</p>
-                        <p>Total: Rp 1000000</p>
-                    </CardText>
-                </CardBody>
-            </Card>
-        </Col> */}
         </Row>
         </TabPane>
       </TabContent>

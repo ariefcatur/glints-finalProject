@@ -17,19 +17,22 @@ import {
 } from "reactstrap";
 
 const AddCard = (props) => {
-  const urlLogin = "https://5fad41ff2ec98b00160481c3.mockapi.io/movie/register";
+
+  const urlAddCard = "http://3.0.91.163/card";
 
   const history = useHistory();
 
   const { className } = props;
 
-  const [cardType, setCardType] = useState("");
+  const [cardType, setCardType] = useState(null);
   const [cardNumber, setCardNumber] = useState("");
-  const [cardExpiry, setCardExpiry] = useState("");
-  const [cardCVC, setCardCVC] = useState("");
-  const [cardBank, setCardBank] = useState("");
-  const [cardBalance, setCardBalance] = useState("");
+  const [cardValid, setCardValid] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [cardBank, setCardBank] = useState(null);
+  const [saldo, setSaldo] = useState("");
   const [cardHolder, setCardHolder] = useState("");
+
+  const token = Cookies.get('token');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,27 +40,26 @@ const AddCard = (props) => {
     const data = {
       cardType: cardType,
       cardNumber: cardNumber,
-      cardExpiry: cardExpiry,
-      cardCVC: cardCVC,
+      cardValid: cardValid,
+      cvv: cvv,
       cardBank: cardBank,
-      cardBalance: cardBalance,
+      saldo: saldo,
       cardHolder: cardHolder,
     };
 
+    console.log(data);
+
     axios
-      .post(urlLogin, data)
-      .then((res) => {
-        const { username, role, token } = res.data;
-        Cookies.set("username", username);
-        Cookies.set("role", role);
-        Cookies.set("token", token);
+      .post(urlAddCard, data, {
+        headers: {Authorization: `Bearer ${token}`}
       })
-      .then(() => {
-        setModal(false);
-        console.log(props);
-        props.setIsLogin(true);
-        history.push("/");
-      });
+      .then((res) => {
+        console.log(res.data);
+        return window.location.reload();
+      })
+      .catch((error) =>{
+        console.log(error);
+      })
   };
 
   const [modal, setModal] = useState(false);
@@ -86,9 +88,10 @@ const AddCard = (props) => {
                         <Input
                         type="select"
                         name="cardType"
-                        id="carType"
+                        id="cardType"
                         onChange={(e) => setCardType(e.target.value)}
                         >
+                            <option>Select card type</option>
                             <option>Master</option>
                             <option>Visa</option>
                         </Input>
@@ -108,25 +111,25 @@ const AddCard = (props) => {
                   </Col>
                   <Col md={6}>
                   <FormGroup>
-                    <Label for="cardExpiry">Card Expiry</Label>
+                    <Label for="cardValid">Card Expiry</Label>
                         <Input
-                        type="cardExpiry"
-                        name="cardExpiry"
-                        id="cardExpiry"
+                        type="cardValid"
+                        name="cardValid"
+                        id="cardValid"
                         placeholder="•• / ••"
-                        onChange={(e) => setCardExpiry(e.target.value)}
+                        onChange={(e) => setCardValid(e.target.value)}
                         />
                   </FormGroup>
                   </Col>
                   <Col md={6}>
                   <FormGroup>
-                    <Label for="cardCVC">Card CVC</Label>
+                    <Label for="cvv">Card CVC</Label>
                      <Input
-                        type="cardCVC"
-                        name="cardCVC"
-                        id="cardCVC"
+                        type="cvv"
+                        name="cvv"
+                        id="cvv"
                         placeholder="••••"
-                        onChange={(e) => setCardCVC(e.target.value)}
+                        onChange={(e) => setCvv(e.target.value)}
                      />
                   </FormGroup>
                   </Col>
@@ -139,8 +142,9 @@ const AddCard = (props) => {
                         id="cardBank"
                         onChange={(e) => setCardBank(e.target.value)}
                         >
+                          <option>Select Bank</option>
                           <option>BRI</option>
-                          <option>MAndiri</option>
+                          <option>Mandiri</option>
                           <option>BNI</option>
                           <option>BCA</option>
                           <option>CIMB Niaga</option>
@@ -153,13 +157,13 @@ const AddCard = (props) => {
                   </Col>
                   <Col md={6}>
                   <FormGroup>
-                    <Label for="cardBalance">Balance</Label>
+                    <Label for="saldo">Balance</Label>
                      <Input
-                        type="cardBalance"
-                        name="cardBalance"
-                        id="cardBalance"
+                        type="saldo"
+                        name="saldo"
+                        id="saldo"
                         placeholder="IDR"
-                        onChange={(e) => setCardBalance(e.target.value)}
+                        onChange={(e) => setSaldo(e.target.value)}
                      />
                   </FormGroup>
                   </Col>
@@ -180,6 +184,7 @@ const AddCard = (props) => {
               <Button
                 block
                 type="submit"
+                onClick={toggle}
                 style={{ backgroundColor: "#8F48EA", color: "white" }}
               >
                 <strong>Add New Card</strong>

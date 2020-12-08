@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import Home from './pages/Home';
@@ -51,6 +51,7 @@ function App(){
     </>
   );
 }
+
 
 
 export default withRouter(App);

@@ -11,7 +11,8 @@ import {
     Button,
     Modal,
     ModalHeader,
-    Collapse
+    Collapse,
+    ModalBody
     
 } from 'reactstrap';
 import youtube from './img/youtube.jpg'
@@ -23,20 +24,8 @@ import logo from './img/Rectangle.png'
 import { Link } from 'react-router-dom';
 import { Line } from '@reactchartjs/react-chart.js'
 import axios from 'axios';
-
-const dataMonth= {
-    labels: ['January', 'February', 'March', 'April', 'May', 'Juny'],
-    datasets:[
-        {
-            label: '# Month',
-            data: [12, 19, 3, 5, 2, 3],
-            fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
-        },
-    ],
-}
-
+import {checkLogin} from '../Helper';
+import Cookies from 'js-cookie'
 
 const options = {
     scales: {
@@ -50,62 +39,160 @@ const options = {
       },
 }
 
-const dataWeek= {
-    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-    datasets:[
-        {
-            label: '# Week',
-            data: [12, 19, 3, 5],
-            fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
-        },
-    ],
-}
-
-
-
-
 const History = () =>{ 
     const [history, setHistory]=useState([]);
     const [modal, setModal] = useState(false);
     const [isOpen, setIsOpen] = useState(true);
     const [isOpenWeek, setIsOpenWeek] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const token = Cookies.get('token');
+    const fullName = Cookies.get('fullName')
+    const [expense, setExpense]=useState([]);
+    const [subscribeId, setSubscribeId] = useState([]);
+    const [chartData, setChartData] = useState({});
+    const [chartWeek, setChartWeek] = useState({});
+    const [weekMonth, setWeekMonth] = useState([]);
+    const [totalWeek, setTotalWeek] = useState([]);
+    const [dates, setDates] = useState([]);
+    const [totals, setTotals] = useState([]);
+    const urlMonth='http://3.0.91.163/chart/monthly'
+    const urlWeek='http://3.0.91.163/chart/weekly'
+
+    console.log(token)
+
+    const urlHistory ='http://3.0.91.163/subscription'
+    const urlExpense ='http://3.0.91.163/expense'
 
     const toggle = () =>setModal(!modal);
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
     const collapseWeek = () => {setIsOpenWeek(true); setIsOpen(false);}
+    
+    useEffect(()=>{
+        setIsLoading(true);
+        axios
+        .get(urlHistory, {headers : {Authorization : `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res.data);
+            setHistory(res.data);
+            setIsLoading(false);
+            expenses();
+        })
+        .catch((err)=>console.log(err))
 
-    // useEffect(()=>{
-    //     setLoading(true)
-    // })
+        dataMonth();
+        dataWeek();
+    }, [])
+    
+    const dataMonth =()=>  {
+        let month = [];
+        let pay = [];
+         axios
+         .get(urlMonth, {headers:{Authorization: `Bearer ${token}`}})
+         .then((res)=>{
+             console.log(res);
+             for(const dataObj of res.data){
+                 month.push(dataObj.dates)
+                 pay.push(dataObj.totals)
+             }
+             setChartData({
+                labels: month,
+                datasets:[
+                    {
+                        label: '# Month',
+                        data: pay,
+                        fill: false,
+                        backgroundColor: 'rgb(255, 99, 132)',
+                        borderColor: 'rgba(255, 99, 132, 0.2)',
+                    },
+                ],  
+            })
+         }).catch((err)=>{
+             console.log(err)
+        });
+        console.log(dates, totals)
+        
+    }
 
+    const dataWeek =()=> {
+        let week = [];
+        let pay = [];
+        axios
+        .get(urlWeek, {headers:{Authorization: `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res);
+            for(const dataObj of res.data){
+                week.push(dataObj.weekMonth)
+                pay.push(dataObj.totals)
+            }
+            setChartWeek({
+               labels: week,
+               datasets:[
+                   {
+                       label: '# Week',
+                       data: pay,
+                       fill: false,
+                       backgroundColor: 'rgb(255, 99, 132)',
+                       borderColor: 'rgba(255, 99, 132, 0.2)',
+                   },
+               ],  
+           })
+        }).catch((err)=>{
+            console.log(err)
+       });
+       console.log(dates, totals)
+    }
+
+    const expenses = () =>{
+        setIsLoading(true);
+        axios.get(urlExpense, {headers : {Authorization : `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res.data)
+            setExpense(res.data);
+            setIsLoading(false);
+        })
+        .catch((err)=> console.log(err));
+    }
+
+    const deleteSubscribe = () =>{
+
+    }
+    const subscribeDetails = (id) => {
+        setIsLoading(true);
+        const url =`http://3.0.91.163/service?id=${id}`
+        axios.get(url).then((res)=>{
+            console.log(res.data.subscribeId)
+            setSubscribeId(res.data);
+            setModal(!modal)
+            setIsLoading(false);
+        })
+        .catch((err)=> console.log(err));           
+    }
     return(
-        <Container fluid>
+        <Container fluid className="content">
             <Container>
             <Row>
             <Col xs="8">
             <Container>
-                <Row>
-                    <Col xs="12">
+                <Row className="shadow-sm p-3 mb-5 bg-white rounded">
+                    <Col xs="12"className="bg-default">
                     <Row>
-                        <Col xs="6">
+                        <Col xs="6" >
                             <h4>Spending Value</h4>
                         </Col>
                         <Col xs="6">   
                         <div style={{float :'right', position:'relative',  }}> 
-                        <Button color="primary" onClick={collapse} style={{ marginBottom: '1rem',marginRight:'20px' }}>Month</Button>
-                        <Button color="primary" onClick={collapseWeek} style={{ marginBottom: '1rem', marginRight:'10px'}}>Week</Button>
+                        <Button id="button" onClick={collapse} style={{ marginBottom: '1rem',marginRight:'20px' }}>Month</Button>
+                        <Button id="button" onClick={collapseWeek} style={{ marginBottom: '1rem', marginRight:'10px'}}>Week</Button>
                         </div>
                         </Col>
                     </Row>
                     </Col>
                     <Col xs="12">
                         <Collapse isOpen={isOpen}>
-                            <Line data={dataMonth}  options={options} />
+                            <Line data={chartData}  options={options} />
                         </Collapse>
                         <Collapse isOpen={isOpenWeek}>
-                            <Line data={dataWeek}  options={options} />
+                            <Line data={chartWeek}  options={options} />
                         </Collapse>
                     </Col>
                 </Row>
@@ -117,131 +204,102 @@ const History = () =>{
             </Container>
             <Container>
                 <Row>
-                    <Col xs="4">
-                    <Card>
-                        <CardImg
-                            top
-                            width="100%"
-                            height="150px"
-                            src={disney}
-                            alt="subscribtion"
-                        />
-                        <CardBody className="bg-dangers">
-                        <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
-                            <h4>Disney</h4>
-                        </CardTitle>
-                        <Row>
-                        <Button
-                            onClick={toggle}
-                            className="btn btn-primary btn-block"
-                            id ="button"
-                        >
-                            Unsubcribe
-                        </Button>
-                        </Row>
-                        </CardBody>
-                    </Card>
-                    </Col>   
-                    <Col xs="4">
+                    {history.map((history)=>(
+                        <Col xs="4" key={history.id}>
                         <Card>
-                        <CardImg
-                            top
-                            width="100%"
-                            height="150px"
-                            src={netflix}
-                            alt="subscribtion"
-                        />
-                        <CardBody className="bg-dangers">
-                        <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
-                            <h4>Netflix</h4>
-                        </CardTitle>
-                        <Row>
-                        <Link
-                            to=""
-                            className="btn btn-primary btn-block"
-                            id="button"
-                        >
-                            Unsubscribe
-                        </Link>
-                        </Row>
-                        </CardBody>
+                            <CardImg
+                                top
+                                width="100%"
+                                height="150px"
+                                src={history.service.picture}
+                                alt="subscribtion"
+                            />
+                            <CardBody className="bg-dangers">
+                            <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
+                                {history.service.name}
+                            </CardTitle>
+                            <Row>
+                            <Button
+                                onClick={()=> subscribeDetails(history.id)}
+                                className="btn btn-primary btn-block"
+                                id ="button"
+                            >
+                                Unsubcribe
+                            </Button>
+                            </Row>
+                            </CardBody>
                         </Card>
-                    </Col>
-                    <Col xs="4">
-                        <Card>
-                        <CardImg
-                            top
-                            width="100%"
-                            height="150px"
-                            src={sportify}
-                            alt="subscribtion"
-                        />
-                        <CardBody className="bg-dangers">
-                        <CardTitle tag="h6" className="text-dark font-weight-bold text-center">
-                            <h4>Spotify</h4>
-                        </CardTitle>
-                        <Row>
-                        <Link
-                            to=""
-                            className="btn btn-primary btn-block"
-                            id="button"
-                        >
-                            Unsubscribe
-                        </Link>
-                        </Row>
-                        </CardBody>
-                        </Card>
-                    </Col>
+                        </Col>
+                    ))}
                 </Row>
-                <Modal isOpen={modal} toggle={toggle}>
-                    <ModalHeader toggle={toggle}> Disney </ModalHeader>
-                    <CardImg toggle={toggle}
-                            top
-                            width="100%"
-                            height="300px"
-                            src={disney}
-                            alt="subscribtion"
-                        />
-                    <CardBody className="bg-dangers">
-                        <CardText >
-                            <h5>
-                                Next Payment:
-                            </h5>
-                            <h5>
-                                Duration:
-                            </h5>
-                            <h5>
-                                Cost:
-                            </h5>
-                        </CardText>
-                        <Row>
-                        <Link
-                            to=""
-                            className="btn btn-warning btn-block"
-                        >
-                            Subscribe
-                        </Link>
-                        </Row>
-                    </CardBody>
+                <Modal isOpen={modal} toggle={toggle} >
+                        <ModalHeader toggle={toggle}> 
+                        </ModalHeader>
+                        <ModalBody>
+                        {subscribeId.map((subscribe)=>(
+                            <Col key={subscribe.id}>
+                            <CardImg
+                                top
+                                height="300px"
+                                src={subscribe.picture}
+                                alt="subscribtion"
+                            /> 
+                        <CardBody>
+                            <CardText>
+                                <h5>
+                                    Description: <br/>{subscribe.description}
+                                </h5>
+                                <h5>
+                                    Cost: {subscribe.cost}
+                                </h5>   
+                            </CardText>
+                            <Row>
+                            <Button
+                                to=""
+                                className="btn btn-primary btn-block"
+                                id="button"
+                            >
+                                Unsubscribe
+                            </Button>
+                            </Row>
+                            </CardBody>
+                                </Col>
+                            ))}
+                            
+                    </ModalBody>
                 </Modal>
             </Container>
             </Col>
-            <Col xs="4" style={{backgroundColor: '#f6f9fc'}}>
-                
+            <Col xs="4" style={{backgroundColor: 'white'}}> 
                 <h4>history</h4>
+
                 
-                <Card style={{marginTop: '20px'}}>
-                    <CardTitle tag="h6" className="text-dark font-weight-bold">Disney</CardTitle>
-                      <h4>  $400.0 </h4>
+                {history.map((subscribtion, i)=>(
+                <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
+                    <Row>
+                    <Col xs="8">
+                    <CardTitle tag="h6" className="text-dark font-weight"><h6>{subscribtion.service.name}  <br/> {subscribtion.repeat}</h6> 
+                    </CardTitle>
+                    </Col>
+                    <Col xs="4">
+                    <h6>Rp.  {subscribtion.service.cost} </h6>
+                    </Col>       
+                    </Row>
                 </Card>
-                <Card style={{marginTop: '20px'}}>
-                    <CardTitle tag="h6" className="text-dark font-weight-bold">Disney</CardTitle>
-                        <h4>$400.0</h4>
-                </Card>
-                <Card style={{marginTop: '20px'}}>
-                    <CardTitle tag="h6" className="text-dark font-weight-bold">Disney</CardTitle>
-                    <h4>$400.0</h4>
-                </Card>   
+                ))}
+                {expense.map((expenses, i )=>(
+                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
+                <Row>
+                    <Col xs="8">
+                    <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title} <br/> {expenses.purchaseDate}</h6></CardTitle>
+                    </Col>
+                    <Col xs="4">
+                    <h6>Rp.  {expenses.total} </h6>
+                    </Col>
+                    
+                </Row>  
+                </Card> 
+                ))}
             </Col>
             </Row>
             </Container>

@@ -26,6 +26,7 @@ import { Line } from '@reactchartjs/react-chart.js'
 import axios from 'axios';
 import {checkLogin} from '../Helper';
 import Cookies from 'js-cookie';
+import AddExpenses from '../components/AddExpenses';
 
 
 // const dataMonth= {
@@ -335,11 +336,10 @@ const Dashboard = () =>{
                             
                     </ModalBody>
                 </Modal>
-                </Row>  
-                <div id="mybutton">
-                    <Button className="expense">Add Expense</Button>
-                </div>
-                
+                </Row> 
+                <Row>
+                <AddExpenses/>
+                </Row> 
             </Container>
         </Container>
     )

@@ -76,9 +76,9 @@ const History = () =>{
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
     const collapseWeek = () => {setIsOpenWeek(true); setIsOpen(false);}
 
-    useEffect(()=>{
-        setLoading(true)
-    })
+    // useEffect(()=>{
+    //     setLoading(true)
+    // })
 
     return(
         <Container fluid>

@@ -67,15 +67,18 @@ const dataWeek= {
 
 
 const History = () =>{ 
-
+    const [history, setHistory]=useState([]);
     const [modal, setModal] = useState(false);
     const [isOpen, setIsOpen] = useState(true);
     const [isOpenWeek, setIsOpenWeek] = useState(false);
 
-
     const toggle = () =>setModal(!modal);
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
     const collapseWeek = () => {setIsOpenWeek(true); setIsOpen(false);}
+
+    useEffect(()=>{
+        setLoading(true)
+    })
 
     return(
         <Container fluid>

@@ -15,29 +15,29 @@ import {
 } from "reactstrap";
 
 const Edit = (props) => {
-  const urlLogin = "https://5fad41ff2ec98b00160481c3.mockapi.io/movie/register";
+  const urlEditProfile = "https://5fad41ff2ec98b00160481c3.mockapi.io/movie/register";
 
   const history = useHistory();
 
   const { className } = props;
 
-  const [userName, setUserName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [location, setLocation] = useState("");
+
+  const token = Cookies.get('token');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const data = {
+      fullName: fullName,
       email: email,
-      password: password,
-      userName: userName,
-      location: location,
     };
 
     axios
-      .post(urlLogin, data)
+      .put(urlEditProfile, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         const { username, role, token } = res.data;
         Cookies.set("username", username);
@@ -73,13 +73,13 @@ const Edit = (props) => {
           <Form onSubmit={handleSubmit}>
 
             <FormGroup>
-              <Label for="userName">User Name</Label>
+              <Label for="fullName">User Name</Label>
               <Input
-                type="userName"
-                name="userName"
-                id="userName"
+                type="text"
+                name="fullName"
+                id="fullName"
                 placeholder="Input your new user name."
-                onChange={(e) => setUserName(e.target.value)}
+                onChange={(e) => setFullName(e.target.value)}
               />
             </FormGroup>
 
@@ -91,28 +91,6 @@ const Edit = (props) => {
                 id="email"
                 placeholder="Input your email address."
                 onChange={(e) => setEmail(e.target.value)}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="password">Password</Label>
-              <Input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Input your new password."
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </FormGroup>
-
-            <FormGroup>
-              <Label for="location">Location</Label>
-              <Input
-                type="location"
-                name="location"
-                id="location"
-                placeholder="Input your new location."
-                onChange={(e) => setLocation(e.target.value)}
               />
             </FormGroup>
 

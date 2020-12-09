@@ -12,7 +12,7 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import avatar from "../assets/avatar2.png";
 import "./Profile.css";
-import { User, Mail, MapPin, Smile } from "react-feather";
+import { User, Mail, MapPin } from "react-feather";
 import Edit from "./EditProfile";
 import TabProfile from "./TabProfile";
 
@@ -67,11 +67,11 @@ const Profile = (props) => {
                       <Mail size={22} /> {email}
                     </p>
                   </Container>
-                  <Container>
+                  {/* <Container>
                     <p>
                       <MapPin size={22} /> Bandung
                     </p>
-                  </Container>
+                  </Container> */}
                 </CardTitle>
               </CardBody>
             ) : (

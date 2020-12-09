@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Plus } from 'react-feather'
@@ -19,8 +18,6 @@ import {
 const AddCard = (props) => {
 
   const urlAddCard = "http://3.0.91.163/card";
-
-  const history = useHistory();
 
   const { className } = props;
 

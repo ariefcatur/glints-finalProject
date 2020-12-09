@@ -14,6 +14,9 @@ import {
     ModalBody,
     Collapse,
     Spinner,
+    FormGroup,
+    Input,
+    Label
 } from 'reactstrap';
 import youtube from './img/youtube.jpg'
 import hulu from './img/hulu-logo.jpg'
@@ -83,7 +86,7 @@ const Dashboard = () =>{
     const [startDate, setStartDate] = useState(0)
     const [serviceId, setServiceId] = useState([])
     const [card,setCard] = useState([])
-    const [cardId,setCardId] = useState(null)
+    const [cardId, setCardId] = useState(null)
     const urlCard = 'http://3.0.91.163/card'
     const [chartData, setChartData] = useState({});
     const [dates, setDates] = useState([]);
@@ -114,15 +117,17 @@ const Dashboard = () =>{
         setLoading(true);
         const url =`http://3.0.91.163/service?id=${id}`
         axios.get(url).then((res)=>{
-            console.log(res.data.subscribeId)
+            console.log("subscribe id", res.data)
             setSubscribeId(res.data);
             setModal(!modal)
             setLoading(false);
             subscribeCard()
+            setServiceId(id)
         })
         .catch((err)=> console.log(err));           
     }
 
+    
     const subscribeCard = () =>{
         setLoading(true);
         axios.get(urlCard, {headers : {Authorization : `Bearer ${token}`}})
@@ -133,13 +138,14 @@ const Dashboard = () =>{
         })
         .catch((err)=> console.log(err));
     }
-
+    
     const subscribtion = (e)=>{
         e.preventDefault();
-        const url =`http://3.0.91.163/${serviceId}/?cardId=${cardId}`
-        
+        const url =`http://3.0.91.163/subscription/${serviceId}/?cardId=${cardId}`
+        console.log("service Id ", serviceId, "cardId ", cardId)
+        console.log(token)
         axios
-        .post(url, {headers:{Authorization: `Bearer ${token}`}})
+        .post(url, null, {headers : {Authorization : `Bearer ${token}`}})
         .then((res)=>{
             console.log(res.data)
         })
@@ -167,7 +173,7 @@ const Dashboard = () =>{
          axios
          .get(urlMonth, {headers:{Authorization: `Bearer ${token}`}})
          .then((res)=>{
-             console.log(res);
+            
              for(const dataObj of res.data){
                  month.push(dataObj.dates)
                  pay.push(dataObj.totals)
@@ -197,7 +203,7 @@ const Dashboard = () =>{
         axios
         .get(urlWeek, {headers:{Authorization: `Bearer ${token}`}})
         .then((res)=>{
-            console.log(res);
+            
             for(const dataObj of res.data){
                 week.push(dataObj.weekMonth)
                 pay.push(dataObj.totals)
@@ -310,30 +316,61 @@ const Dashboard = () =>{
                             /> 
                         <CardBody>
                             <CardText>
-                                <h5>
-                                    Description: <br/>{subscribe.description}
-                                </h5>
-                                <h5>
-                                    Cost: {subscribe.cost}
-                                </h5>
-                                {card.map((cards)=>(
-                                <h5>Card : {cards.cardBank} </h5>    
-                                ))}
-                                
+                                <ul>
+                                    <li>
+                                        <h5>
+                                        Description: <br/>{subscribe.description}
+                                        </h5>
+                                    </li>
+                                    <li>
+                                        <h5>
+                                        Cost: {subscribe.cost}
+                                        </h5>
+                                    </li>
+                                </ul> 
                             </CardText>
+                            <FormGroup>
+                            <Label for="cardId">Select Card</Label>
+                            </FormGroup>
                             <Row>
+                            <Col md="8">
+                            {/* {card.map((cards)=>(
+                                <Select
+
+                                value={cards.cardBank}/>
+                            ))} */}
+                            <Row>
+                            <FormGroup>
+                            <Input
+                                type="select"
+                                name="cardId"
+                                id="cardId"
+                                onChange={(e) =>{
+                                    setCardId(e.target.value)
+                                    console.log(e.target.value)
+                                } }
+                            >
+                                <option >Select Card</option>
+                            {card.length !== 0
+                                ? card.map((cards) => <option value={cards.id}>{cards.cardBank}</option>)
+                                : ("")}
+                            </Input>
+                            </FormGroup>
+                            </Row>
+                            </Col>
+                            <Col>
                             <Button
-                                to=""
-                                className="btn btn-primary btn-block"
+                                onClick={subscribtion}
+                                className="btn btn-primary"
                                 id="button"
                             >
                                 Subscribe
                             </Button>
+                            </Col>
                             </Row>
                         </CardBody>
                                 </Col>
-                            ))}
-                            
+                            ))}   
                     </ModalBody>
                 </Modal>
                 </Row> 

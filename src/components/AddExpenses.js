@@ -30,7 +30,7 @@ const AddExpenses = (props) => {
   const [title, setTitle] = useState("");
   const [total, setTotal] = useState("");
   const [purchaseDate, setPurchaseDate] = useState("");
-  const [cardId, setCardId] = useState(null);
+  const [cardId, setCardId] = useState("");
 
   // const [expenseDescription, setExpenseDescription] = useState("");
 
@@ -104,7 +104,6 @@ const AddExpenses = (props) => {
                     id="title"
                     onChange={(e) => setTitle(e.target.value)}
                   >
-                    <option>Selec Expense</option>
                     <option>Housing</option>
                     <option>Transportation</option>
                     <option>Food and Beverages</option>

@@ -17,9 +17,12 @@ import {
 } from "reactstrap";
 
 const AddExpenses = (props) => {
+
   const urlExpense = "http://3.0.91.163/expense";
 
   const urlCard = "http://3.0.91.163/card";
+
+  const urlCategories = "http://3.0.91.163/categories";
 
   const token = Cookies.get("token");
 
@@ -30,9 +33,10 @@ const AddExpenses = (props) => {
   const [title, setTitle] = useState("");
   const [total, setTotal] = useState("");
   const [purchaseDate, setPurchaseDate] = useState("");
-  const [cardId, setCardId] = useState("");
+  const [cardId, setCardId] = useState(null);
+  const [categoryId, setCategoryId] = useState("");
 
-  // const [expenseDescription, setExpenseDescription] = useState("");
+  const [categories, setCategories] = useState("");
 
   useEffect(() => {
     axios
@@ -46,6 +50,17 @@ const AddExpenses = (props) => {
       .catch((error) => {
         console.log(error);
       });
+
+      axios
+      .get(urlCategories)
+      .then((res) => {
+        console.log(res.data);
+        setCategories(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
   }, []);
 
   const handleSubmit = (e) => {
@@ -56,7 +71,7 @@ const AddExpenses = (props) => {
       total: total,
       purchaseDate: purchaseDate,
       cardId: cardId,
-      categoryId: "0d248046-561f-4776-9bc3-239c8c1958dd",
+      categoryId: categoryId
     };
 
     console.log(data);
@@ -67,7 +82,7 @@ const AddExpenses = (props) => {
       })
       .then((res) => {
         console.log(res.data);
-        // return window.location.reload();
+        return window.location.reload();
       })
       .catch((error) => {
         console.log(error);
@@ -97,34 +112,13 @@ const AddExpenses = (props) => {
             <Row form>
               <Col md={6}>
                 <FormGroup>
-                  <Label for="title">Expense Type</Label>
+                  <Label for="title">Title</Label>
                   <Input
-                    type="select"
+                    type="text"
                     name="title"
                     id="title"
                     onChange={(e) => setTitle(e.target.value)}
-                  >
-                    <option>Housing</option>
-                    <option>Transportation</option>
-                    <option>Food and Beverages</option>
-                    <option>Utility Bills</option>
-                    <option>Cell Phone</option>
-                    <option>Childcare and School Cost</option>
-                    <option>Pet food</option>
-                    <option>Pet Insurance</option>
-                    <option>Clothing</option>
-                    <option>Health Insurance</option>
-                    <option>Fitness</option>
-                    <option>Auto Insurance</option>
-                    <option>Life Insurance</option>
-                    <option>Home Insurance</option>
-                    <option>Fun Stuff</option>
-                    <option>Student Loans</option>
-                    <option>Retirement</option>
-                    <option>Emergency Fund</option>
-                    <option>Large Purchases</option>
-                    <option>Other</option>
-                  </Input>
+                  />
                 </FormGroup>
               </Col>
               <Col md={6}>
@@ -137,6 +131,21 @@ const AddExpenses = (props) => {
                     placeholder="IDR"
                     onChange={(e) => setTotal(e.target.value)}
                   />
+                </FormGroup>
+              </Col>
+              <Col md={6}>
+                <FormGroup>
+                  <Label for="categoryId">Expense Type</Label>
+                  <Input
+                    type="select"
+                    name="categoryId"
+                    id="categoryId"
+                    onChange={(e) => setCategoryId(e.target.value)}
+                  >
+                  {categories.length !== 0
+                    ? categories.map((category) => <option value={category.id}>{category.category}</option>)
+                    : ("")}
+                  </Input>
                 </FormGroup>
               </Col>
               <Col md={6}>
@@ -161,7 +170,7 @@ const AddExpenses = (props) => {
                     onChange={(e) => setCardId(e.target.value)}
                   >
                   {cards.length !== 0
-                    ? cards.map((card) => <option>{card.id}</option>)
+                    ? cards.map((card) => <option value={card.id}>{card.cardBank}</option>)
                     : ("")}
                   </Input>
                 </FormGroup>

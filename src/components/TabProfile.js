@@ -97,6 +97,12 @@ const TabProfile = (props) => {
         </TabPane>
         <TabPane tabId="2">
           <Row>
+            <Col l="12" xl="12" className="d-flex mt-5 align-items-center">
+
+              <h5>This section is still in construction. We'll get it ready for you ASAP! ^^ </h5>
+
+            
+            </Col>
             {/* <Col sm="6">
               <Card body>
                 <CardTitle>Special Title Treatment</CardTitle>

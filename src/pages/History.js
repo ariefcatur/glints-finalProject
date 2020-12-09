@@ -147,6 +147,17 @@ const History = () =>{
        });
        console.log(dates, totals)
     }
+    
+    const handleRemove = (e) => {
+        const url = `http://3.0.91.163/subscription/:serviceId/`;
+        axios
+        .delete(url, {headers : {Authorization : `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res.data);
+            setIsLoading(false);    
+        })
+        .catch((err)=>console.log(err))
+    } 
 
     // const expenses = () =>{
     //     setIsLoading(true);

@@ -1,5 +1,5 @@
 #header {
-  background: linear-gradient(269.56deg, rgba(105, 8, 134, 0.21) -4.24%, #FAFAFA 80.53%);
+  background-color: linear-gradient(269.56deg, rgba(105, 8, 134, 0.21) -4.24%, grey 80.53%);
   transition: all 0.5s;
   z-index: 997;
 }

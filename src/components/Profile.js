@@ -26,6 +26,7 @@ const Profile = (props) => {
   const email = Cookies.get('email');
 
   useEffect(() => {
+
     axios
       .get(
         `http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/user/`, {

@@ -112,7 +112,7 @@ const Home = () =>{
                                         onClick={() =>{toggle('1');}}
                                     >
                                         <Row><Col sm="8"><h4>Subscribe</h4></Col>
-                                         <Col sm="4" className="icon"> {addIcon} </Col></Row>
+                                        <Col sm="4" className="icon"> {addIcon} </Col></Row>
                                     </NavLink>
                                 </NavItem>
                             </Card>

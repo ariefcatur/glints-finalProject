@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './App.css';
-import { Route, Switch, withRouter, Link } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard'
 import History from './pages/History'

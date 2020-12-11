@@ -142,8 +142,8 @@ const Dashboard = () =>{
     const subscribtion = (e)=>{
         e.preventDefault();
         const url =`http://3.0.91.163/subscription/${serviceId}/?cardId=${cardId}`
-        console.log("service Id ", serviceId, "cardId ", cardId)
-        console.log(token)
+        // console.log("service Id ", serviceId, "cardId ", cardId)
+        // console.log(token)
         axios
         .post(url, null, {headers : {Authorization : `Bearer ${token}`}})
         .then((res)=>{

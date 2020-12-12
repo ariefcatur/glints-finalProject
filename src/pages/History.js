@@ -15,12 +15,9 @@ import {
     ModalBody
     
 } from 'reactstrap';
-import youtube from './img/youtube.jpg'
-import hulu from './img/hulu-logo.jpg'
-import disney from './img/disney.jpeg'
-import sportify from './img/spotify.jpg'
-import netflix from './img/netflix.jpeg'
-import logo from './img/Rectangle.png'
+import {
+    Element,
+} from 'react-scroll'
 import { Link } from 'react-router-dom';
 import { Line } from '@reactchartjs/react-chart.js'
 import axios from 'axios';
@@ -55,13 +52,15 @@ const History = () =>{
     const [totalWeek, setTotalWeek] = useState([]);
     const [dates, setDates] = useState([]);
     const [totals, setTotals] = useState([]);
+    const [totalHistory, setTotalHistory] = useState({})
     const urlMonth='http://3.0.91.163/chart/monthly'
     const urlWeek='http://3.0.91.163/chart/weekly'
 
-    console.log(token)
+    // console.log(token)
 
     const urlHistory ='http://3.0.91.163/subscription'
     const urlExpense ='http://3.0.91.163/expense'
+    const urlTotalHistory = 'http://3.0.91.163/history'
 
     const toggle = () =>setModal(!modal);
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
@@ -72,7 +71,7 @@ const History = () =>{
         axios
         .get(urlHistory, {headers : {Authorization : `Bearer ${token}`}})
         .then((res)=>{
-            console.log(res.data);
+            // console.log(res.data);
             setHistory(res.data);
             setIsLoading(false);    
         })
@@ -80,13 +79,22 @@ const History = () =>{
 
         axios.get(urlExpense, {headers : {Authorization : `Bearer ${token}`}})
         .then((res)=>{
-            console.log(res.data)
+            // console.log(res.data)
             setExpense(res.data);
             setIsLoading(false);
         })
         .catch((err)=> console.log(err));
         dataMonth();
         dataWeek();
+
+        axios
+        .get(urlTotalHistory, {headers : {Authorization : `Bearer ${token}`}})
+        .then((res)=>{
+            console.log(res.data);
+            setTotalHistory(res.data);
+            setIsLoading(false); 
+        })
+        .catch((err)=> console.log(err)); 
     }, [])
     
     const dataMonth =()=>  {
@@ -95,7 +103,7 @@ const History = () =>{
          axios
          .get(urlMonth, {headers:{Authorization: `Bearer ${token}`}})
          .then((res)=>{
-             console.log(res);
+            //  console.log(res);
              for(const dataObj of res.data){
                  month.push(dataObj.dates)
                  pay.push(dataObj.totals)
@@ -115,7 +123,7 @@ const History = () =>{
          }).catch((err)=>{
              console.log(err)
         });
-        console.log(dates, totals)
+        // console.log(dates, totals)
         
     }
 
@@ -148,13 +156,13 @@ const History = () =>{
        console.log(dates, totals)
     }
     
-    const handleRemove = (e) => {
-        const url = `http://3.0.91.163/subscription/:serviceId/`;
+    const handleRemove = (id) => {
+        const url = `http://3.0.91.163/subscription/${id}/`;
         axios
         .delete(url, {headers : {Authorization : `Bearer ${token}`}})
         .then((res)=>{
             console.log(res.data);
-            setIsLoading(false);    
+            return window.location.reload();   
         })
         .catch((err)=>console.log(err))
     } 
@@ -170,20 +178,17 @@ const History = () =>{
     //     .catch((err)=> console.log(err));
     // }
 
-    const deleteSubscribe = () =>{
-
-    }
-    const subscribeDetails = (id) => {
-        setIsLoading(true);
-        const url =`http://3.0.91.163/service?id=${id}`
-        axios.get(url).then((res)=>{
-            console.log(res.data.subscribeId)
-            setSubscribeId(res.data);
-            setModal(!modal)
-            setIsLoading(false);
-        })
-        .catch((err)=> console.log(err));           
-    }
+    // const subscribeDetails = (id) => {
+    //     setIsLoading(true);
+    //     const url =`http://3.0.91.163/service?id=${id}`
+    //     axios.get(url).then((res)=>{
+    //         console.log(res.data.subscribeId)
+    //         setSubscribeId(res.data);
+    //         setModal(!modal)
+    //         setIsLoading(false);
+    //     })
+    //     .catch((err)=> console.log(err));           
+    // }
     return(
         <Container fluid className="content">
             <Container>
@@ -239,7 +244,7 @@ const History = () =>{
                             </CardTitle>
                             <Row>
                             <Button
-                                onClick={()=> subscribeDetails(history.id)}
+                                onClick={()=>{if(window.confirm('are you sure you wish to unsubscribe this item?')) handleRemove(history.serviceId)}}
                                 className="btn btn-primary btn-block"
                                 id ="button"
                             >
@@ -251,7 +256,7 @@ const History = () =>{
                         </Col>
                     ))}
                 </Row>
-                <Modal isOpen={modal} toggle={toggle} >
+                {/* <Modal isOpen={modal} toggle={toggle} >
                         <ModalHeader toggle={toggle}> 
                         </ModalHeader>
                         <ModalBody>
@@ -286,37 +291,68 @@ const History = () =>{
                             ))}
                             
                     </ModalBody>
-                </Modal>
+                </Modal> */}
             </Container>
             </Col>
+<<<<<<< HEAD
             <Col xs="4" style={{backgroundColor: 'white', paddingTop:"10px"}}> 
                 <h4>History</h4>
+=======
+            
+            <Col xs="4" style={{backgroundColor: 'white'}}> 
+                <h4>history</h4>
+                    <Card style={{marginTop: '20px', color:'white', backgroundColor: '#8F48EA', marginBottom:'20px'}}>
+                        <Row>
+                            <Col xs="6">
+                            <CardTitle className="text-white"  > Total :
+                            </CardTitle>
+                            </Col>
+                            <Col xs="6">
+                            <h6 style={{float:"right", }}>IDR {totalHistory.total} </h6>
+                            </Col>
+                        </Row>
+                    </Card>
+                <Element ClassName="element" id="scroll-container" style={{
+                    position: 'relative',
+                    height: '700px',
+                    overflow: 'scroll',
+                    marginBottom: '100px'
+                }}>
+                <h4>Subscribe</h4>
+>>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
                 {history.map((subscribtion, i)=>(
                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
                     <Row>
-                    <Col xs="8">
-                    <CardTitle tag="h6" className="text-dark font-weight"><h6>{subscribtion.service.name}  <br/> {subscribtion.repeat}</h6> 
+                    <Col xs="6">
+                    <CardTitle className="text-dark font-weight"><h6>{subscribtion.service.name}  <br/> {subscribtion.repeat}</h6> 
                     </CardTitle>
                     </Col>
-                    <Col xs="4">
-                    <h6>Rp.  {subscribtion.service.cost} </h6>
+                    <Col xs="6">
+                    <h6 style={{float:"right"}}>IDR  {subscribtion.service.cost} </h6>
                     </Col>       
                     </Row>
                 </Card>
                 ))}
+                <h4>Expense</h4>
                 {expense.map((expenses, i )=>(
                 <Card key={i} style={{marginTop: '20px', padding: '5px', backgroundColor: '#f6f9fc'}}>
                 <Row>
+<<<<<<< HEAD
                     <Col xs="8">
                     <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title}</h6></CardTitle>
                     <CardText className="text-dark font-weight-bold"><h6>Purchase Date : {expenses.purchaseDate}</h6></CardText>
+=======
+                    <Col xs="6">
+                    <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title} <br/> {expenses.purchaseDate}</h6></CardTitle>
+>>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
                     </Col>
-                    <Col xs="4">
-                    <h6>Rp.  {expenses.total} </h6>
+                    <Col xs="6">
+                    <h6 style={{float:"right"}}>IDR  {expenses.total} </h6>
                     </Col>  
                 </Row>  
                 </Card> 
                 ))}
+                </Element>
             </Col>
             </Row>
             </Container>

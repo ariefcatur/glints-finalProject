@@ -73,9 +73,7 @@ const AddExpenses = (props) => {
       cardId: cardId,
       categoryId: categoryId
     };
-
-    console.log(data);
-
+    // console.log(data);
     axios
       .post(urlExpense, data, {
         headers: { Authorization: `Bearer ${token}` },

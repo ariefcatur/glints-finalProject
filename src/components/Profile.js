@@ -12,18 +12,14 @@ import axios from "axios";
 import Cookies from 'js-cookie';
 import avatar from "../assets/avatar2.png";
 import "./Profile.css";
-import { User, Mail, MapPin } from "react-feather";
+import { User, Mail } from "react-feather";
 import Edit from "./EditProfile";
 import TabProfile from "./TabProfile";
 
-const Profile = (props) => {
-  const [user, setUser] = useState("");
-
-  const fullname = Cookies.get('fullname');
+const Profile = () => {
+  const [users, setUsers] = useState("");
 
   const token = Cookies.get('token');
-
-  const email = Cookies.get('email');
 
   useEffect(() => {
 
@@ -34,9 +30,12 @@ const Profile = (props) => {
         }
       )
       .then((res) => {
-        console.log(res);
-        setUser(res);
-      });
+        console.log(res.data);
+        setUsers(res.data);
+      })
+      .catch((error) => {
+      console.log(error);
+      })
   }, []);
 
   return (
@@ -44,8 +43,9 @@ const Profile = (props) => {
       <Row>
         <Col xl="4" sm="12">
           <Card>
-            {user ? (
-              <CardBody className="cardBody">
+            {users.length !== 0 ? (
+              users.map((user)=> (
+                <CardBody key={user.id} className="cardBody">
                 <CardImg top src={avatar} at="" className="imgProfile" />
                 <Row className="rowright">
                   <Container>
@@ -55,26 +55,17 @@ const Profile = (props) => {
                 <CardTitle>
                   <Container>
                     <p>
-                      <User size={22} /> {fullname}
+                      <User size={22} /> {user.fullName}
                     </p>
                   </Container>
-                  {/* <Container>
-                    <p>
-                      <Smile size={22} /> Username
-                    </p>
-                  </Container> */}
                   <Container>
                     <p>
-                      <Mail size={22} /> {email}
+                      <Mail size={22} /> {user.email}
                     </p>
                   </Container>
-                  {/* <Container>
-                    <p>
-                      <MapPin size={22} /> Bandung
-                    </p>
-                  </Container> */}
                 </CardTitle>
               </CardBody>
+              ))
             ) : (
               ""
             )}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Edit3 } from 'react-feather'
@@ -15,9 +14,7 @@ import {
 } from "reactstrap";
 
 const Edit = (props) => {
-  const urlEditProfile = "https://5fad41ff2ec98b00160481c3.mockapi.io/movie/register";
-
-  const history = useHistory();
+  const urlEditProfile = "http://3.0.91.163/auth/update/";
 
   const { className } = props;
 
@@ -28,27 +25,23 @@ const Edit = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     const data = {
       fullName: fullName,
       email: email,
     };
 
     axios
-      .put(urlEditProfile, data, {
+      .patch(urlEditProfile, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        const { username, role, token } = res.data;
-        Cookies.set("username", username);
-        Cookies.set("role", role);
-        Cookies.set("token", token);
+        console.log(res.data);
+        return window.location.reload();
       })
-      .then(() => {
+      .catch((error) => {
+        console.log(error);
         setModal(false);
-        console.log(props);
-        props.setIsLogin(true);
-        history.push("/");
       });
   };
 
@@ -73,7 +66,7 @@ const Edit = (props) => {
           <Form onSubmit={handleSubmit}>
 
             <FormGroup>
-              <Label for="fullName">User Name</Label>
+              <Label for="fullName">New Name</Label>
               <Input
                 type="text"
                 name="fullName"
@@ -84,7 +77,7 @@ const Edit = (props) => {
             </FormGroup>
 
             <FormGroup>
-              <Label for="email">Email</Label>
+              <Label for="email">New Email</Label>
               <Input
                 type="email"
                 name="email"

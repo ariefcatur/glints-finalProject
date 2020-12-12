@@ -169,6 +169,7 @@ const AddExpenses = (props) => {
                     id="cardId"
                     onChange={(e) => setCardId(e.target.value)}
                   >
+                    <option>Select card</option>
                   {cards.length !== 0
                     ? cards.map((card) => <option value={card.id}>{card.cardBank}</option>)
                     : ("")}

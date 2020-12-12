@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Plus } from 'react-feather'
+// import { Plus } from 'react-feather'
 import {
   Button,
   Modal,
@@ -69,7 +69,8 @@ const AddCard = (props) => {
         className="mt-2 mr-2 mb-sm-0"
         style={{color: "white", backgroundColor: "#8F48EA"}}
         onClick={toggle}>
-        <Plus size={15}/>
+        {/* <Plus size={15}/>  */}
+        <strong>Add Card</strong>
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>

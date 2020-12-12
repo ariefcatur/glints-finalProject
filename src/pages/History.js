@@ -195,6 +195,7 @@ const History = () =>{
                     <Row>
                         <Col xs="6" >
                             <h4>Spending Value</h4>
+                            <hr style={{ borderTop: "2px solid #c8c8c8" }} />
                         </Col>
                         <Col xs="6">   
                         <div style={{float :'right', position:'relative',  }}> 
@@ -216,8 +217,9 @@ const History = () =>{
             </Container>
             <Container>
             <Row className="ml-0 mt-3 mb-2">
-                <h3>Your Subscribe</h3>
+                <h3>Your Subscriptions</h3>
             </Row>
+            <hr style={{ borderTop: "2px solid #c8c8c8" }} />
             </Container>
             <Container>
                 <Row>
@@ -241,7 +243,7 @@ const History = () =>{
                                 className="btn btn-primary btn-block"
                                 id ="button"
                             >
-                                Unsubcribe
+                                Unsubscribe
                             </Button>
                             </Row>
                             </CardBody>
@@ -287,8 +289,8 @@ const History = () =>{
                 </Modal>
             </Container>
             </Col>
-            <Col xs="4" style={{backgroundColor: 'white'}}> 
-                <h4>history</h4>
+            <Col xs="4" style={{backgroundColor: 'white', paddingTop:"10px"}}> 
+                <h4>History</h4>
                 {history.map((subscribtion, i)=>(
                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
                     <Row>
@@ -303,10 +305,11 @@ const History = () =>{
                 </Card>
                 ))}
                 {expense.map((expenses, i )=>(
-                <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
+                <Card key={i} style={{marginTop: '20px', padding: '5px', backgroundColor: '#f6f9fc'}}>
                 <Row>
                     <Col xs="8">
-                    <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title} <br/> {expenses.purchaseDate}</h6></CardTitle>
+                    <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title}</h6></CardTitle>
+                    <CardText className="text-dark font-weight-bold"><h6>Purchase Date : {expenses.purchaseDate}</h6></CardText>
                     </Col>
                     <Col xs="4">
                     <h6>Rp.  {expenses.total} </h6>

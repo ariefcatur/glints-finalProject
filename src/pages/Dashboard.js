@@ -267,9 +267,10 @@ const Dashboard = () =>{
                 </Row>
             </Container>
             <Container>
-            <Row className="ml-0 mt-3 mb-2">
+            <Row className="ml-0 mt-3 mb-0">
                 <h3>Popular Apps</h3>
             </Row>
+            <hr style={{ borderTop: "2px solid #c8c8c8" }} />
             </Container>
             <Container>
                 <Row>

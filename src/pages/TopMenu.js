@@ -6,6 +6,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  Row,
 } from "reactstrap";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -25,13 +26,13 @@ const TopMenu = (props) => {
 
   return (
     <Container fluid className="barnav" style={{backgroundColor:"whitesmoke"}}>
-      <Navbar expand="md" style={{backgroundColor:"whitesmoke"}}>
-        <NavbarBrand className="lognav" href="/">
+      <Navbar expand="md" style={{backgroundColor:"whitesmoke", }}>
+        <NavbarBrand className="lognav" href="/" >
           <Link to="/dashboard">
-            <img src={subsit}></img>
+            <img src={subsit} ></img>
           </Link>
         </NavbarBrand>
-
+        
         <Nav className="ml-auto" navbar>
           <Collapse isOpen={isOpen} navbar></Collapse>
           {!checkLogin() && (

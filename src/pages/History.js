@@ -15,6 +15,9 @@ import {
     ModalBody
     
 } from 'reactstrap';
+import {
+    Element,
+} from 'react-scroll'
 import { Link } from 'react-router-dom';
 import { Line } from '@reactchartjs/react-chart.js'
 import axios from 'axios';
@@ -291,8 +294,8 @@ const History = () =>{
             </Col>
             
             <Col xs="4" style={{backgroundColor: 'white'}}> 
-                {/* <h4>history</h4> */}
-                    <Card style={{marginTop: '20px', color:'white', backgroundColor: '#8F48EA'}}>
+                <h4>history</h4>
+                    <Card style={{marginTop: '20px', color:'white', backgroundColor: '#8F48EA', marginBottom:'20px'}}>
                         <Row>
                             <Col xs="6">
                             <CardTitle className="text-white"  > Total :
@@ -303,7 +306,13 @@ const History = () =>{
                             </Col>
                         </Row>
                     </Card>
-               
+                <Element ClassName="element" id="scroll-container" style={{
+                    position: 'relative',
+                    height: '700px',
+                    overflow: 'scroll',
+                    marginBottom: '100px'
+                }}>
+                <h4>Subscribe</h4>
                 {history.map((subscribtion, i)=>(
                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
                     <Row>
@@ -317,6 +326,7 @@ const History = () =>{
                     </Row>
                 </Card>
                 ))}
+                <h4>Expense</h4>
                 {expense.map((expenses, i )=>(
                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
                 <Row>
@@ -329,6 +339,7 @@ const History = () =>{
                 </Row>  
                 </Card> 
                 ))}
+                </Element>
             </Col>
             </Row>
             </Container>

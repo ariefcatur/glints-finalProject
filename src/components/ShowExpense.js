@@ -8,6 +8,9 @@ import {
   CardTitle,
   Button,
 } from "reactstrap";
+import {
+  Element,
+} from 'react-scroll'
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -47,9 +50,10 @@ const ShowExpenses = () => {
 
   return (
     <>
+        
       {results.length !== 0 ? (
         results.map((result) => (
-          <Col md={3} key={result.id}>
+          <Col md={3} key={result.id}>   
             <Card style={{ marginBottom: "15px", minHeight: "165px" }}>
               <CardBody className="d-flex flex-column align-items-center">
                 <CardTitle style={{ minHeight: "50px" }}>
@@ -70,8 +74,8 @@ const ShowExpenses = () => {
               </CardBody>
             </Card>
           </Col>
-        ))
-      ) : (
+        )) 
+      )  : (
         <Container></Container>
       )}
     </>

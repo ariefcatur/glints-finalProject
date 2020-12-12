@@ -56,7 +56,8 @@
 }
 .content{
   padding-top: 20px;
-  background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
+  background-color: #E5E5E5;
+  padding-bottom: 50px;
 }
 #button{
   background-color: #8F48EA;

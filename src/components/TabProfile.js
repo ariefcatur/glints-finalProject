@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Container, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Container, Row, Col, Card } from 'reactstrap';
 import { CreditCard, Activity, DollarSign } from 'react-feather'
 import classnames from 'classnames';
 import './Profile.css'
@@ -17,32 +17,57 @@ const TabProfile = () => {
   }
 
   return (
-    <div>
-      <Nav tabs>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '1' })}
-            onClick={() => { toggle('1'); }}
-          >
-            <CreditCard size={18}/> Cards
-          </NavLink>
-        </NavItem>
-        <NavItem>
+    <Container fluid>
+      <Nav>
+        <Col md="3">
+          <Card className="tabs">
+          <NavItem>
+              <NavLink
+                className={classnames({ active: activeTab === '1' })}
+                onClick={() => { toggle('1'); }}
+              >
+                <Row><Col sm="8"><h4> Cards </h4></Col><Col sm="4" className="icon"><CreditCard size={19}/></Col></Row>
+              </NavLink>
+            </NavItem>
+            </Card>
+          </Col> 
+          <Col sm="3">
+          <Card className="tabs"> 
+          <NavItem>
+            
           <NavLink
             className={classnames({ active: activeTab === '2' })}
             onClick={() => { toggle('2'); }}
           >
-            <Activity size={18}/> Card Status
+            <Row><Col sm="8"><h4> Cards </h4></Col><Col sm="4"  className="icon"><Activity size={19}/></Col></Row>
           </NavLink>
         </NavItem>
+        </Card>
+          </Col> 
+          <Col sm="3">
+          <Card className="tabs"> 
         <NavItem>
           <NavLink
             className={classnames({ active: activeTab === '3' })}
             onClick={() => { toggle('3'); }}
           >
-            <DollarSign size={18}/> Expenses
+            <Row><Col sm="9"><h4> Expense </h4></Col><Col sm="3" className="icon"><DollarSign size={18}/></Col></Row>
           </NavLink>
         </NavItem>
+        </Card>
+          </Col>
+          <Col sm="3">
+          <Card className="tabs"> 
+        <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === '4' })}
+            onClick={() => { toggle('4'); }}
+          >
+            <Row><Col sm="8"><h4> Dept </h4></Col><Col sm="4"  className="icon"><DollarSign size={18}/></Col></Row>
+          </NavLink>
+        </NavItem>
+        </Card>
+          </Col> 
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
@@ -68,16 +93,27 @@ const TabProfile = () => {
         <TabPane tabId="3">
         <Row >
             <Container className="rowright">
-            <AddExpenses/>
+            
             </Container>
             <ShowExpenses/>
+        </Row>
+        <AddExpenses/>
+        <Row>
+        {/* <ShowSubscriptions/>     */}
+        </Row>
+        </TabPane>
+        <TabPane tabId="4">
+        <Row >
+            <Container className="rowright">
+            
+            </Container>
         </Row>
         <Row>
         {/* <ShowSubscriptions/>     */}
         </Row>
         </TabPane>
       </TabContent>
-    </div>
+    </Container>
   );
 }
 

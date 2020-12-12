@@ -54,17 +54,10 @@ const ShowExpenses = () => {
         
       {results.length !== 0 ? (
         results.map((result) => (
-<<<<<<< HEAD
-          <Col md={4} key={result.id}>
-            <Card style={{ marginBottom: "15px"}}>
-              <CardBody className="d-flex flex-column">
-                <CardTitle style={{ minHeight: "85px" }}>
-=======
           <Col md={3} key={result.id}>   
             <Card style={{ marginBottom: "15px", minHeight: "165px" }}>
               <CardBody className="d-flex flex-column align-items-center">
                 <CardTitle style={{ minHeight: "50px" }}>
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
                   <strong>{result.title}</strong>
                   <hr style={{ borderTop: "2px solid #222222" }} />
                 </CardTitle>
@@ -84,17 +77,11 @@ const ShowExpenses = () => {
               </CardBody>
             </Card>
           </Col>
-<<<<<<< HEAD
         ))
       ) : (
         <Container>
           <p style={{opacity:"60%"}}><i><strong>You have not added any expense.</strong></i></p>
         </Container>
-=======
-        )) 
-      )  : (
-        <Container></Container>
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
       )}
     </>
   );

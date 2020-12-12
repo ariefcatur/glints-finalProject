@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
-// import { CreditCard, Activity, DollarSign } from 'react-feather'
-import classnames from "classnames";
-import "./Profile.css";
-import AddCard from "./AddCard";
-import AddExpenses from "./AddExpenses";
-import ShowExpenses from "./ShowExpense";
-// import ShowCard from "./ShowCard";
-import CheckStatus from "./Status";
-=======
 import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Container, Row, Col, Card } from 'reactstrap';
 import { CreditCard, Activity, DollarSign } from 'react-feather'
@@ -29,7 +8,6 @@ import AddExpenses from './AddExpenses'
 import ShowExpenses from './ShowExpense'
 import ShowCard from './ShowCard'
 
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
 
 const TabProfile = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -58,14 +36,6 @@ const TabProfile = () => {
           <NavItem>
             
           <NavLink
-<<<<<<< HEAD
-            className={classnames({ active: activeTab === "1" })}
-            onClick={() => {
-              toggle("1");
-            }}
-          >
-            Cards
-=======
             className={classnames({ active: activeTab === '2' })}
             onClick={() => { toggle('2'); }}
           >
@@ -82,7 +52,6 @@ const TabProfile = () => {
             onClick={() => { toggle('3'); }}
           >
             <Row><Col sm="9"><h4> Expense </h4></Col><Col sm="3" className="icon"><DollarSign size={18}/></Col></Row>
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
           </NavLink>
         </NavItem>
         </Card>
@@ -91,19 +60,10 @@ const TabProfile = () => {
           <Card className="tabs"> 
         <NavItem>
           <NavLink
-<<<<<<< HEAD
-            className={classnames({ active: activeTab === "2" })}
-            onClick={() => {
-              toggle("2");
-            }}
-          >
-            Expenses
-=======
             className={classnames({ active: activeTab === '4' })}
             onClick={() => { toggle('4'); }}
           >
             <Row><Col sm="8"><h4> Dept </h4></Col><Col sm="4"  className="icon"><DollarSign size={18}/></Col></Row>
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
           </NavLink>
         </NavItem>
         </Card>
@@ -133,12 +93,6 @@ const TabProfile = () => {
         <TabPane tabId="2">
           <Row>
             <Container className="rowright">
-<<<<<<< HEAD
-              <AddExpenses />
-            </Container>
-            <ShowExpenses />
-          </Row>
-=======
             
             </Container>
             <ShowExpenses/>
@@ -157,7 +111,6 @@ const TabProfile = () => {
         <Row>
         {/* <ShowSubscriptions/>     */}
         </Row>
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
         </TabPane>
       </TabContent>
     </Container>

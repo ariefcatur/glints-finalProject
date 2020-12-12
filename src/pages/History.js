@@ -294,10 +294,6 @@ const History = () =>{
                 </Modal> */}
             </Container>
             </Col>
-<<<<<<< HEAD
-            <Col xs="4" style={{backgroundColor: 'white', paddingTop:"10px"}}> 
-                <h4>History</h4>
-=======
             
             <Col xs="4" style={{backgroundColor: 'white'}}> 
                 <h4>history</h4>
@@ -319,7 +315,6 @@ const History = () =>{
                     marginBottom: '100px'
                 }}>
                 <h4>Subscribe</h4>
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
                 {history.map((subscribtion, i)=>(
                 <Card key={i} style={{marginTop: '20px', backgroundColor: '#f6f9fc'}}>
                     <Row>
@@ -337,14 +332,8 @@ const History = () =>{
                 {expense.map((expenses, i )=>(
                 <Card key={i} style={{marginTop: '20px', padding: '5px', backgroundColor: '#f6f9fc'}}>
                 <Row>
-<<<<<<< HEAD
-                    <Col xs="8">
-                    <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title}</h6></CardTitle>
-                    <CardText className="text-dark font-weight-bold"><h6>Purchase Date : {expenses.purchaseDate}</h6></CardText>
-=======
                     <Col xs="6">
                     <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title} <br/> {expenses.purchaseDate}</h6></CardTitle>
->>>>>>> 7f80e1dd3b54b8424cb25d024bb462c82c195561
                     </Col>
                     <Col xs="6">
                     <h6 style={{float:"right"}}>IDR  {expenses.total} </h6>

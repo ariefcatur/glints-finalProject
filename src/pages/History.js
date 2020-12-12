@@ -242,7 +242,7 @@ const History = () =>{
                             </CardTitle>
                             <Row>
                             <Button
-                                onClick={()=>{if(window.confirm('are you sure you wish to unsubscribe this item?')) ghandleRemove(history.serviceId)}}
+                                onClick={()=>{if(window.confirm('are you sure you wish to unsubscribe this item?')) handleRemove(history.serviceId)}}
                                 className="btn btn-primary btn-block"
                                 id ="button"
                             >

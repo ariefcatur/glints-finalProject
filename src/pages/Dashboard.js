@@ -329,9 +329,6 @@ const Dashboard = () =>{
                                     </li>
                                 </ul> 
                             </CardText>
-                            <FormGroup>
-                            <Label for="cardId">Select Card</Label>
-                            </FormGroup>
                             <Row>
                             <Col md="8">
                             {/* {card.map((cards)=>(

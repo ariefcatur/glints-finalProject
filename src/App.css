@@ -1,5 +1,5 @@
 .container{
-  font-family: 'Avalon DemiOblique', sans-serif;
+  font-family: 'Avalon DemiOblique', sans-serif!important;
   color: #003764 !important
 }
 .section-title{
@@ -12,7 +12,9 @@
   font-weight: bold;
 }
 .about{
-  margin-top: 100px;
+  padding-top: 150px;
+  background-color: #fff;
+  padding-bottom: 100px;
 }
 .aboutIntro{
   text-align:center;
@@ -27,11 +29,13 @@
 .logo-gambar{
   background-image:
     linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 90.53%),url('./pages/img/Rectangle.png');
-    width: 900px;
-    height: 420px;
+    width: 100%;
+    height: 425px;
     background-size: cover;
     color: white; 
-    margin-left:15px; 
+    margin-left:26px;
+    margin-top:-15px;
+    margin-bottom:-15px; 
     padding-right:50px; 
 }
 .logo{
@@ -56,7 +60,6 @@
 }
 .content{
   padding-top: 20px;
-  background-color: #E5E5E5;
   padding-bottom: 50px;
 }
 #button{
@@ -111,5 +114,10 @@ text-align: center;
 .popular{
   padding-top: 20px;
   margin-top:100px;
+  margin-bottom: 100px;
+}
+.features{
+  padding-top: 20px;
+  background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
 }
 

@@ -83,13 +83,13 @@ const Home = () =>{
                         </div>
                     </Col>
                     <Col xs="7"> 
-                        <Row>
+                        
                         <div className="logo-gambar"></div>   
-                        </Row>  
+                        
                     </Col>
                 </Row>
             </Container>
-            <Container className="about">
+            <Container fluid className="about">
             <h1 className="section" >About US</h1>
             <div className="section-title-divider "></div>
             
@@ -276,12 +276,12 @@ const Home = () =>{
                 </Container>
             
             </Container>
-            <Container fluid className="team">
+            {/* <Container fluid className="team">
                 <Container>
                     <h1 className="section" >Team</h1>
                     <div className="section-title-divider "></div>
                 </Container>
-            </Container>
+            </Container> */}
         </>
     )
 }

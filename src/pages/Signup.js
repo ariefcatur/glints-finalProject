@@ -40,23 +40,36 @@ const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
+  const [message, setMessage] = useState();
 
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
 
+    setMessage({
+      data: "Registration is in progress...",
+      type: "alert-warning"
+    })
     const urlSignUp =
       " http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/register";
-    const bodyData = {
+    const data = {
       fullName: fullName,
       email: email,
       password: password,
     };
 
-    axios.post(urlSignUp, bodyData).then((ress) => {
-      console.log(ress.bodyData);
-      history.push({ toggleSignIn });
+    axios.post(urlSignUp, data)
+    .then((ress) => { 
+      // console.log(ress.bodyData);
+      history.push(toggleSignIn);
       // <Alert color="primary">Mantav</Alert>;
-    });
+    })
+    // .then((error, data)=>{
+    //   // const hasError = "error" in data && data.error != null;
+    //   setMessage({
+    //     data: error || "Registered Successfully",
+    //     type: error ? "alert-danger" : "alert-success",
+    //   })
+    // })
   };
 
   const handleSubmitSignIn = (e) => {
@@ -136,6 +149,7 @@ const SignUp = (props) => {
                 color="primary"
                 type="submit"
                 className="btn btn-primary btn-block"
+                onClick={toggleSignIn}
               >
                 Sign Up
               </Button>

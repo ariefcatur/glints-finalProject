@@ -6,7 +6,8 @@ import './Profile.css'
 import AddCard from './AddCard'
 import AddExpenses from './AddExpenses'
 import ShowExpenses from './ShowExpense'
-import ShowCard from './ShowCard'
+import CheckStatus from './Status'
+// import ShowCard from './ShowCard'
 
 
 const TabProfile = () => {
@@ -79,13 +80,13 @@ const TabProfile = () => {
           </Row> */}
           <Row className="rowright">
             <Container>
+              <hr style={{ borderTop: "2px solid #c8c8c8" }} />
               <AddCard />
             </Container>
           </Row>
           <Container>
             <h4 className="align-items-center">Your Cards</h4>
           </Container>
-          <hr style={{ borderTop: "2px solid #c8c8c8" }} />
           <Row>
             <CheckStatus />
           </Row>

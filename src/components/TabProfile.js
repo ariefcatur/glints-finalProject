@@ -7,14 +7,16 @@ import AddCard from './AddCard'
 import AddExpenses from './AddExpenses'
 import ShowExpenses from './ShowExpense'
 import ShowCard from './ShowCard'
+import CheckStatus from './Status'
+import Debt from './Debt'
 
 
 const TabProfile = () => {
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState('1');
 
-  const toggle = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
+  const toggle = tab => {
+    if(activeTab !== tab) setActiveTab(tab);
+  }
 
   return (
     <Container fluid>
@@ -71,27 +73,24 @@ const TabProfile = () => {
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          {/* <Row>
-            <Container className="mt-3 mb-2">
-              <h4 className="align-items-center">Your Cards</h4>
-            </Container>
-            <ShowCard />
-          </Row> */}
-          <Row className="rowright">
+        <Row className="rowright">
             <Container>
-              <AddCard />
+            <AddCard/>
             </Container>
-          </Row>
-          <Container>
-            <h4 className="align-items-center">Your Cards</h4>
-          </Container>
-          <hr style={{ borderTop: "2px solid #c8c8c8" }} />
-          <Row>
-            <CheckStatus />
-          </Row>
+        </Row>
+        <Row>
+          <ShowCard/>
+        </Row>
         </TabPane>
         <TabPane tabId="2">
           <Row>
+            <Col l="12" xl="12" className="d-flex mt-5 align-items-center">
+              <CheckStatus />
+            </Col>
+          </Row>
+        </TabPane>
+        <TabPane tabId="3">
+        <Row >
             <Container className="rowright">
             
             </Container>
@@ -107,14 +106,15 @@ const TabProfile = () => {
             <Container className="rowright">
             
             </Container>
+            <Debt/>
         </Row>
-        <Row>
+        {/* <Row>
         {/* <ShowSubscriptions/>     */}
-        </Row>
+        {/* </Row>  */}
         </TabPane>
       </TabContent>
     </Container>
   );
-};
+}
 
 export default TabProfile;

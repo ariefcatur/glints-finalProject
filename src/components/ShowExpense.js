@@ -2,18 +2,14 @@ import React, { useState, useEffect } from "react";
 import {
   Container,
   Col,
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
   Button,
+  Row,
+  Table,
 } from "reactstrap";
-import {
-  Element,
-} from 'react-scroll'
 import axios from "axios";
 import Cookies from "js-cookie";
-import {Trash2} from 'react-feather'
+import { X } from "react-feather";
+import './Profile.css'
 
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
@@ -39,50 +35,66 @@ const ShowExpenses = () => {
   const handleDelete = (id) => {
     axios
       .delete(`http://3.0.91.163/expense/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       })
-      .then(res => {
+      .then((res) => {
         console.log(res);
         console.log(res.data);
         return window.location.reload();
-      })
-    
-  } 
+      });
+  };
 
   return (
     <>
-        
-      {results.length !== 0 ? (
-        results.map((result) => (
-          <Col md={3} key={result.id}>   
-            <Card style={{ marginBottom: "15px", minHeight: "165px" }}>
-              <CardBody className="d-flex flex-column align-items-center">
-                <CardTitle style={{ minHeight: "50px" }}>
-                  <strong>{result.title}</strong>
-                  <hr style={{ borderTop: "2px solid #222222" }} />
-                </CardTitle>
-                <CardText>Rp {result.total}</CardText>
-                <CardText>{result.purchaseDate}</CardText>
-                <Button
-                  size="sm"
-                  onClick={() => {
-                    handleDelete(result.id);
-                  }}
-                  block
-                  color="danger"
-                  outline
-                >
-                  <Trash2 size={20} />
-                </Button>
-              </CardBody>
-            </Card>
-          </Col>
-        ))
-      ) : (
-        <Container>
-          <p style={{opacity:"60%"}}><i><strong>You have not added any expense.</strong></i></p>
-        </Container>
-      )}
+      <Row className="tables">
+        <Col>
+          <Container>
+            <Table hover style={{backgroundColor:"whitesmoke"}}>
+              <thead className="text-center" style={{backgroundColor:"#BA8FF2"}}>
+                <tr>
+                  <th style={{width:"50%"}}>Transaction Date</th>
+                  <th >Name of Transaction</th>
+                  <th >Currency</th>
+                  <th >Costs</th>
+                  <th >Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {results.length !== 0 ? (
+                  results.map((result) => (
+                    <tr>
+                      <td className="text-center">{result.purchaseDate}</td>
+                      <td style={{width:"50%"}}>{result.title}</td>
+                      <td className="text-center">IDR</td>
+                      <td className="text-center">{result.total}</td>
+                      <td style={{width:"100%"}} className="text-center">
+                        <Button
+                          size="sm"
+                          onClick={() => {
+                            handleDelete(result.id);
+                          }}
+                          color="danger"
+                          outline
+                        >
+                          <X size={15} />
+                        </Button>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <Container>
+                    <p style={{ opacity: "60%" }}>
+                      <i>
+                        <strong>You have not added any expense.</strong>
+                      </i>
+                    </p>
+                  </Container>
+                )}
+              </tbody>
+            </Table>
+          </Container>
+        </Col>
+      </Row>
     </>
   );
 };

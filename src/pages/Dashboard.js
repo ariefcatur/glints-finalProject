@@ -29,7 +29,6 @@ import { Line } from '@reactchartjs/react-chart.js'
 import axios from 'axios';
 import {checkLogin} from '../Helper';
 import Cookies from 'js-cookie';
-import AddExpenses from '../components/AddExpenses';
 
 
 // const dataMonth= {
@@ -102,6 +101,9 @@ const Dashboard = () =>{
     const collapseWeek = () => {setIsOpenWeek(true); setIsOpen(false);}
 
     useEffect(() => {
+
+        document.body.style.backgroundColor = "#E5E5E5"
+
         setLoading(true);
         axios.get(urlSubscribe).then((res) => {
           setSubscribes(res.data);
@@ -371,9 +373,6 @@ const Dashboard = () =>{
                             ))}   
                     </ModalBody>
                 </Modal>
-                </Row> 
-                <Row>
-                <AddExpenses/>
                 </Row> 
             </Container>
         </Container>

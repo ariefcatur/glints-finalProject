@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-// import { ShoppingCart } from "react-feather";
 import './Profile.css'
 import {
   Button,
@@ -92,14 +91,14 @@ const AddExpenses = (props) => {
   const toggle = () => setModal(!modal);
 
   return (
-    <div className="expense">
+    <div>
       <Button
-        size="l"
+        size="sm"
         className="mt-2 mr-2 mb-sm-0"
         style={{ color: "white", backgroundColor: "#8F48EA" }}
         onClick={toggle}
       >
-      Add Expense 
+      <strong>Add Expense </strong>
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>

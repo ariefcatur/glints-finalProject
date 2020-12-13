@@ -295,16 +295,17 @@ const History = () =>{
             </Container>
             </Col>
             
-            <Col xs="4" style={{backgroundColor: 'white'}}> 
-                <h4>history</h4>
+            <Col xs="4" style={{backgroundColor: 'white', padding:'7px'}}> 
+                <h4>History</h4>
+                <hr style={{ borderTop: "2px solid #c8c8c8" }} />
                     <Card style={{marginTop: '20px', color:'white', backgroundColor: '#8F48EA', marginBottom:'20px'}}>
                         <Row>
-                            <Col xs="6">
-                            <CardTitle className="text-white"  > Total :
+                            <Col xs="6" style={{paddingTop:'20px'}}>
+                            <CardTitle className="text-white"  ><strong>Total :</strong> 
                             </CardTitle>
                             </Col>
-                            <Col xs="6">
-                            <h6 style={{float:"right", }}>IDR {totalHistory.total} </h6>
+                            <Col xs="6" style={{paddingTop:'20px'}}>
+                            <h6 style={{float:"right", }}><strong>IDR {totalHistory.total}</strong> </h6>
                             </Col>
                         </Row>
                     </Card>
@@ -332,11 +333,11 @@ const History = () =>{
                 {expense.map((expenses, i )=>(
                 <Card key={i} style={{marginTop: '20px', padding: '5px', backgroundColor: '#f6f9fc'}}>
                 <Row>
-                    <Col xs="6">
+                    <Col xs="6" style={{paddingTop:'10px'}}>
                     <CardTitle tag="h6" className="text-dark font-weight-bold"><h6>{expenses.title} <br/> {expenses.purchaseDate}</h6></CardTitle>
                     </Col>
                     <Col xs="6">
-                    <h6 style={{float:"right"}}>IDR  {expenses.total} </h6>
+                    <h6 style={{float:"right", paddingTop:'20px'}}>IDR  {expenses.total} </h6>
                     </Col>  
                 </Row>  
                 </Card> 

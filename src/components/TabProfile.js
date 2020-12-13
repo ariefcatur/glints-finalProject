@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Container, Row, Col, Card } from 'reactstrap';
-import { CreditCard, Activity, DollarSign } from 'react-feather'
-import classnames from 'classnames';
-import './Profile.css'
-import AddCard from './AddCard'
-import AddExpenses from './AddExpenses'
-import ShowExpenses from './ShowExpense'
-import CheckStatus from './Status'
+import React, { useState } from "react";
+import {
+  TabContent,
+  TabPane,
+  Nav,
+  NavItem,
+  NavLink,
+  Container,
+  Row,
+  Col,
+  Card,
+} from "reactstrap";
+import { CreditCard, Activity, DollarSign, ShoppingCart } from "react-feather";
+import classnames from "classnames";
+import "./Profile.css";
+import AddCard from "./AddCard";
+import AddExpenses from "./AddExpenses";
+import ShowExpenses from "./ShowExpense";
+import CheckStatus from "./Status";
 // import ShowCard from './ShowCard'
-
 
 const TabProfile = () => {
   const [activeTab, setActiveTab] = useState("1");
@@ -18,100 +27,102 @@ const TabProfile = () => {
   };
 
   return (
-    <Container fluid>
+    <Container fluid style={{backgroundColor:"white", paddingTop:"20px", minHeight:"700px"}}>
       <Nav>
         <Col md="3">
           <Card className="tabs">
-          <NavItem>
+            <NavItem>
               <NavLink
-                className={classnames({ active: activeTab === '1' })}
-                onClick={() => { toggle('1'); }}
+                className={classnames({ active: activeTab === "1" })}
+                onClick={() => {
+                  toggle("1");
+                }}
               >
-                <Row><Col sm="8"><h4> Cards </h4></Col><Col sm="4" className="icon"><CreditCard size={19}/></Col></Row>
+                <Row>
+                  <Container>
+                    <h4>
+                      <CreditCard size={20} /> Card
+                    </h4>
+                  </Container>
+                </Row>
               </NavLink>
             </NavItem>
-            </Card>
-          </Col> 
-          <Col sm="3">
-          <Card className="tabs"> 
-          <NavItem>
-            
-          <NavLink
-            className={classnames({ active: activeTab === '2' })}
-            onClick={() => { toggle('2'); }}
-          >
-            <Row><Col sm="8"><h4> Cards </h4></Col><Col sm="4"  className="icon"><Activity size={19}/></Col></Row>
-          </NavLink>
-        </NavItem>
-        </Card>
-          </Col> 
-          <Col sm="3">
-          <Card className="tabs"> 
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '3' })}
-            onClick={() => { toggle('3'); }}
-          >
-            <Row><Col sm="9"><h4> Expense </h4></Col><Col sm="3" className="icon"><DollarSign size={18}/></Col></Row>
-          </NavLink>
-        </NavItem>
-        </Card>
-          </Col>
-          <Col sm="3">
-          <Card className="tabs"> 
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '4' })}
-            onClick={() => { toggle('4'); }}
-          >
-            <Row><Col sm="8"><h4> Dept </h4></Col><Col sm="4"  className="icon"><DollarSign size={18}/></Col></Row>
-          </NavLink>
-        </NavItem>
-        </Card>
-          </Col> 
+          </Card>
+        </Col>
+        <Col sm="3" className="flex">
+          <Card className="tabs">
+            <NavItem>
+              <NavLink
+                className={classnames({ active: activeTab === "2" })}
+                onClick={() => {
+                  toggle("2");
+                }}
+              >
+                <Row>
+                  <Container>
+                    <h4>
+                      <ShoppingCart size={19} /> Expense
+                    </h4>
+                  </Container>
+                </Row>
+              </NavLink>
+            </NavItem>
+          </Card>
+        </Col>
+        <Col sm="3">
+          <Card className="tabs">
+            <NavItem>
+              <NavLink
+                className={classnames({ active: activeTab === "3" })}
+                onClick={() => {
+                  toggle("3");
+                }}
+              >
+                <Row>
+                  <Container>
+                    <h4>
+                      <DollarSign size={19} /> Debt
+                    </h4>
+                  </Container>
+                </Row>
+              </NavLink>
+            </NavItem>
+          </Card>
+        </Col>
       </Nav>
       <TabContent activeTab={activeTab}>
         <TabPane tabId="1">
-          {/* <Row>
-            <Container className="mt-3 mb-2">
-              <h4 className="align-items-center">Your Cards</h4>
-            </Container>
-            <ShowCard />
-          </Row> */}
           <Row className="rowright">
             <Container>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
               <AddCard />
             </Container>
           </Row>
-          <Container>
-            <h4 className="align-items-center">Your Cards</h4>
-          </Container>
           <Row>
             <CheckStatus />
           </Row>
         </TabPane>
         <TabPane tabId="2">
+          <Row className="rowright">
+            <Container>
+              <hr style={{ borderTop: "2px solid #c8c8c8" }} />
+              <AddExpenses />
+            </Container>
+          </Row>
           <Row>
-            <Container className="rowright">
-            
-            </Container>
-            <ShowExpenses/>
-        </Row>
-        <AddExpenses/>
-        <Row>
-        {/* <ShowSubscriptions/>     */}
-        </Row>
+            <Container className="rowright"></Container>
+            <ShowExpenses />
+          </Row>
         </TabPane>
-        <TabPane tabId="4">
-        <Row >
-            <Container className="rowright">
-            
+        <TabPane tabId="3">
+        <Row className="rowright">
+            <Container>
+              <hr style={{ borderTop: "2px solid #c8c8c8" }} />
             </Container>
-        </Row>
-        <Row>
-        {/* <ShowSubscriptions/>     */}
-        </Row>
+          </Row>
+          <Row>
+            <Container className="rowright"></Container>
+          </Row>
         </TabPane>
       </TabContent>
     </Container>

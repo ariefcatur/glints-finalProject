@@ -23,6 +23,8 @@ const Profile = () => {
 
   useEffect(() => {
 
+    document.body.style.backgroundColor = "#E5E5E5"
+
     axios
       .get(
         `http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/user/`, {

@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Col,
-  Button,
-  Row,
-  Table,
-} from "reactstrap";
+import { Container, Col, Button, Row, Table } from "reactstrap";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { X } from "react-feather";
-import './Profile.css'
+import expense from "../assets/expense.png";
+import "./Profile.css";
 
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
@@ -47,27 +42,30 @@ const ShowExpenses = () => {
   return (
     <>
       <Row className="tables">
-        <Col>
+        {/* <Col> */}
           <Container>
-            <Table hover style={{backgroundColor:"whitesmoke"}}>
-              <thead className="text-center" style={{backgroundColor:"#BA8FF2"}}>
-                <tr>
-                  <th style={{width:"50%"}}>Transaction Date</th>
-                  <th >Name of Transaction</th>
-                  <th >Currency</th>
-                  <th >Costs</th>
-                  <th >Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {results.length !== 0 ? (
-                  results.map((result) => (
+            {results.length !== 0 ? (
+              results.map((result) => (
+                <Table hover style={{ backgroundColor: "whitesmoke" }}>
+                  <thead
+                    className="text-center"
+                    style={{ backgroundColor: "#BA8FF2" }}
+                  >
+                    <tr>
+                      <th style={{ width: "50%" }}>Transaction Date</th>
+                      <th>Name of Transaction</th>
+                      <th>Currency</th>
+                      <th>Costs</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
                     <tr>
                       <td className="text-center">{result.purchaseDate}</td>
-                      <td style={{width:"50%"}}>{result.title}</td>
+                      <td style={{ width: "50%" }}>{result.title}</td>
                       <td className="text-center">IDR</td>
                       <td className="text-center">{result.total}</td>
-                      <td style={{width:"100%"}} className="text-center">
+                      <td style={{ width: "100%" }} className="text-center">
                         <Button
                           size="sm"
                           onClick={() => {
@@ -80,20 +78,31 @@ const ShowExpenses = () => {
                         </Button>
                       </td>
                     </tr>
-                  ))
-                ) : (
-                  <Container>
-                    <p style={{ opacity: "60%" }}>
-                      <i>
-                        <strong>You have not added any expense.</strong>
-                      </i>
-                    </p>
-                  </Container>
-                )}
-              </tbody>
-            </Table>
+                  </tbody>
+                </Table>
+              ))
+            ) : (
+              <Container>
+                <p style={{ opacity: "60%" }}>
+                  <i>
+                    <strong>No expense found.</strong>
+                  </i>
+                </p>
+                <Col className="subs4">
+                  <img
+                    src={expense}
+                    alt=""
+                    style={{
+                      width: "40%",
+                      opacity: "0%",
+                      position: "center",
+                    }}
+                  />
+                </Col>
+              </Container>
+            )}
           </Container>
-        </Col>
+        {/* </Col> */}
       </Row>
     </>
   );

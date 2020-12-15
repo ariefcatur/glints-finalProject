@@ -20,6 +20,7 @@ const Edit = (props) => {
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const token = Cookies.get('token');
 
@@ -29,6 +30,7 @@ const Edit = (props) => {
     const data = {
       fullName: fullName,
       email: email,
+      password: password
     };
 
     axios
@@ -60,30 +62,41 @@ const Edit = (props) => {
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>
-          <p>Please input your data and click Save.</p>
+          <p>Please update your data and then click Save.</p>
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleSubmit}>
 
             <FormGroup>
-              <Label for="fullName">New Name</Label>
+              <Label for="fullName">Name</Label>
               <Input
                 type="text"
                 name="fullName"
                 id="fullName"
-                placeholder="Input your new user name."
+                placeholder="Input your new name."
                 onChange={(e) => setFullName(e.target.value)}
               />
             </FormGroup>
 
             <FormGroup>
-              <Label for="email">New Email</Label>
+              <Label for="email">Email</Label>
               <Input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Input your email address."
+                placeholder="Input your new email address."
                 onChange={(e) => setEmail(e.target.value)}
+              />
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <Input
+                type="text"
+                name="password"
+                id="password"
+                placeholder="Input your new password."
+                onChange={(e) => setPassword(e.target.value)}
               />
             </FormGroup>
 

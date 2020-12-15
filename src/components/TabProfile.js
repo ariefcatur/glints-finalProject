@@ -10,6 +10,7 @@ import {
   Col,
   Card,
 } from "reactstrap";
+import TopUp from './TopUp';
 import { CreditCard, Activity, DollarSign, ShoppingCart } from "react-feather";
 import classnames from "classnames";
 import "./Profile.css";
@@ -29,7 +30,7 @@ const TabProfile = () => {
   return (
     <Container fluid style={{backgroundColor:"white", paddingTop:"20px", minHeight:"700px"}}>
       <Nav>
-        <Col md="3">
+        <Col md="4">
           <Card className="tabs">
             <NavItem>
               <NavLink
@@ -49,7 +50,7 @@ const TabProfile = () => {
             </NavItem>
           </Card>
         </Col>
-        <Col sm="3" className="flex">
+        <Col sm="4" className="flex">
           <Card className="tabs">
             <NavItem>
               <NavLink
@@ -69,7 +70,7 @@ const TabProfile = () => {
             </NavItem>
           </Card>
         </Col>
-        <Col sm="3">
+        <Col sm="4">
           <Card className="tabs">
             <NavItem>
               <NavLink
@@ -95,7 +96,8 @@ const TabProfile = () => {
           <Row className="rowright">
             <Container>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
-              <AddCard />
+              <AddCard/>
+              <TopUp/>
             </Container>
           </Row>
           <Row>

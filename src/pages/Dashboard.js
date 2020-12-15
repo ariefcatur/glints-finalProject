@@ -195,7 +195,7 @@ const Dashboard = () =>{
          }).catch((err)=>{
              console.log(err)
         });
-        console.log(dates, totals)
+        // console.log(dates, totals)
         
     }
     

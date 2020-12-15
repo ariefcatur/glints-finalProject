@@ -8,6 +8,7 @@ import Profile from './components/Profile.js'
 import Footer from './components/Footer.js'
 import TopMenu from "./pages/TopMenu";
 import Logout from "./pages/Logout";
+import Calendar from "./components/Calendar.js"
 
 
 
@@ -15,21 +16,6 @@ function App(){
   return(
     <>
      <TopMenu />
-     {/* <TopUser /> */}
-          {/* <ul>
-            <li>
-              <Link to="/Dashboard"> Dashboard </Link>
-            </li>
-            <li>
-              <Link to="/History"> History </Link>
-            </li>
-            <li> 
-              <Link to="/Profile"> Profile </Link>
-            </li>
-            <li>
-              <Link to="/Home"> Home </Link>
-            </li>
-          </ul> */}
     <Switch>
       <Route path ="/dashboard">
         <Dashboard />
@@ -39,6 +25,9 @@ function App(){
       </Route>
       <Route path ="/profile">
         <Profile />
+      </Route>
+      <Route path ="/calendar">
+        <Calendar />
       </Route>
       <Route path ="/logout">
         <Logout />

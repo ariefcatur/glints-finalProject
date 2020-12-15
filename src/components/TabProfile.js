@@ -1,31 +1,23 @@
-import React, { useState } from "react";
-import {
-  TabContent,
-  TabPane,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-  Row,
-  Col,
-  Card,
-} from "reactstrap";
-import TopUp from './TopUp';
-import { CreditCard, Activity, DollarSign, ShoppingCart } from "react-feather";
-import classnames from "classnames";
-import "./Profile.css";
-import AddCard from "./AddCard";
-import AddExpenses from "./AddExpenses";
-import ShowExpenses from "./ShowExpense";
-import CheckStatus from "./Status";
-// import ShowCard from './ShowCard'
+import React, { useState } from 'react';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Container, Row, Col, Card } from 'reactstrap';
+import { CreditCard, Activity, DollarSign } from 'react-feather'
+import classnames from 'classnames';
+import './Profile.css'
+import AddCard from './AddCard'
+import AddExpenses from './AddExpenses'
+import ShowExpenses from './ShowExpense'
+import ShowCard from './ShowCard'
+import CheckStatus from './Status'
+import Debt from './Debt'
+import {ShoppingCart} from 'react-feather'
+
 
 const TabProfile = () => {
-  const [activeTab, setActiveTab] = useState("1");
+  const [activeTab, setActiveTab] = useState('1');
 
-  const toggle = (tab) => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
+  const toggle = tab => {
+    if(activeTab !== tab) setActiveTab(tab);
+  }
 
   return (
     <Container fluid style={{backgroundColor:"white", paddingTop:"20px", minHeight:"700px"}}>
@@ -121,14 +113,15 @@ const TabProfile = () => {
             <Container>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
             </Container>
-          </Row>
-          <Row>
-            <Container className="rowright"></Container>
-          </Row>
+            <Debt/>
+        </Row>
+        {/* <Row>
+        {/* <ShowSubscriptions/>     */}
+        {/* </Row>  */}
         </TabPane>
       </TabContent>
     </Container>
   );
-};
+}
 
 export default TabProfile;

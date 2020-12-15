@@ -19,6 +19,8 @@ import {
   Label,
   Input
 } from "reactstrap";
+import { X, Edit3 } from "react-feather";
+import './Profile.css'
 
 const Debt = () =>{
     const [debt, setDebt] = useState([]);
@@ -70,7 +72,16 @@ const Debt = () =>{
       .catch((error)=>{
         console.log(error)
       })
-
+    }
+    const handleDelete =(id)=>{
+      axios
+      .delete(`http://3.0.91.163/debts/delete?id=${id}`, {
+        headers: { Authorization:`Bearer ${token}`}
+      })
+      .then((res)=>{
+        console.log(res);
+        return window.location.reload();
+      })
     }
     return (
     <Container>
@@ -158,27 +169,52 @@ const Debt = () =>{
           </Form>
         </ModalBody>
       </Modal>
-        <Row>
-        {debt.map((debts)=>(
-        <Col xs="12" key={debts.id}>
-        <Table hover>
-            <thead>
+        <Row className="tables"> 
+        <Col xs="12">
+        <Table hover style={{backgroundColor:"whitesmoke"}}>
+            <thead className="text-center" style={{backgroundColor:"#BA8FF2"}}> 
                 <tr>
-                    <th>Date</th>
-                    <th>Dept Type</th>
+                    
+                    <th>Due Date</th>
+                    <th>Name</th>
+                    <th>Dept Description</th>
+                    <th>type</th>
                     <th>Cost</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+              {debt.map((debts)=>(
                 <tr>
-                    <td>{debts.dueDate}</td>
-                    <td>{debts.name},{debts.description}</td>
-                    <td>{debts.amount}</td>
-                </tr>
+                <td>{debts.dueDate}</td>
+                <td>{debts.name}</td>
+                <td>{debts.description}</td>
+                <td>{debts.type}</td>
+                <td>{debts.amount}</td>
+                <td className="text-center">
+                <Button
+                  size="sm"
+                  style={{color: "white", backgroundColor: "#8F48EA", marginRight:"5px"}}
+                  onClick={toggle}>
+                  <Edit3 size={15}/>
+                </Button>
+                <Button
+                      size="sm"
+                      onClick={() => {if(window.confirm('are you sure you wish to unsubscribe this itme?'))
+                        handleDelete(debts.id);
+                      }}
+                      color="danger"
+                      outline
+                    >
+                      <X size={15} />
+                    </Button>
+                </td>
+            </tr>
+              ))}
+                
             </tbody>
         </Table>
         </Col>
-        ))}   
         </Row>
     </Container>
 

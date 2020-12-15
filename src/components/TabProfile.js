@@ -9,6 +9,7 @@ import ShowExpenses from './ShowExpense'
 import ShowCard from './ShowCard'
 import CheckStatus from './Status'
 import Debt from './Debt'
+import {ShoppingCart} from 'react-feather'
 
 
 const TabProfile = () => {

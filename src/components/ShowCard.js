@@ -15,7 +15,7 @@ import {Trash2} from 'react-feather';
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
 
-  const urlCard = "http://3.0.91.163/card";
+  const urlCard = " http://52.148.70.171/card";
 
   const token = Cookies.get("token");
 

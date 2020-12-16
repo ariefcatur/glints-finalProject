@@ -17,11 +17,11 @@ import {
 
 const AddExpenses = (props) => {
 
-  const urlExpense = "http://3.0.91.163/expense";
+  const urlExpense = " http://52.148.70.171/expense";
 
-  const urlCard = "http://3.0.91.163/card";
+  const urlCard = " http://52.148.70.171/card";
 
-  const urlCategories = "http://3.0.91.163/categories";
+  const urlCategories = " http://52.148.70.171/categories";
 
   const token = Cookies.get("token");
 
@@ -72,7 +72,7 @@ const AddExpenses = (props) => {
       cardId: cardId,
       categoryId: categoryId
     };
-    // console.log(data);
+    
     axios
       .post(urlExpense, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -98,7 +98,7 @@ const AddExpenses = (props) => {
         style={{ color: "white", backgroundColor: "#8F48EA" }}
         onClick={toggle}
       >
-      <strong>Add Expense </strong>
+      <strong>New Expense </strong>
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>

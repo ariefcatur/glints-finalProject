@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Container, Row, Col, Card } from 'reactstrap';
-import { CreditCard, Activity, DollarSign } from 'react-feather'
+import { CreditCard, DollarSign } from 'react-feather'
 import classnames from 'classnames';
 import './Profile.css'
 import AddCard from './AddCard'
 import AddExpenses from './AddExpenses'
 import ShowExpenses from './ShowExpense'
-import ShowCard from './ShowCard'
 import CheckStatus from './Status'
-import Debt from './Debt'
+import Debt from './AddDebt'
+import ShowDebt from './ShowDebt'
 import {ShoppingCart} from 'react-feather'
 
 
@@ -22,7 +22,7 @@ const TabProfile = () => {
   return (
     <Container fluid style={{backgroundColor:"white", paddingTop:"20px", minHeight:"700px"}}>
       <Nav>
-        <Col md="3">
+        <Col md="4">
           <Card className="tabs">
             <NavItem>
               <NavLink
@@ -42,7 +42,7 @@ const TabProfile = () => {
             </NavItem>
           </Card>
         </Col>
-        <Col sm="3" className="flex">
+        <Col sm="4" className="flex">
           <Card className="tabs">
             <NavItem>
               <NavLink
@@ -62,7 +62,7 @@ const TabProfile = () => {
             </NavItem>
           </Card>
         </Col>
-        <Col sm="3">
+        <Col sm="4">
           <Card className="tabs">
             <NavItem>
               <NavLink
@@ -88,7 +88,7 @@ const TabProfile = () => {
           <Row className="rowright">
             <Container>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
-              <AddCard />
+              <AddCard/>
             </Container>
           </Row>
           <Row>
@@ -113,10 +113,8 @@ const TabProfile = () => {
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
             </Container>
             <Debt/>
+            <ShowDebt/>
         </Row>
-        {/* <Row>
-        {/* <ShowSubscriptions/>     */}
-        {/* </Row>  */}
         </TabPane>
       </TabContent>
     </Container>

@@ -27,7 +27,7 @@ const Profile = () => {
 
     axios
       .get(
-        `http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/user/`, {
+        ` http://52.148.70.171/auth/user/`, {
             headers: {Authorization : `Bearer ${token}`}
         }
       )

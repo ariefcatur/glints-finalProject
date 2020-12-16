@@ -27,7 +27,7 @@ import {faAd, faCoins, faDigitalTachograph, faClipboard} from '@fortawesome/free
 import axios from 'axios';
 
 const Home = () =>{
-    const urlSubscribe = 'http://3.0.91.163/service';
+    const urlSubscribe = ' http://52.148.70.171/service';
     const [subscribes, setSubscribes] = useState([]);
     const [activeTab, setActiveTab] = useState('1');
     const [loading, setLoading] = useState(false);

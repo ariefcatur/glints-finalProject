@@ -50,7 +50,7 @@ const SignUp = (props) => {
       type: "alert-warning"
     })
     const urlSignUp =
-      " http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/register";
+      "  http://52.148.70.171/auth/register";
     const data = {
       fullName: fullName,
       email: email,
@@ -76,7 +76,7 @@ const SignUp = (props) => {
     e.preventDefault();
 
     const urlSignIn =
-      "http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/auth/login";
+      " http://52.148.70.171/auth/login";
     const bodyData = {
       email: email,
       password: password,

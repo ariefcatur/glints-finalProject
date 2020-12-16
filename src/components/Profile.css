@@ -1,92 +1,143 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 
 body {
-    font-family: 'Josefin Sans', cursive;
-    background-color:#e5e5e5;
-   
+  font-family: "Josefin Sans", cursive;
+  background-color: #e5e5e5;
 }
 
 .line {
-    border-top: #8F48EA solid 1px;
+  border-top: #8f48ea solid 1px;
 }
 
 .imgProfile {
-    border-radius: 100%;
-    width: 25%;
-    margin-bottom: 2%;
-    text-align: center;
-    border: #8F48EA solid 1px;
+  border-radius: 100%;
+  width: 25%;
+  margin-bottom: 2%;
+  text-align: center;
+  border: #8f48ea solid 1px;
 }
 
 .plus {
-    text-align: right;
-    margin: 0;
+  text-align: right;
+  margin: 0;
 }
 
 .profile {
-    padding: 2%;
-    color: #222222;
-    margin-top: 2%;
+  padding: 2%;
+  color: #222222;
+  margin-top: 2%;
 }
 
 .row {
-    padding: 1%;
-    margin-bottom: 2%;
-    text-align: left;
+  padding: 1%;
+  margin-bottom: 2%;
+  text-align: left;
 }
 
 .rowImg {
-    padding: 1%;
-    margin-bottom: 2%;
-    text-align: center;
+  padding: 1%;
+  margin-bottom: 2%;
+  text-align: center;
 }
 
 .rowright {
-    text-align: right;
+  text-align: right;
 }
 
 .const {
-    min-height: 250px;
-    border-radius: 0.7%;
-    padding: 2%;
-    margin-right: 1%;
-    margin-bottom: 2%;
-    border: #8F48EA 0.5px solid;
+  min-height: 250px;
+  border-radius: 0.7%;
+  padding: 2%;
+  margin-right: 1%;
+  margin-bottom: 2%;
+  border: #8f48ea 0.5px solid;
 }
 
 .nav-link.active {
-    color: #fff!important;
-    font-size: medium;
-    background-color: #BA8FF2!important;
+  color: #fff !important;
+  font-size: medium;
+  background-color: #ba8ff2 !important;
 }
 
 .expense {
-    bottom: 20px;
-    right: 80px;
+  bottom: 20px;
+  right: 80px;
 }
-.nav-link{
-    color: WHITE;
-    height :80px;
-    text-decoration: none;
-  }
-  .tabs{
-    background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
-  }
-  .icon{
-    font-size: 35px;
-    padding: -1px 0;
-    text-align: center;
-    }
+.nav-link {
+  color: WHITE;
+  height: 80px;
+  text-decoration: none;
+}
+.tabs {
+  background: linear-gradient(
+    269.56deg,
+    rgba(237, 223, 223, 0.21) -4.24%,
+    #fafafa 80.53%
+  );
+  cursor: pointer;
+}
 
-    .nav-link h4{
-        padding: 20px 0;
-        text-align: center;
-        font-size: 20px;
-    }
+.icon {
+  font-size: 35px;
+  padding: -1px 0;
+  text-align: center;
+}
+
+.nav-link h4 {
+  padding: 20px 0;
+  text-align: center;
+  font-size: 20px;
+}
 
 .tables {
-    flex: 1;
-    justify-content: center;
-    align-items: center;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
 
+.cardType {
+  background-image: url("../assets/mastercard.png");
+  background-size: 30%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.subs {
+  background-image: url("../assets/empty.png");
+  background-size: 45%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 80%;
+}
+
+.subs2 {
+  background-image: url("../assets/glass.png");
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 60%;
+}
+
+.subs3 {
+  background-image: url("../assets/expense.png");
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 70%;
+}
+
+.subs4 {
+  background-image: url("../assets/card.png");
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 60%;
+}
+
+.subs5 {
+  background-image: url("../assets/debt2.png");
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 60%;
 }

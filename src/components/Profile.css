@@ -123,12 +123,20 @@ body {
   background-size: 40%;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 60%;
+  opacity: 70%;
 }
 
 .subs4 {
-  background-image: url("../assets/expense.png");
-  background-size: 30%;
+  background-image: url("../assets/card.png");
+  background-size: 40%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 60%;
+}
+
+.subs5 {
+  background-image: url("../assets/debt2.png");
+  background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
   opacity: 60%;

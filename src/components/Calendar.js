@@ -17,7 +17,7 @@ const Calendar=()=>{
     useEffect(()=>{
         setLoading(true);
         axios
-        .get('http://3.0.91.163/subscription', {
+        .get(' http://52.148.70.171/subscription', {
             headers: {
                 Authorization: `Bearer ${token}`
             }

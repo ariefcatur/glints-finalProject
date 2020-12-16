@@ -15,7 +15,7 @@ const ShowSubscriptions = () => {
   const [results, setResults] = useState("");
 
   const apiSubs =
-    "http://ec2-3-0-91-163.ap-southeast-1.compute.amazonaws.com/subscription";
+    " http://52.148.70.171/subscription";
 
   const token = Cookies.get("token");
 

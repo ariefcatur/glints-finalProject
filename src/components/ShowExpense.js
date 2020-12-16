@@ -9,7 +9,7 @@ import "./Profile.css";
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
 
-  const urlExpense = "http://3.0.91.163/expense";
+  const urlExpense = " http://52.148.70.171/expense";
 
   const token = Cookies.get("token");
 
@@ -42,7 +42,6 @@ const ShowExpenses = () => {
   return (
     <>
       <Row className="tables">
-        {/* <Col> */}
           <Container>
             {results.length !== 0 ? (
               results.map((result) => (
@@ -88,12 +87,12 @@ const ShowExpenses = () => {
                     <strong>No expense found.</strong>
                   </i>
                 </p>
-                <Col className="subs4">
+                <Col className="subs3">
                   <img
                     src={expense}
                     alt=""
                     style={{
-                      width: "40%",
+                      width: "50%",
                       opacity: "0%",
                       position: "center",
                     }}
@@ -102,7 +101,6 @@ const ShowExpenses = () => {
               </Container>
             )}
           </Container>
-        {/* </Col> */}
       </Row>
     </>
   );

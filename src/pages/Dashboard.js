@@ -74,7 +74,7 @@ import Cookies from 'js-cookie';
 
 
 const Dashboard = () =>{ 
-    const urlSubscribe = 'http://3.0.91.163/service'
+    const urlSubscribe = ' http://52.148.70.171/service'
     const [subscribes, setSubscribes] = useState([]);
     const [modal, setModal] = useState(false);
     const [isOpen, setIsOpen] = useState(true);
@@ -86,15 +86,15 @@ const Dashboard = () =>{
     const [serviceId, setServiceId] = useState([])
     const [card,setCard] = useState([])
     const [cardId, setCardId] = useState(null)
-    const urlCard = 'http://3.0.91.163/card'
+    const urlCard = ' http://52.148.70.171/card'
     const [chartData, setChartData] = useState({});
     const [dates, setDates] = useState([]);
     const [totals, setTotals] = useState([]);
-    const urlMonth='http://3.0.91.163/chart/monthly'
+    const urlMonth=' http://52.148.70.171/chart/monthly'
     const [chartWeek, setChartWeek] = useState({});
     const [weekMonth, setWeekMonth] = useState([]);
     const [totalWeek, setTotalWeek] = useState([]);
-    const urlWeek='http://3.0.91.163/chart/weekly'
+    const urlWeek=' http://52.148.70.171/chart/weekly'
 
     const toggle = () =>setModal(!modal);
     const collapse = () => {setIsOpen(true); setIsOpenWeek(false)}
@@ -106,6 +106,7 @@ const Dashboard = () =>{
 
         setLoading(true);
         axios.get(urlSubscribe).then((res) => {
+          console.log(res.data);
           setSubscribes(res.data);
           setLoading(false);
         })
@@ -117,7 +118,7 @@ const Dashboard = () =>{
     
     const subscribeDetails = (id) => {
         setLoading(true);
-        const url =`http://3.0.91.163/service?id=${id}`
+        const url =` http://52.148.70.171/service?id=${id}`
         axios.get(url).then((res)=>{
             console.log("subscribe id", res.data)
             setSubscribeId(res.data);
@@ -143,7 +144,7 @@ const Dashboard = () =>{
     
     const subscribtion = (e)=>{
         e.preventDefault();
-        const url =`http://3.0.91.163/subscription/${serviceId}/?cardId=${cardId}`
+        const url =` http://52.148.70.171/subscription/${serviceId}/?cardId=${cardId}`
         // console.log("service Id ", serviceId, "cardId ", cardId)
         // console.log(token)
         axios

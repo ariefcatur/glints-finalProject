@@ -310,42 +310,6 @@ const History = () => {
                   </Container>
                 )}
               </Row>
-              {/* <Modal isOpen={modal} toggle={toggle} >
-                        <ModalHeader toggle={toggle}> 
-                        </ModalHeader>
-                        <ModalBody>
-                        {subscribeId.map((subscribe)=>(
-                            <Col key={subscribe.id}>
-                            <CardImg
-                                top
-                                height="300px"
-                                src={subscribe.picture}
-                                alt="subscribtion"
-                            /> 
-                        <CardBody>
-                            <CardText>
-                                <h5>
-                                    Description: <br/>{subscribe.description}
-                                </h5>
-                                <h5>
-                                    Cost: {subscribe.cost}
-                                </h5>   
-                            </CardText>
-                            <Row>
-                            <Button
-                                to=""
-                                className="btn btn-primary btn-block"
-                                id="button"
-                            >
-                                Unsubscribe
-                            </Button>
-                            </Row>
-                            </CardBody>
-                                </Col>
-                            ))}
-                            
-                    </ModalBody>
-                </Modal> */}
             </Container>
           </Col>
 
@@ -383,7 +347,7 @@ const History = () => {
                 marginBottom: "100px",
               }}
             >
-              <h4>Subscribe</h4>
+              <h4>Subscriptions</h4>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
               {history.length !== 0 ? (
                 history.map((subscribtion, i) => (
@@ -428,7 +392,7 @@ const History = () => {
                   </Col>
                 </Container>
               )}
-              <h4>Expense</h4>
+              <h4>Expenses</h4>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
               {expense.length !== 0
                 ? expense.map((expenses, i) => (

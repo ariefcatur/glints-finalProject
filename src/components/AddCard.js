@@ -17,7 +17,7 @@ import {
 
 const AddCard = (props) => {
 
-  const urlAddCard = "http://3.0.91.163/card";
+  const urlAddCard = " http://52.148.70.171/card";
 
   const { className } = props;
 
@@ -71,7 +71,7 @@ const AddCard = (props) => {
         style={{color: "white", backgroundColor: "#8F48EA"}}
         onClick={toggle}>
         {/* <Plus size={15}/>  */}
-        <strong>Add Card</strong>
+        <strong>New Card</strong>
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>

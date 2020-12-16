@@ -16,7 +16,7 @@ import {
 const TopUp = (props) => {
   const { className } = props;
 
-  const urlCard = "http://3.0.91.163/card";
+  const urlCard = " http://52.148.70.171/card";
 
   const [results, setResults] = useState("");
   const [saldo, setSaldo] = useState(null);
@@ -38,13 +38,13 @@ const TopUp = (props) => {
       });
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     const data = {
       saldo: saldo,
     };
 
     axios
-      .patch(`http://3.0.91.163/card?cardNumber=${cardNumber}`, data, {
+      .patch(`http://52.148.70.171/card?cardNumber=${cardNumber}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -66,7 +66,7 @@ const TopUp = (props) => {
         style={{ color: "white", backgroundColor: "#8F48EA" }}
         onClick={toggle}
       >
-        <strong>Top-up</strong>
+        <strong>Top-up Card</strong>
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>

@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 
 const Edit = (props) => {
-  const urlEditProfile = "http://3.0.91.163/auth/update/";
+  const urlEditProfile = " http://52.148.70.171/auth/update/";
 
   const { className } = props;
 

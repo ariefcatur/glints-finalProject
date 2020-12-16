@@ -35,7 +35,7 @@ const Calendar=()=>{
         })
     }, [])
 
-    let checkComingMonth = upComing.filter((e)=> e.date.substr(5,2)== month);
+    let checkComingMonth = upComing.filter((e)=> e.date.substr(5,2) == month);
     checkComingMonth.sort((a,b)=>{
         if (a.date < b.date) return -1;
         return a.date > b.date ? 1 : 0;

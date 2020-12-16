@@ -23,16 +23,28 @@ const Bells = () => {
     useEffect(()=>{
         setLoading(true);
         axios
-        .get('http://3.0.91.163/subscription', {
-            headers: { Authorization: `Bearer ${token}`}
+        .get('http://52.148.70.171/subscription', {
+            headers: { Authorization: `Bearer ${token}`} 
         })
         .then((res)=>{
             setNotif(res.data)
         })
+        console.log("setNotif", setNotif)
     }, [])
 
-    let checkDueDate = notif.filter((e)=>e.date.substr(0, 10) ==date)
-    console.log(checkDueDate)
+    let tanggal = new Date();
+    
+    const maxDate = new Date(tanggal)
+    maxDate.setDate(maxDate.getDate() + 3)
+    //console.log("tanggal")
+    let checkDueDate  = notif.filter((e)=>new Date(e.dueDate) <= maxDate)
+    //console.log("cek due date", checkDueDate)
+    // if(tanggal<checkDueDate){
+    //     console.log("tampilkan notif")
+    // }
+    // else{
+    //     console.log("notif ngak ada")
+    // }
     return (
         <div>
             <div id="Popover1">
@@ -40,7 +52,7 @@ const Bells = () => {
             </div>
             <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
             <PopoverHeader>Notification</PopoverHeader>
-            {notif.map((notif)=>(
+            {checkDueDate.map((notif)=>(
                 <PopoverBody>
                 <h3>{notif.service.name}</h3>
                 <h3>{notif.dueDate}</h3>

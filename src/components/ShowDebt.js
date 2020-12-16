@@ -15,7 +15,7 @@ import debtPic from "../assets/debt2.png";
 const ShowDebt = () => {
   const [debt, setDebt] = useState([]);
 
-  const url = "http://3.0.91.163/debts/notes";
+  const url = "http://52.148.70.171/debts/notes";
   const token = Cookies.get("token");
 
   useEffect(() => {

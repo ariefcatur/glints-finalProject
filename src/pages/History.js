@@ -24,6 +24,7 @@ import empty from "../assets/empty.png";
 import glass from "../assets/glass.png";
 import expense from "../assets/expense.png"
 import "../components/Profile.css";
+import Moment from 'react-moment';
 
 const options = {
   scales: {
@@ -54,16 +55,6 @@ const History = () => {
   const [dates, setDates] = useState([]);
   const [totals, setTotals] = useState([]);
   const [totalHistory, setTotalHistory] = useState({});
-<<<<<<< HEAD
-  const urlMonth = " http://52.148.70.171/chart/monthly";
-  const urlWeek = " http://52.148.70.171/chart/weekly";
-
-  // console.log(token)
-
-  const urlHistory = " http://52.148.70.171/subscription";
-  const urlExpense = " http://52.148.70.171/expense";
-  const urlTotalHistory = " http://52.148.70.171/history";
-=======
   const urlMonth = "http://52.148.70.171/chart/monthly";
   const urlWeek = "http://52.148.70.171/chart/weekly";
 
@@ -72,7 +63,6 @@ const History = () => {
   const urlHistory = "http://52.148.70.171/subscription";
   const urlExpense = "http://52.148.70.171/expense";
   const urlTotalHistory = "http://52.148.70.171/history";
->>>>>>> b0e7636f7e56e1e86aa1dc06bcc2a772368b605f
 
   const toggle = () => setModal(!modal);
   const collapse = () => {
@@ -355,7 +345,7 @@ const History = () => {
                 position: "relative",
                 height: "700px",
                 overflow: "scroll",
-                marginBottom: "100px",
+                
               }}
             >
               <h4>Subscriptions</h4>
@@ -367,15 +357,17 @@ const History = () => {
                     style={{ marginTop: "20px", backgroundColor: "#f6f9fc", marginBottom:"20px" }}
                   >
                     <Row>
-                      <Col xs="6">
+                      <Col xs="8">
                         <CardTitle className="text-dark font-weight">
                           <h6>
-                            {subscribtion.service.name} <br />{" "}
-                            {subscribtion.repeat}
-                          </h6>
+                           
+                          {subscribtion.repeat} : {subscribtion.service.name} </h6>
+                          <Moment format="D MMM YYYY"><h6>{subscribtion.startDate}
+                         
+                          </h6></Moment>
                         </CardTitle>
                       </Col>
-                      <Col xs="6">
+                      <Col xs="4">
                         <h6 style={{ float: "right" }}>
                           IDR {subscribtion.service.cost}{" "}
                         </h6>
@@ -419,11 +411,16 @@ const History = () => {
                         <Col xs="6" style={{ paddingTop: "10px" }}>
                           <CardTitle
                             tag="h6"
-                            className="text-dark font-weight-bold"
+                            className="text-dark font-weight"
                           >
+                            
                             <h6>
-                              {expenses.title} <br /> {expenses.purchaseDate}
+                              {expenses.title} </h6> 
+                            <Moment format="D MMM YYYY">
+                            <h6> {expenses.purchaseDate} 
                             </h6>
+                            </Moment>
+                           
                           </CardTitle>
                         </Col>
                         <Col xs="6">

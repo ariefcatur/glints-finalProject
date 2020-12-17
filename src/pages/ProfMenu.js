@@ -3,15 +3,10 @@ import React, { useState } from 'react';
 import { Dropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
-
-
-
 const ProfMenu = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
-
-  
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
@@ -23,8 +18,8 @@ const ProfMenu = () => {
        <img src={profile}></img>
       </DropdownToggle>
       <DropdownMenu right>
-        <DropdownItem> <Link to="/profile">View Profile</Link></DropdownItem>
-        <DropdownItem> <Link to="/logout">Log Out</Link></DropdownItem>
+        <Link to="/profile"><DropdownItem>View Profile</DropdownItem></Link>
+        <Link to="/logout"><DropdownItem> Log Out</DropdownItem></Link>
       </DropdownMenu>
     </Dropdown>
   );

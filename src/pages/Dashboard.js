@@ -306,6 +306,7 @@ const Dashboard = () => {
                   height="170px"
                   src={subscribes.picture}
                   alt="subscribtion"
+                  style={{border:"0.5px solid grey"}}
                 />
                 <CardBody className="bg-dangers">
                   <CardTitle
@@ -339,6 +340,7 @@ const Dashboard = () => {
                     top
                     width="15%"
                     src={subscribe.picture}
+                    style={{border:"0.5px solid grey"}}
                     alt="subscribtion"
                   />
                   <CardBody>

@@ -18,8 +18,8 @@ import app from "./img/app.svg";
 import chart from "./img/Group 11.svg";
 import { checkLogin } from "../Helper";
 import ProfMenu from "./ProfMenu";
-import Lendar from "./img/calendar.svg";
-import Calendar from "../components/Calendar";
+import { Calendar, PieChart } from 'react-feather';
+import CalendarEvent from "../components/Calendar";
 
 import Bells from "./Bells";
 
@@ -66,19 +66,19 @@ const TopMenu = (props) => {
               <ul id="Menu" className="liquid1">
                 <li>
                   <Link to="/history">
-                    <img src={chart}></img>
+                    <PieChart style={{color:"#8f48ea"}}/>
                   </Link>
                 </li>
                 <li>
                   <Link to="/Calendar">
-                    <img src={Lendar}></img>
+                    <Calendar style={{color:"#8f48ea"}}/>
                   </Link>
                 </li>
                 <li>
                   <Bells />
                 </li>
                 <li>
-                  <ProfMenu />
+                  <ProfMenu/>
                 </li>
               </ul>
             </div>

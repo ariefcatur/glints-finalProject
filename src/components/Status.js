@@ -246,7 +246,7 @@ function CheckStatus() {
                   </Card>
                 </Col>
               );
-            } else if (result.saldo <= 300000 && result.cardType === "Master") {
+            } else if (result.saldo < 500000 && result.cardType === "Master") {
               return (
                 <Col md={4}>
                   <Card
@@ -291,7 +291,7 @@ function CheckStatus() {
                   </Card>
                 </Col>
               );
-            } else if (result.saldo <= 300000 && result.cardType === "Visa") {
+            } else if (result.saldo < 500000 && result.cardType === "Visa") {
               return (
                 <Col md={4}>
                   <Card

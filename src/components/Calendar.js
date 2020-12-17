@@ -7,7 +7,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const Calendar = () => {
+const CalendarEvent = () => {
   const [upComing, setUpComing] = useState([]);
   const [month, setMonth] = useState("");
   const [loading, setLoading] = useState(false);
@@ -70,7 +70,7 @@ const Calendar = () => {
               </Card>
             </Col>
             <Col sm="4">
-              <Card style={{ padding: "20px", minHeight: "500px" }}>
+              <Card style={{ padding: "20px", minHeight: "605px" }}>
                 <h4
                   style={{
                     color: "#222222",
@@ -89,16 +89,9 @@ const Calendar = () => {
                   </h5>
                 ) : (
                   checkComingMonth.map((x) => (
-                    <>
-                      <div className="upcomingCard row">
-                        <div className="upcoming card">
-                          <h2 className="text-center">{x.date.substr(8, 2)}</h2>
-                        </div>
-                        <div className="upcomingDetail card">
-                          <h2 className="">{x.title}</h2>
-                        </div>
-                      </div>
-                    </>
+                    <p className="text-left" style={{marginBottom:"20px"}}>
+                      <b>{x.title}</b> service will be due on the <b>{x.date.substr(8, 2)}</b>th of this month.
+                    </p>
                   ))
                 )}
               </Card>
@@ -109,4 +102,4 @@ const Calendar = () => {
     </>
   );
 };
-export default Calendar;
+export default CalendarEvent;

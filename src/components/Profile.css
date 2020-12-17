@@ -54,7 +54,7 @@ body {
 }
 
 .nav-link.active {
-  color: #fff !important;
+  color: #fff!important;
   font-size: medium;
   background-color: #ba8ff2 !important;
 }

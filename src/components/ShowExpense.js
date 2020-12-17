@@ -5,6 +5,9 @@ import Cookies from "js-cookie";
 import { X } from "react-feather";
 import expense from "../assets/expense.png";
 import "./Profile.css";
+import {Element} from "react-scroll"
+import Moment from 'react-moment';
+
 
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
@@ -44,6 +47,16 @@ const ShowExpenses = () => {
       <Row className="tables">
         <Col xs="12">
           <Table hover style={{ backgroundColor: "whitesmoke" }}>
+          <Element
+              ClassName="element"
+              id="scroll-container"
+              style={{
+                position: "relative",
+                height: "500px",
+                overflow: "scroll",
+                
+              }}
+            >
             <thead
               className="text-center"
               style={{ backgroundColor: "#BA8FF2" }}
@@ -56,11 +69,12 @@ const ShowExpenses = () => {
                 <th>Action</th>
               </tr>
             </thead>
+            
             {results.length !== 0 ? (
               results.map((result) => (
                 <tbody>
                   <tr>
-                    <td className="text-center">{result.purchaseDate}</td>
+                    <td className="text-center"><Moment format="D MMM YYYY" >{result.purchaseDate}</Moment></td>
                     <td className="text-center" style={{ width: "50%" }}>{result.title}</td>
                     <td className="text-center">IDR</td>
                     <td className="text-center">{result.total}</td>
@@ -78,8 +92,10 @@ const ShowExpenses = () => {
                     </td>
                   </tr>
                 </tbody>
+                
               ))
-            ) : (
+            
+              )  : (
               <tbody>
                 <tr>
                   <td colSpan="6">
@@ -105,6 +121,7 @@ const ShowExpenses = () => {
                 </tr>
               </tbody>
             )}
+            </Element>
           </Table>
         </Col>
       </Row>

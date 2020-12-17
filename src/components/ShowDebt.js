@@ -18,6 +18,8 @@ import {
 import { X, Edit3 } from "react-feather";
 import "./Profile.css";
 import debtPic from "../assets/debt2.png";
+import { Element } from "react-scroll";
+import Moment from 'react-moment';
 
 const ShowDebt = () => {
   const [debt, setDebt] = useState([]);
@@ -85,10 +87,20 @@ const ShowDebt = () => {
     <Container>
       <Row className="tables">
         <Col xs="12">
-          <Table hover style={{ backgroundColor: "whitesmoke" }}>
+          <Table hover style={{ backgroundColor: "whitesmoke" , width:"100%"}}>
+          <Element
+              ClassName="element"
+              id="scroll-container"
+              style={{
+                position: "relative",
+                height: "500px",
+                overflow: "scroll",
+                
+              }}
+            >
             <thead
               className="text-center"
-              style={{ backgroundColor: "#BA8FF2" }}
+              style={{ backgroundColor: "#BA8FF2", width:"100%" }}
             >
               <tr>
                 <th>Due Date</th>
@@ -96,14 +108,16 @@ const ShowDebt = () => {
                 <th>Description</th>
                 <th>Type</th>
                 <th>Cost</th>
-                <th>Action</th>
+                <th>Edit </th>
+                
+                <th>Dellete </th>
               </tr>
             </thead>
             {debt.length !== 0 ? (
               debt.map((debts) => (
                 <tbody style={{ justifyContent: "center" }}>
                   <tr className="text-center">
-                    <td style={{ paddingTop: "16px" }}>{debts.dueDate}</td>
+                   <td style={{ paddingTop: "16px" }}> <Moment format="D MMM YYYY">{debts.dueDate}</Moment></td>
                     <td style={{ paddingTop: "16px" }}>{debts.name}</td>
                     <td style={{ paddingTop: "16px" }}>{debts.description}</td>
                     <td style={{ paddingTop: "16px" }}>{debts.type}</td>
@@ -112,12 +126,13 @@ const ShowDebt = () => {
                       <Row style={{ justifyContent: "center" }}>
                         <Button
                           size="sm"
-                          className="mr-2 mb-sm-0"
                           style={{ color: "white", backgroundColor: "#8F48EA" }}
                           onClick={toggle}
                         >
                           <Edit3 size={15} />
                         </Button>
+                        </Row>
+                        </td>
                         <Modal
                           isOpen={modal}
                           toggle={toggle}
@@ -199,10 +214,11 @@ const ShowDebt = () => {
                             </Form>
                           </ModalBody>
                         </Modal>
-
+                        
+                        <td>
+                          <Row style={{ justifyContent: "center" }}>
                         <Button
                           size="sm"
-                          className="mr-2 mb-sm-0"
                           onClick={() => {
                             if (
                               window.confirm(
@@ -247,6 +263,7 @@ const ShowDebt = () => {
                 </tr>
               </tbody>
             )}
+            </Element>
           </Table>
         </Col>
       </Row>

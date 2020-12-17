@@ -164,7 +164,7 @@ const Dashboard = () =>{
               <Spinner type="grow" color="warning" />
             </Row>
             <Row className="justify-content-center mt-3 font-weight-bold">
-              Sedang memuat data...
+              Loading...
             </Row>
           </div>
         );

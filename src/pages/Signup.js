@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import { 
-  Modal, 
-  ModalHeader, 
-  ModalBody, 
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
   Button,
   Form,
   FormGroup,
   Label,
   Input,
- } from "reactstrap";
+  Alert
+} from "reactstrap";
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
@@ -41,7 +42,7 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
   const [message, setMessage] = useState();
-
+ 
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
 
@@ -49,34 +50,36 @@ const SignUp = (props) => {
       data: "Registration is in progress...",
       type: "alert-warning"
     })
-    const urlSignUp =
-      "  http://52.148.70.171/auth/register";
+    const urlSignUp = "  http://52.148.70.171/auth/register";
     const data = {
       fullName: fullName,
       email: email,
       password: password,
     };
 
-    axios.post(urlSignUp, data)
-    .then((ress) => { 
+    axios.post(urlSignUp, data).then((ress) => {
       // console.log(ress.bodyData);
       history.push(toggleSignIn);
-      // <Alert color="primary">Mantav</Alert>;
     })
-    // .then((error, data)=>{
-    //   // const hasError = "error" in data && data.error != null;
-    //   setMessage({
-    //     data: error || "Registered Successfully",
-    //     type: error ? "alert-danger" : "alert-success",
-    //   })
-    // })
+
+  //   axios.post(urlSignUp, data)
+  //     .then(function(response) {
+  //       if(response.status === 200){
+  //         return(<Alert color="success">Your Registration is Complete</Alert>)
+  //         })
+  //         history.push(toggleSignIn);
+  //       } else{
+  //         return(<Alert color="danger">Failed, Please try again.</Alert>)
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
   };
 
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
 
-    const urlSignIn =
-      " http://52.148.70.171/auth/login";
+    const urlSignIn = " http://52.148.70.171/auth/login";
     const bodyData = {
       email: email,
       password: password,
@@ -99,13 +102,16 @@ const SignUp = (props) => {
     <div>
       <div className="SignUpModal">
         <div className="navigation">
-          <a onClick={toggleSignUp}>{buttonLabel}Sign Up</a>
+          <Button onClick={toggleSignUp} variant="dark">
+            {buttonLabel}Sign Up
+          </Button>
+          {/* <a >{buttonLabel}Sign Up</a> */}
         </div>
 
         <Modal isOpen={modalSignUp} toggle={toggleSignUp} className={className}>
           <ModalHeader toggle={toggleSignUp}>
             <div className="ModalHeader">
-              <p className="SignTitle">Sign up for new account.</p>
+              <h3 className="section">Sign Up</h3>
             </div>
           </ModalHeader>
           <ModalBody>
@@ -132,6 +138,7 @@ const SignUp = (props) => {
                   placeholder="Enter email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                
               </FormGroup>
               <FormGroup className="form-group">
                 <Label id="SignUp">Password</Label>
@@ -168,8 +175,8 @@ const SignUp = (props) => {
       <div className="SignInModal">
         <Modal isOpen={modalSignIn} toggle={toggleSignIn} className={className}>
           <ModalHeader toggle={toggleSignIn}>
-          <div className="ModalHeader">
-              <p className="SignTitle">Please login to continue.</p>
+            <div className="ModalHeader">
+              <h3 className="section">Login</h3>
             </div>
           </ModalHeader>
           <ModalBody>
@@ -205,6 +212,13 @@ const SignUp = (props) => {
               >
                 Login
               </Button>
+              <p className="Login">
+                Don't have an account?{" "}
+                <Button color="primary" onClick={toggleSignUp}>
+                  {buttonLabel}Sign Up
+                </Button>
+                {/* <a onClick={toggleSignUp}>Log In</a> */}
+              </p>
             </Form>
           </ModalBody>
         </Modal>

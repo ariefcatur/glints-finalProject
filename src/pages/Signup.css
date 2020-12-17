@@ -32,6 +32,11 @@
   font-size: 20px;
 }
 
+.section {
+  text-align: center;
+  padding-left: 185px;
+}
+
 /* Desktop Version */
 /* 
 @media (min-width: 992px) {

@@ -105,11 +105,11 @@ const TabProfile = () => {
           <Row className="rowright">
             <Container>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
+              <Row style={{float:"right"}}>
               <AddCard />
               <TopUp/>
+              </Row>
             </Container>
-          </Row>
-          <Row>
             <CheckStatus />
           </Row>
         </TabPane>

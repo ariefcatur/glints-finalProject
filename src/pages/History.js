@@ -54,16 +54,6 @@ const History = () => {
   const [dates, setDates] = useState([]);
   const [totals, setTotals] = useState([]);
   const [totalHistory, setTotalHistory] = useState({});
-<<<<<<< HEAD
-  const urlMonth = " http://52.148.70.171/chart/monthly";
-  const urlWeek = " http://52.148.70.171/chart/weekly";
-
-  // console.log(token)
-
-  const urlHistory = " http://52.148.70.171/subscription";
-  const urlExpense = " http://52.148.70.171/expense";
-  const urlTotalHistory = " http://52.148.70.171/history";
-=======
   const urlMonth = "http://52.148.70.171/chart/monthly";
   const urlWeek = "http://52.148.70.171/chart/weekly";
 
@@ -72,7 +62,6 @@ const History = () => {
   const urlHistory = "http://52.148.70.171/subscription";
   const urlExpense = "http://52.148.70.171/expense";
   const urlTotalHistory = "http://52.148.70.171/history";
->>>>>>> b0e7636f7e56e1e86aa1dc06bcc2a772368b605f
 
   const toggle = () => setModal(!modal);
   const collapse = () => {

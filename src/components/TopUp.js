@@ -67,7 +67,7 @@ const TopUp = (props) => {
         style={{ color: "white", backgroundColor: "#8F48EA" }}
         onClick={toggle}
       >
-        <strong>Top-up Card</strong>
+        <strong>Top-up</strong>
       </Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>

@@ -31,11 +31,11 @@ const TopMenu = (props) => {
   return (
     <Container fluid className="barnav" style={{backgroundColor:"#fefefe"}}>
       <Navbar expand="md" style={{backgroundColor:"#fefefe", }}>
-        <NavbarBrand className="lognav" href="/" >
-          <Link to="/dashboard">
-            <img src={subsit} ></img>
-          </Link>
-        </NavbarBrand>
+      <NavbarBrand className="lognav" href="/" >
+            <Link to="/dashboard">
+              <img src={subsit} ></img>
+            </Link>
+            </NavbarBrand>
         
         <Nav className="ml-auto" navbar>
           <Collapse isOpen={isOpen} navbar></Collapse>
@@ -56,7 +56,13 @@ const TopMenu = (props) => {
             </div>
           )}
           {checkLogin() && (
+            
             <div>
+              {/* <NavbarBrand className="lognav" href="/" >
+            <Link to="/dashboard">
+              <img src={subsit} ></img>
+            </Link>
+            </NavbarBrand> */}
               <ul id="Menu" className="liquid1">
                 <li>
                   <Link to="/history">

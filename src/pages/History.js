@@ -54,6 +54,16 @@ const History = () => {
   const [dates, setDates] = useState([]);
   const [totals, setTotals] = useState([]);
   const [totalHistory, setTotalHistory] = useState({});
+<<<<<<< HEAD
+  const urlMonth = " http://52.148.70.171/chart/monthly";
+  const urlWeek = " http://52.148.70.171/chart/weekly";
+
+  // console.log(token)
+
+  const urlHistory = " http://52.148.70.171/subscription";
+  const urlExpense = " http://52.148.70.171/expense";
+  const urlTotalHistory = " http://52.148.70.171/history";
+=======
   const urlMonth = "http://52.148.70.171/chart/monthly";
   const urlWeek = "http://52.148.70.171/chart/weekly";
 
@@ -62,6 +72,7 @@ const History = () => {
   const urlHistory = "http://52.148.70.171/subscription";
   const urlExpense = "http://52.148.70.171/expense";
   const urlTotalHistory = "http://52.148.70.171/history";
+>>>>>>> b0e7636f7e56e1e86aa1dc06bcc2a772368b605f
 
   const toggle = () => setModal(!modal);
   const collapse = () => {
@@ -168,7 +179,7 @@ const History = () => {
   };
 
   const handleRemove = (id) => {
-    const url = `http://3.0.91.163/subscription/${id}/`;
+    const url = ` http://52.148.70.171/subscription/${id}/`;
     axios
       .delete(url, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
@@ -325,12 +336,12 @@ const History = () => {
               }}
             >
               <Row style={{ marginBottom: "20px" }}>
-                <Col xs="6" style={{ paddingTop: "20px" }}>
+                <Col xs="6" style={{ paddingTop: "30px" }}>
                   <CardTitle className="text-white">
                     <strong>Total :</strong>
                   </CardTitle>
                 </Col>
-                <Col xs="6" style={{ paddingTop: "20px" }}>
+                <Col xs="6" style={{ paddingTop: "30px" }}>
                   <h6 style={{ float: "right" }}>
                     <strong>IDR {totalHistory.total}</strong>{" "}
                   </h6>
@@ -353,7 +364,7 @@ const History = () => {
                 history.map((subscribtion, i) => (
                   <Card
                     key={i}
-                    style={{ marginTop: "20px", backgroundColor: "#f6f9fc" }}
+                    style={{ marginTop: "20px", backgroundColor: "#f6f9fc", marginBottom:"20px" }}
                   >
                     <Row>
                       <Col xs="6">

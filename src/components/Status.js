@@ -19,7 +19,6 @@ import expense from "../assets/expense.png";
 
 function CheckStatus() {
   const [results, setResults] = useState("");
-  // const [loading, setLoading] = useState(false);
 
   const urlCard = " http://52.148.70.171/card";
 
@@ -59,9 +58,6 @@ function CheckStatus() {
       <Row>
         {results.length !== 0 ? (
           results.map((result) => {
-            <Container className='rowright'>
-            <hr style={{ borderTop: "2px solid #c8c8c8" }} />
-            </Container>
             if (result.saldo >= 1000000 && result.cardType === "Master") {
               return (
                 <Col md={4}>
@@ -153,7 +149,7 @@ function CheckStatus() {
                 </Col>
               );
             } else if (
-              result.saldo > 500000 &&
+              result.saldo >= 500000 &&
               result.saldo < 1000000 &&
               result.cardType === "Master"
             ) {
@@ -202,7 +198,7 @@ function CheckStatus() {
                 </Col>
               );
             } else if (
-              result.saldo > 500000 &&
+              result.saldo >= 500000 &&
               result.saldo < 1000000 &&
               result.cardType === "Visa"
             ) {

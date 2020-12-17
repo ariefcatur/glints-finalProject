@@ -35,6 +35,25 @@ const ShowExpenses = () => {
       });
   }, []);
 
+  const handleSubmit = (e) => {
+
+    e.prevenDefault();
+
+    const data = {
+      saldo: saldo,
+    };
+
+    axios
+      .patch(`http://52.148.70.171/card?cardNumber=${cardNumber}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        return window.location.reload();
+      });
+  }
+
   const handleDelete = (id) => {
     axios
       .delete(`${urlCard}?cardNumber=${id}`, {

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import {
-  Container,
   Row,
   Col,
   Button,
@@ -53,7 +52,7 @@ const Debt = () => {
   };
 
   return (
-    <Container>
+    <div>
       <Button
         size="sm"
         className="mt-2 mr-2 mb-sm-0"
@@ -107,8 +106,8 @@ const Debt = () => {
                     onChange={(e) => setType(e.target.value)}
                   >
                     <option>Select Type</option>
-                    <option>Account Payable</option>
-                    <option>Account Receivable</option>
+                    <option>Payables</option>
+                    <option>Receivables</option>
                   </Input>
                 </FormGroup>
                 <FormGroup>
@@ -135,7 +134,7 @@ const Debt = () => {
           </Form>
         </ModalBody>
       </Modal>
-    </Container>
+    </div>
   );
 };
 export default Debt;

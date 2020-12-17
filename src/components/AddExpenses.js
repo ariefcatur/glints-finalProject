@@ -139,6 +139,7 @@ const AddExpenses = (props) => {
                     id="categoryId"
                     onChange={(e) => setCategoryId(e.target.value)}
                   >
+                    <option>Select expense type</option>
                   {categories.length !== 0
                     ? categories.map((category) => <option value={category.id}>{category.category}</option>)
                     : ("")}
@@ -168,7 +169,7 @@ const AddExpenses = (props) => {
                   >
                     <option>Select card</option>
                   {cards.length !== 0
-                    ? cards.map((card) => <option value={card.id}>{card.cardBank}</option>)
+                    ? cards.map((card) => <option value={card.id}>{card.cardBank} - IDR {card.saldo}</option>)
                     : ("")}
                   </Input>
                 </FormGroup>

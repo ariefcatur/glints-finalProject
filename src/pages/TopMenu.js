@@ -19,7 +19,9 @@ import chart from "./img/Group 11.svg";
 import { checkLogin } from "../Helper";
 import ProfMenu from "./ProfMenu";
 import Lendar from "./img/calendar.svg";
-import Calendar from "../components/Calendar"
+import Calendar from "../components/Calendar";
+
+import Bells from "./Bells";
 
 const TopMenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,12 +64,12 @@ const TopMenu = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <img src={app}></img>
-                </li>
-                <li>
                   <Link to="/Calendar">
                     <img src={Lendar}></img>
                   </Link>
+                </li>
+                <li>
+                  <Bells />
                 </li>
                 <li>
                   <ProfMenu />

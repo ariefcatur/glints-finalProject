@@ -25,7 +25,7 @@ import sportify from './img/spotify.jpg'
 import netflix from './img/netflix.jpeg'
 import logo from './img/Rectangle.png'
 import { Link, useParams} from 'react-router-dom';
-import { Line } from '@reactchartjs/react-chart.js'
+import { Line } from 'react-chartjs-2'
 import axios from 'axios';
 import {checkLogin} from '../Helper';
 import Cookies from 'js-cookie';
@@ -176,7 +176,6 @@ const Dashboard = () =>{
          axios
          .get(urlMonth, {headers:{Authorization: `Bearer ${token}`}})
          .then((res)=>{
-            
              for(const dataObj of res.data){
                  month.push(dataObj.dates)
                  pay.push(dataObj.totals)
@@ -188,8 +187,9 @@ const Dashboard = () =>{
                         label: '# Month',
                         data: pay,
                         fill: false,
-                        backgroundColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgb(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 0.2)',
+                        pointBackgroundColor: 'rgb(255, 99, 132)',
                     },
                 ],  
             })

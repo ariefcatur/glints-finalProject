@@ -19,7 +19,7 @@ const Edit = (props) => {
   const { className } = props;
 
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
+  // const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const token = Cookies.get('token');
@@ -29,7 +29,7 @@ const Edit = (props) => {
     
     const data = {
       fullName: fullName,
-      email: email,
+      // email: email,
       password: password
     };
 
@@ -78,7 +78,7 @@ const Edit = (props) => {
               />
             </FormGroup>
 
-            <FormGroup>
+            {/* <FormGroup>
               <Label for="email">Email</Label>
               <Input
                 type="email"
@@ -88,7 +88,7 @@ const Edit = (props) => {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </FormGroup>
-
+ */}
             <FormGroup>
               <Label for="password">Password</Label>
               <Input

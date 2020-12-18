@@ -22,9 +22,9 @@ import { checkLogin } from "../Helper";
 import Cookies from "js-cookie";
 import empty from "../assets/empty.png";
 import glass from "../assets/glass.png";
-import expense from "../assets/expense.png"
+import expense from "../assets/expense.png";
 import "../components/Profile.css";
-import Moment from 'react-moment';
+import Moment from "react-moment";
 
 const options = {
   scales: {
@@ -255,7 +255,7 @@ const History = () => {
                 {history.length !== 0 ? (
                   history.map((history) => (
                     <Col xs="4" key={history.id}>
-                      <Card>
+                      <Card className="mb-4">
                         <CardImg
                           top
                           width="100%"
@@ -343,9 +343,8 @@ const History = () => {
               id="scroll-container"
               style={{
                 position: "relative",
-                height: "700px",
+                height: "1000px",
                 overflow: "scroll",
-                
               }}
             >
               <h4>Subscriptions</h4>
@@ -354,21 +353,28 @@ const History = () => {
                 history.map((subscribtion, i) => (
                   <Card
                     key={i}
-                    style={{ padding: "5px", marginTop: "20px", backgroundColor: "#f6f9fc", marginBottom:"20px" }}
+                    style={{
+                      padding: "5px",
+                      marginTop: "20px",
+                      backgroundColor: "#f6f9fc",
+                      marginBottom: "20px",
+                    }}
                   >
                     <Row>
                       <Col xs="8">
                         <CardTitle className="text-dark font-weight">
                           <h6 style={{ paddingTop: "15px" }}>
-                           
-                          {subscribtion.repeat} : {subscribtion.service.name} </h6>
-                          <Moment format="D MMM YYYY"><h6 style={{ paddingTop: "15px" }}>{subscribtion.startDate}
-                         
-                          </h6></Moment>
+                            {subscribtion.repeat} : {subscribtion.service.name}{" "}
+                          </h6>
+                          <Moment format="D MMM YYYY">
+                            <h6 style={{ paddingTop: "15px" }}>
+                              {subscribtion.startDate}
+                            </h6>
+                          </Moment>
                         </CardTitle>
                       </Col>
                       <Col xs="4">
-                        <h6 style={{ float: "right", paddingTop: "15px"  }}>
+                        <h6 style={{ float: "right", paddingTop: "15px" }}>
                           IDR {subscribtion.service.cost}{" "}
                         </h6>
                       </Col>
@@ -376,8 +382,8 @@ const History = () => {
                   </Card>
                 ))
               ) : (
-                <Container style={{marginBottom:"20px"}}>
-                  <p style={{ opacity: "60%"}}>
+                <Container style={{ marginBottom: "20px" }}>
+                  <p style={{ opacity: "60%" }}>
                     <i>
                       <strong>No subscription found.</strong>
                     </i>
@@ -397,42 +403,38 @@ const History = () => {
               )}
               <h4>Expenses</h4>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
-              {expense.length !== 0
-                ? expense.map((expenses, i) => (
-                    <Card
-                      key={i}
-                      style={{
-                        marginTop: "20px",
-                        padding: "5px",
-                        backgroundColor: "#f6f9fc",
-                      }}
-                    >
-                      <Row>
-                        <Col xs="6" style={{ paddingTop: "15px" }}>
-                          <CardTitle
-                            tag="h6"
-                            className="text-dark font-weight"
-                          >
-                            
-                            <h6>
-                              {expenses.title} </h6> 
-                            <Moment format="D MMM YYYY">
-                            <h6 style={{ paddingTop: "15px" }}> {expenses.purchaseDate} 
+              {expense.length !== 0 ? (
+                expense.map((expenses, i) => (
+                  <Card
+                    key={i}
+                    style={{
+                      marginTop: "20px",
+                      padding: "5px",
+                      backgroundColor: "#f6f9fc",
+                    }}
+                  >
+                    <Row>
+                      <Col xs="6" style={{ paddingTop: "15px" }}>
+                        <CardTitle tag="h6" className="text-dark font-weight">
+                          <h6>{expenses.title} </h6>
+                          <Moment format="D MMM YYYY">
+                            <h6 style={{ paddingTop: "15px" }}>
+                              {" "}
+                              {expenses.purchaseDate}
                             </h6>
-                            </Moment>
-                           
-                          </CardTitle>
-                        </Col>
-                        <Col xs="6">
-                          <h6 style={{ float: "right", paddingTop: "15px" }}>
-                            IDR {expenses.total}{" "}
-                          </h6>
-                        </Col>
-                      </Row>
-                    </Card>
-                  ))
-                : (
-                  <Container>
+                          </Moment>
+                        </CardTitle>
+                      </Col>
+                      <Col xs="6">
+                        <h6 style={{ float: "right", paddingTop: "15px" }}>
+                          IDR {expenses.total}{" "}
+                        </h6>
+                      </Col>
+                    </Row>
+                  </Card>
+                ))
+              ) : (
+                <Container>
                   <p style={{ opacity: "60%" }}>
                     <i>
                       <strong>No expense found.</strong>
@@ -450,7 +452,7 @@ const History = () => {
                     />
                   </Col>
                 </Container>
-                )}
+              )}
             </Element>
           </Col>
         </Row>

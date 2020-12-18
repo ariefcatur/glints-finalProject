@@ -99,7 +99,8 @@ const AddCard = (props) => {
                     <FormGroup>
                       <Label for="cardNumber">Card Number</Label>
                         <Input
-                        type="cardNumber"
+                        max="16"
+                        type="number"
                         name="cardNumber"
                         id="cardNumber"
                         placeholder="•••• •••• •••• ••••"
@@ -123,10 +124,12 @@ const AddCard = (props) => {
                   <FormGroup>
                     <Label for="cvv">Card CVC</Label>
                      <Input
-                        type="cvv"
+                        min="1"
+                        max="999"
+                        type="number"
                         name="cvv"
                         id="cvv"
-                        placeholder="••••"
+                        placeholder="•••"
                         onChange={(e) => setCvv(e.target.value)}
                      />
                   </FormGroup>

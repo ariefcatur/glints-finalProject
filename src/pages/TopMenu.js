@@ -43,7 +43,8 @@ const TopMenu = (props) => {
           {!checkLogin() && (
             <div className="body">
               <ul id="Menu">
-              <li>
+                <li className="liquid1"></li>
+                <li>
                 <Button id="transparant">About</Button>
                 </li>
                 <li>

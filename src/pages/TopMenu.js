@@ -7,6 +7,7 @@ import {
   NavbarBrand,
   Nav,
   Row,
+  Button
 } from "reactstrap";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -44,10 +45,10 @@ const TopMenu = (props) => {
               <ul id="Menu">
                 <li className="liquid1"></li>
                 <li>
-                  <a href="#">About</a>
+                <Button id="transparant">About</Button>
                 </li>
                 <li>
-                  <a href="#">Product</a>
+                <Button id="transparant"> Product</Button>
                 </li>
                 <li>
                   <Signup />

@@ -39,8 +39,13 @@
   border: none;
   outline: none;
   color: black;
- 
   border-radius: 3px;
   text-decoration: none;
   
+}
+#transparant{
+  background-color:rgb(254, 254, 254);
+  color:black;
+  border-color:rgb(254, 254, 254) ;
+  font-size: 18px;
 }

@@ -106,7 +106,7 @@ const SignUp = (props) => {
     <div>
       <div className="SignUpModal">
         <div className="navigation">
-          <a onClick={toggleSignUp}>{buttonLabel}Sign Up</a>
+          <Button onClick={toggleSignUp}  id="transparant">{buttonLabel}Sign Up</Button>
         </div>
 
         <Modal isOpen={modalSignUp} toggle={toggleSignUp} className={className}>

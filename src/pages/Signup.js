@@ -9,6 +9,7 @@ import {
   FormGroup,
   Label,
   Input,
+  Alert
  } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
@@ -58,10 +59,16 @@ const SignUp = (props) => {
     };
 
     axios.post(urlSignUp, data)
-    .then((ress) => { 
+    .then((ress) => {
+      return <Alert color="success">You have registered successfully.</Alert>;
       // console.log(ress.bodyData);
-      history.push(toggleSignIn);
       // <Alert color="primary">Mantav</Alert>;
+    })
+    .then(() => {
+      history.push(toggleSignIn);
+    })
+    .catch((err) => {
+      return console(err);
     })
     // .then((error, data)=>{
     //   // const hasError = "error" in data && data.error != null;

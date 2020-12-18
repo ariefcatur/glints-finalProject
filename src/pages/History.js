@@ -354,21 +354,21 @@ const History = () => {
                 history.map((subscribtion, i) => (
                   <Card
                     key={i}
-                    style={{ marginTop: "20px", backgroundColor: "#f6f9fc", marginBottom:"20px" }}
+                    style={{ padding: "5px", marginTop: "20px", backgroundColor: "#f6f9fc", marginBottom:"20px" }}
                   >
                     <Row>
                       <Col xs="8">
                         <CardTitle className="text-dark font-weight">
-                          <h6>
+                          <h6 style={{ paddingTop: "15px" }}>
                            
                           {subscribtion.repeat} : {subscribtion.service.name} </h6>
-                          <Moment format="D MMM YYYY"><h6>{subscribtion.startDate}
+                          <Moment format="D MMM YYYY"><h6 style={{ paddingTop: "15px" }}>{subscribtion.startDate}
                          
                           </h6></Moment>
                         </CardTitle>
                       </Col>
                       <Col xs="4">
-                        <h6 style={{ float: "right" }}>
+                        <h6 style={{ float: "right", paddingTop: "15px"  }}>
                           IDR {subscribtion.service.cost}{" "}
                         </h6>
                       </Col>
@@ -408,7 +408,7 @@ const History = () => {
                       }}
                     >
                       <Row>
-                        <Col xs="6" style={{ paddingTop: "10px" }}>
+                        <Col xs="6" style={{ paddingTop: "15px" }}>
                           <CardTitle
                             tag="h6"
                             className="text-dark font-weight"
@@ -417,14 +417,14 @@ const History = () => {
                             <h6>
                               {expenses.title} </h6> 
                             <Moment format="D MMM YYYY">
-                            <h6> {expenses.purchaseDate} 
+                            <h6 style={{ paddingTop: "15px" }}> {expenses.purchaseDate} 
                             </h6>
                             </Moment>
                            
                           </CardTitle>
                         </Col>
                         <Col xs="6">
-                          <h6 style={{ float: "right", paddingTop: "20px" }}>
+                          <h6 style={{ float: "right", paddingTop: "15px" }}>
                             IDR {expenses.total}{" "}
                           </h6>
                         </Col>

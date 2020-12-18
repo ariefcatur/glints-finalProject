@@ -240,7 +240,7 @@ const ShowDebt = () => {
             ) : (
               <tbody>
                 <tr>
-                  <td colSpan="6">
+                  <td colSpan="7">
                     <Container>
                       <p style={{ opacity: "60%" }}>
                         <i>

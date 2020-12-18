@@ -11,9 +11,11 @@ body {
 
 .imgProfile {
   border-radius: 100%;
-  width: 25%;
-  margin-bottom: 2%;
+  width:80%!important;
+ 
   text-align: center;
+  
+  margin:10%;
   /* border: #8f48ea solid 1px; */
 }
 
@@ -146,4 +148,12 @@ body {
   justify-content: center;
   margin-bottom: 50px;
   opacity: 60%;
+}
+
+#cardphoto{
+  margin-bottom:20px;
+}
+
+#profilecard{
+  min-height: 200px;
 }

@@ -44,11 +44,14 @@ const Profile = () => {
     <Container className="profile">
       <Row>
         <Col xl="4" sm="12">
-          <Card>
+        <Card id="cardphoto">
+        <CardImg top src={avatar} at="" className="imgProfile" />
+        </Card>
+          <Card id="profilecard">
             {users.length !== 0 ? (
               users.map((user)=> (
                 <CardBody key={user.id} className="cardBody">
-                <CardImg top src={avatar} at="" className="imgProfile" />
+               
                 <Row className="rowright">
                   <Container>
                     <Edit />

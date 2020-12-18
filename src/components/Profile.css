@@ -54,11 +54,13 @@ body {
 }
 
 .nav-link.active {
-  color: #fff!important;
+  color: white!important;
   font-size: medium;
   background-color: #ba8ff2 !important;
 }
-
+.nav-link.active .container h4{
+  color:white!important;
+}
 .expense {
   bottom: 20px;
   right: 80px;

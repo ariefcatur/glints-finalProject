@@ -10,7 +10,11 @@ import {
   Label,
   Input,
   Alert
+<<<<<<< HEAD
 } from "reactstrap";
+=======
+ } from "reactstrap";
+>>>>>>> a85ea4b120084310666393c8e92f3db45c7a0560
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
@@ -57,6 +61,7 @@ const SignUp = (props) => {
       password: password,
     };
 
+<<<<<<< HEAD
     axios.post(urlSignUp, data).then((ress) => {
       // console.log(ress.bodyData);
       history.push(toggleSignIn);
@@ -74,6 +79,27 @@ const SignUp = (props) => {
   //     })
   //     .catch(function (error) {
   //       console.log(error);
+=======
+    axios.post(urlSignUp, data)
+    .then((ress) => {
+      return <Alert color="success">You have registered successfully.</Alert>;
+      // console.log(ress.bodyData);
+      // <Alert color="primary">Mantav</Alert>;
+    })
+    .then(() => {
+      history.push(toggleSignIn);
+    })
+    .catch((err) => {
+      return console(err);
+    })
+    // .then((error, data)=>{
+    //   // const hasError = "error" in data && data.error != null;
+    //   setMessage({
+    //     data: error || "Registered Successfully",
+    //     type: error ? "alert-danger" : "alert-success",
+    //   })
+    // })
+>>>>>>> a85ea4b120084310666393c8e92f3db45c7a0560
   };
 
   const handleSubmitSignIn = (e) => {
@@ -153,16 +179,16 @@ const SignUp = (props) => {
               </FormGroup>
               <Button
                 id="submitButton"
-                color="primary"
+                background-color="#8F48EA"
                 type="submit"
-                className="btn btn-primary btn-block"
+                className="btn btn-block"
                 onClick={toggleSignIn}
               >
                 Sign Up
               </Button>
               <p className="Login">
                 Already have an account?{" "}
-                <Button color="primary" onClick={toggleSignIn}>
+                <Button  id="submitButton" onClick={toggleSignIn}>
                   {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}

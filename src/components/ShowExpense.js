@@ -5,6 +5,9 @@ import Cookies from "js-cookie";
 import { X } from "react-feather";
 import expense from "../assets/expense.png";
 import "./Profile.css";
+import {Element} from "react-scroll"
+import Moment from 'react-moment';
+
 
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
@@ -29,7 +32,7 @@ const ShowExpenses = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://3.0.91.163/expense/${id}`, {
+      .delete(`http://52.148.70.171/expense/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -40,69 +43,89 @@ const ShowExpenses = () => {
   };
 
   return (
-    <>
+    <Container>
       <Row className="tables">
-          <Container>
+        <Col xs="12">
+          <Table hover style={{ backgroundColor: "whitesmoke" }}>
+          <Element
+              ClassName="element"
+              id="scroll-container"
+              style={{
+                position: "relative",
+                height: "500px",
+                overflow: "scroll",
+                
+              }}
+            >
+            <thead
+              className="text-center"
+              style={{ backgroundColor: "#BA8FF2" }}
+            >
+              <tr>
+                <th style={{ width: "50%" }}>Date</th>
+                <th>Transaction</th>
+                <th>Currency</th>
+                <th>Costs</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            
             {results.length !== 0 ? (
               results.map((result) => (
-                <Table hover style={{ backgroundColor: "whitesmoke" }}>
-                  <thead
-                    className="text-center"
-                    style={{ backgroundColor: "#BA8FF2" }}
-                  >
-                    <tr>
-                      <th style={{ width: "50%" }}>Transaction Date</th>
-                      <th>Name of Transaction</th>
-                      <th>Currency</th>
-                      <th>Costs</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="text-center">{result.purchaseDate}</td>
-                      <td style={{ width: "50%" }}>{result.title}</td>
-                      <td className="text-center">IDR</td>
-                      <td className="text-center">{result.total}</td>
-                      <td style={{ width: "100%" }} className="text-center">
-                        <Button
-                          size="sm"
-                          onClick={() => {
-                            handleDelete(result.id);
-                          }}
-                          color="danger"
-                          outline
-                        >
-                          <X size={15} />
-                        </Button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
+                <tbody>
+                  <tr>
+                    <td className="text-center"><Moment format="D MMM YYYY" >{result.purchaseDate}</Moment></td>
+                    <td className="text-center" style={{ width: "50%" }}>{result.title}</td>
+                    <td className="text-center">IDR</td>
+                    <td className="text-center">{result.total}</td>
+                    <td style={{ width: "100%" }} className="text-center">
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          handleDelete(result.id);
+                        }}
+                        color="danger"
+                        outline
+                      >
+                        <X size={15} />
+                      </Button>
+                    </td>
+                  </tr>
+                </tbody>
+                
               ))
-            ) : (
-              <Container>
-                <p style={{ opacity: "60%" }}>
-                  <i>
-                    <strong>No expense found.</strong>
-                  </i>
-                </p>
-                <Col className="subs3">
-                  <img
-                    src={expense}
-                    alt=""
-                    style={{
-                      width: "50%",
-                      opacity: "0%",
-                      position: "center",
-                    }}
-                  />
-                </Col>
-              </Container>
+            
+              )  : (
+              <tbody>
+                <tr>
+                  <td colSpan="6">
+                    <Container>
+                      <p style={{ opacity: "60%" }}>
+                        <i>
+                          <strong>No expense found.</strong>
+                        </i>
+                      </p>
+                      <Col className="subs3">
+                        <img
+                          src={expense}
+                          alt=""
+                          style={{
+                            width: "40%",
+                            opacity: "0%",
+                            position: "center",
+                          }}
+                        />
+                      </Col>
+                    </Container>
+                  </td>
+                </tr>
+              </tbody>
             )}
-          </Container>
+            </Element>
+          </Table>
+        </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 

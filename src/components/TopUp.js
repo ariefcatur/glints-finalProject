@@ -38,7 +38,8 @@ const TopUp = (props) => {
       });
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+
     const data = {
       saldo: saldo,
     };
@@ -74,56 +75,53 @@ const TopUp = (props) => {
         </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleSubmit}>
-            {results.length !== 0
-              ? results.map((result) => (
-                  <Container>
-                    <FormGroup>
-                      <Label for="cardNumber">Select Card</Label>
-                      <Input
-                        type="select"
-                        name="cardNumber"
-                        id="cardNumber"
-                        onChange={(e) => setCardNumber(e.target.value)}
-                      >
-                        <option>Select card</option>
+            <Container>
+              <FormGroup>
+                <Label for="cardNumber">Select Card</Label>
+                <Input
+                  type="select"
+                  name="cardNumber"
+                  id="cardNumber"
+                  onChange={(e) => setCardNumber(e.target.value)}
+                >
+                  <option>Select card</option>
+                  {results.length !== 0
+                    ? results.map((result) => (
                         <option value={result.cardNumber}>
-                          {result.cardBank} - {result.cardNumber}
+                          {result.cardBank} - IDR {result.saldo}
                         </option>
-                      </Input>
-                    </FormGroup>
-                    <FormGroup>
-                      <Label for="saldo">Top-up amount:</Label>
-                      <Input
-                        type="select"
-                        name="saldo"
-                        id="saldo"
-                        placeholder="Input your new name."
-                        onClick={(e) => setSaldo(e.target.value)}
-                      >
-                        <option>Select amount</option>
-                        <option>50000</option>
-                        <option>100000</option>
-                        <option>250000</option>
-                        <option>500000</option>
-                        <option>1000000</option>
-                      </Input>
-                    </FormGroup>
-                    <FormGroup>
-                      <Button
-                        size="sm"
-                        onClick={() => {
-                          handleSubmit(result.cardNumber);
-                        }}
-                        block
-                        outline
-                        style={{ backgroundColor: "#8F48EA", color: "white" }}
-                      >
-                        <strong>Confirm</strong>
-                      </Button>
-                    </FormGroup>
-                  </Container>
-                ))
-              : ""}
+                      ))
+                    : ""}
+                </Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="saldo">Top-up amount:</Label>
+                <Input
+                  type="select"
+                  name="saldo"
+                  id="saldo"
+                  onClick={(e) => setSaldo(e.target.value)}
+                >
+                  <option>Select amount</option>
+                  <option>50000</option>
+                  <option>100000</option>
+                  <option>250000</option>
+                  <option>500000</option>
+                  <option>1000000</option>
+                </Input>
+              </FormGroup>
+              <FormGroup>
+                <Button
+                  size="sm"
+                  type="submit"
+                  block
+                  outline
+                  style={{ backgroundColor: "#8F48EA", color: "white" }}
+                >
+                  <strong>Confirm</strong>
+                </Button>
+              </FormGroup>
+            </Container>
           </Form>
         </ModalBody>
       </Modal>

@@ -105,12 +105,11 @@ const ShowDebt = () => {
               <tr>
                 <th>Due Date</th>
                 <th>Name</th>
-                <th>Description</th>
+                <th style={{ width: "25%" }}>Descriptions</th>
                 <th>Type</th>
                 <th>Cost</th>
                 <th>Edit </th>
-                
-                <th>Dellete </th>
+                <th> Delete </th>
               </tr>
             </thead>
             {debt.length !== 0 ? (
@@ -233,6 +232,12 @@ const ShowDebt = () => {
                           <X size={15} />
                         </Button>
                       </Row>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan="7">
+                      <p style={{fontSize:"10px"}}><i>* Payables : what you owed.</i></p>
+                      <p style={{fontSize:"10px"}}><i>* Receivables : what others owed you.</i></p>
                     </td>
                   </tr>
                 </tbody>

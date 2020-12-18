@@ -170,7 +170,7 @@ const Dashboard = () => {
     return (
       <div>
         <Row className="justify-content-center mt-5">
-          <Spinner type="grow" color="warning" />
+          <Spinner type="grow" style={{ width: '4rem', height: '4rem', color:'#8F48EA' }} />
         </Row>
         <Row className="justify-content-center mt-3 font-weight-bold">
           Please wait...

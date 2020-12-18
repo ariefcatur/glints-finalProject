@@ -255,7 +255,7 @@ const History = () => {
                 {history.length !== 0 ? (
                   history.map((history) => (
                     <Col xs="4" key={history.id}>
-                      <Card>
+                      <Card className="mb-4">
                         <CardImg
                           top
                           width="100%"

@@ -6,6 +6,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Loading from "./Loading";
 
 const CalendarEvent = () => {
   const [upComing, setUpComing] = useState([]);
@@ -45,7 +46,9 @@ const CalendarEvent = () => {
   });
   return (
     <>
-      {loading && <p>Loading...</p>}
+      <Container className="mb-5 mt-5">
+      {loading && <Loading/>}
+      </Container>
       {!loading && (
         <Container>
           <Row>

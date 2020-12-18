@@ -60,7 +60,7 @@ const Bells = () => {
         toggle={toggle}
       >
         <PopoverHeader style={{ textAlign: "center" }}>
-          <strong>Due Date</strong>
+          <strong>Due Date Notification</strong>
         </PopoverHeader>
         {checkDueDate.length !== 0 ? (
           checkDueDate.map((notif) => (

@@ -10,7 +10,7 @@ import {
 } from "reactstrap";
 import axios from "axios";
 import Cookies from 'js-cookie';
-import avatar from "../assets/avatar2.png";
+import avatar from "../pages/img/circle3.png";
 import "./Profile.css";
 import { User, Mail } from "react-feather";
 import Edit from "./EditProfile";
@@ -57,12 +57,12 @@ const Profile = () => {
                 <CardTitle>
                   <Container>
                     <p>
-                      <User size={22} /> {user.fullName}
+                      <User size={22} /> <b>{user.fullName}</b>
                     </p>
                   </Container>
                   <Container>
                     <p>
-                      <Mail size={22} /> {user.email}
+                      <Mail size={22} /> <strong>{user.email}</strong>
                     </p>
                   </Container>
                 </CardTitle>

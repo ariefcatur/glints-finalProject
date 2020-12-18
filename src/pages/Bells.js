@@ -11,6 +11,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import Moment from 'react-moment';
 
 const Bells = () => {
   const [notif, setNotif] = useState([]);
@@ -59,15 +60,15 @@ const Bells = () => {
         toggle={toggle}
       >
         <PopoverHeader style={{ textAlign: "center" }}>
-          <strong>Notification</strong>
+          <strong>Due Date</strong>
         </PopoverHeader>
         {checkDueDate.length !== 0 ? (
           checkDueDate.map((notif) => (
             <PopoverBody>
               <Container fluid>
                 <Col>
-                  <p><strong>{notif.service.name}</strong></p>
-                  <p>{notif.dueDate}</p>
+                  <h6><strong>{notif.service.name}</strong></h6>
+                  <h6><Moment format="D MMM YYYY">{notif.dueDate}</Moment></h6>
                 </Col>
               </Container>
             </PopoverBody>

@@ -153,16 +153,16 @@ const SignUp = (props) => {
               </FormGroup>
               <Button
                 id="submitButton"
-                color="primary"
+                background-color="#8F48EA"
                 type="submit"
-                className="btn btn-primary btn-block"
+                className="btn btn-block"
                 onClick={toggleSignIn}
               >
                 Sign Up
               </Button>
               <p className="Login">
                 Already have an account?{" "}
-                <Button color="primary" onClick={toggleSignIn}>
+                <Button  id="submitButton" onClick={toggleSignIn}>
                   {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}

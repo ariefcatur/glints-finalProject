@@ -102,6 +102,7 @@ const Home = () =>{
             
             </Container>
             <Container fluid className="content">
+                
             <section id="features" className="features">
                 <Container >
                     <Nav >

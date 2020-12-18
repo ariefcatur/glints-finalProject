@@ -23,8 +23,8 @@ const ProfMenu = () => {
        <img src={profile}></img>
       </DropdownToggle>
       <DropdownMenu right>
-        <DropdownItem> <Link to="/profile">View Profile</Link></DropdownItem>
-        <DropdownItem> <Link to="/logout">Log Out</Link></DropdownItem>
+      <Link to="/profile"><DropdownItem> Profile</DropdownItem></Link>
+      <Link to="/logout"> <DropdownItem> Log Out</DropdownItem></Link>
       </DropdownMenu>
     </Dropdown>
   );

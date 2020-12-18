@@ -62,7 +62,7 @@ const ShowExpenses = () => {
               style={{ backgroundColor: "#BA8FF2" }}
             >
               <tr>
-                <th style={{ width: "50%" }}>Date</th>
+                <th style={{ width: "30%" }}>Date</th>
                 <th>Transaction</th>
                 <th>Currency</th>
                 <th>Costs</th>

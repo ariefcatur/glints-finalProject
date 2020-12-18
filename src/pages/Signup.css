@@ -13,6 +13,13 @@
     top: 8px;
 }
 
+#transparant{
+  background-color:rgb(254, 254, 254);
+  color:black;
+  border-color:rgb(254, 254, 254) ;
+  font-size: 18px;
+}
+
   
 
 

@@ -100,7 +100,7 @@ const ShowDebt = () => {
                             onClick={() => {
                               if (
                                 window.confirm(
-                                  "Are you sure you want to remove this item?"
+                                  `Debt record of "${debts.name} - ${debts.description}" is about to be deleted. Please click OK to confirm.`
                                 )
                               )
                                 handleDelete(debts.id);

@@ -55,12 +55,12 @@ const Debt = () => {
     <div>
       <Button
         size="sm"
-        className="mt-2 mr-2 mb-sm-0"
+        className="mr-2 mb-sm-0"
         style={{ color: "white", backgroundColor: "#8F48EA" }}
         onClick={toggle}
       >
         {/* <Plus size={15}/>  */}
-        <strong>New Debt Notes</strong>
+        <strong>New Note</strong>
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>

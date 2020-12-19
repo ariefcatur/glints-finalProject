@@ -275,7 +275,7 @@ const History = () => {
                               onClick={() => {
                                 if (
                                   window.confirm(
-                                    "are you sure you wish to unsubscribe this item?"
+                                    `Your ${history.service.name} subscription is about to be terminated. Click OK to confirm.`
                                   )
                                 )
                                   handleRemove(history.serviceId);

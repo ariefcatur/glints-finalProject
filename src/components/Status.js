@@ -60,7 +60,7 @@ function CheckStatus() {
           results.map((result) => {
             if (result.saldo >= 1000000 && result.cardType === "Master") {
               return (
-                <Col md={4}>
+                <Col md={4} className="mb-4">
                   <Card
                     style={{
                       backgroundColor: "whitesmoke",
@@ -105,7 +105,7 @@ function CheckStatus() {
               );
             } else if (result.saldo >= 1000000 && result.cardType === "Visa") {
               return (
-                <Col md={4}>
+                <Col md={4} className="mb-4">
                   <Card
                     style={{
                       backgroundColor: "whitesmoke",
@@ -154,7 +154,7 @@ function CheckStatus() {
               result.cardType === "Master"
             ) {
               return (
-                <Col md={4}>
+                <Col md={4} className="mb-4">
                   <Card
                     style={{
                       backgroundColor: "whitesmoke",
@@ -203,7 +203,7 @@ function CheckStatus() {
               result.cardType === "Visa"
             ) {
               return (
-                <Col md={4}>
+                <Col md={4} className="mb-4">
                   <Card
                     style={{
                       backgroundColor: "whitesmoke",
@@ -248,12 +248,12 @@ function CheckStatus() {
               );
             } else if (result.saldo < 500000 && result.cardType === "Master") {
               return (
-                <Col md={4}>
+                <Col md={4} className="mb-4">
                   <Card
                     style={{
                       backgroundColor: "whitesmoke",
                       color: "#222222",
-                      marginBottom: "3",
+                      marginBottom:"3",
                     }}
                   >
                     <CardBody>
@@ -293,7 +293,7 @@ function CheckStatus() {
               );
             } else if (result.saldo < 500000 && result.cardType === "Visa") {
               return (
-                <Col md={4}>
+                <Col md={4} className="mb-4">
                   <Card
                     style={{
                       backgroundColor: "whitesmoke",

@@ -73,7 +73,7 @@ const CalendarEvent = () => {
               </Card>
             </Col>
             <Col sm="4">
-              <Card style={{ padding: "20px", minHeight: "605px" }}>
+              <Card style={{ padding: "20px", minHeight: "605px", marginBottom:"50px" }}>
                 <h4
                   style={{
                     color: "#222222",

@@ -136,7 +136,7 @@ const Home = () =>{
                                     <NavLink className={classnames({active: activeTab === '3'})}
                                     onClick={()=>{toggle('3');}}
                                 >
-                                    <Row><Col sm="8"><h4>Budgetting</h4></Col> 
+                                    <Row><Col sm="8"><h4>Budgeting</h4></Col> 
                                     <Col sm="4" className="icon"> {addDigital} </Col></Row>
                                     </NavLink>
                                 </NavItem>
@@ -210,7 +210,7 @@ const Home = () =>{
                                     <Col lg="6">
                                         <div className="intro">
                                         <h3></h3>
-                                         <h4>Budgetting</h4>
+                                         <h4>Budgeting</h4>
                                          </div>
                                     </Col>
                                     <Col lg="6" style={{marginTop:'20px', marginBottom:'20px'}}>

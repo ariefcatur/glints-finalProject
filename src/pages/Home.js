@@ -90,8 +90,8 @@ const Home = () =>{
                 </Row>
             </Container>
             <Container fluid className="about">
-            <h1 className="section" >About US</h1>
-            <div className="section-title-divider "></div>
+            <h1 className="section-title"><b>About US</b></h1>
+            <div className="section-title-divider"></div>
             
                 <div className="aboutIntro">
                     <h3><span className="text-green">Manage</span> your subscription business from anywhere
@@ -164,8 +164,8 @@ const Home = () =>{
                                     <Row>
                                     <Col lg="6">
                                         <div className="intro">
-                                         <h3>Easily create a subscription website</h3>
-                                         <h4>Simply put in the items you wish to purchase on subscription, and the website builder will generate a subscription website for you 
+                                         <h3><strong>Easily create a subscription website</strong></h3>
+                                         <h4 style={{textAlign:"justify"}}>Simply put in the items you wish to purchase on subscription, and the website builder will generate a subscription website for you 
                                             right away. Join a member and create your own management subscription service you want to make.
                                         </h4>
                                         </div>
@@ -187,9 +187,9 @@ const Home = () =>{
                                 <Row>
                                     <Col lg="6">
                                         <div className="intro">
-                                            <h3>Control your own daily expense</h3>
+                                            <h3><strong>Control your own expense</strong></h3>
                                             
-                                         <h4>Expense</h4>
+                                         <h4 style={{textAlign:"justify"}}>Expense</h4>
                                         </div>
                                     </Col>
                                     <Col lg="6" style={{marginTop:'20px', marginBottom:'20px'}}>
@@ -253,9 +253,9 @@ const Home = () =>{
             </Container>
             <Container fluid className="popular">
                 <Container>
-                    <h1 className="section" >Popular Apps</h1>
+                    <h1 className="section-title"><b>Popular Apps</b></h1>
                     <div className="section-title-divider "></div>
-                <Row>
+                <Row className="mt-3">
                     {subscribes.slice(0,4).map((subscribes, i) =>(
                         <Col sm="3" key={i}>
                         <Card>

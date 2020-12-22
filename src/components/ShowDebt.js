@@ -17,6 +17,11 @@ import Moment from "react-moment";
 
 const ShowDebt = () => {
   const [debt, setDebt] = useState([]);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState("");
+  const [type, setType] = useState("");
+  const [dueDate, setDueDate] = useState("");
 
   const url = "https://binar8-jul-hendri.nandaworks.com/debts/notes";
   const token = Cookies.get("token");

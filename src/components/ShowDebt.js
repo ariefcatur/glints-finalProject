@@ -18,7 +18,7 @@ import Moment from "react-moment";
 const ShowDebt = () => {
   const [debt, setDebt] = useState([]);
 
-  const url = "http://52.148.70.171/debts/notes";
+  const url = "https://binar8-jul-hendri.nandaworks.com/debts/notes";
   const token = Cookies.get("token");
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const ShowDebt = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(` http://52.148.70.171/debts/delete?id=${id}`, {
+      .delete(` https://binar8-jul-hendri.nandaworks.com/debts/delete?id=${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -43,6 +43,33 @@ const ShowDebt = () => {
         return window.location.reload();
       });
   };
+
+  const handleSubmit = (id) => {
+    const data = {
+      name: name,
+      description: description,
+      amount: amount,
+      type: type,
+      dueDate: dueDate,
+    };
+
+    axios
+      .patch(`https://binar8-jul-hendri.nandaworks.com/debts/update?id=${id}`, data, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        return window.location.reload();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
 
   return (
     <Container>

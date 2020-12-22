@@ -12,7 +12,7 @@ import Moment from 'react-moment';
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
 
-  const urlExpense = " http://52.148.70.171/expense";
+  const urlExpense = " https://binar8-jul-hendri.nandaworks.com/expense";
 
   const token = Cookies.get("token");
 
@@ -32,7 +32,7 @@ const ShowExpenses = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://52.148.70.171/expense/${id}`, {
+      .delete(`https://binar8-jul-hendri.nandaworks.com/expense/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

@@ -16,7 +16,7 @@ import {
 const TopUp = (props) => {
   const { className } = props;
 
-  const urlCard = " http://52.148.70.171/card";
+  const urlCard = " https://binar8-jul-hendri.nandaworks.com/card";
 
   const [results, setResults] = useState("");
   const [saldo, setSaldo] = useState(null);
@@ -45,7 +45,7 @@ const TopUp = (props) => {
     };
 
     axios
-      .patch(`http://52.148.70.171/card?cardNumber=${cardNumber}`, data, {
+      .patch(`https://binar8-jul-hendri.nandaworks.com/card?cardNumber=${cardNumber}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

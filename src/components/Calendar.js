@@ -20,7 +20,7 @@ const CalendarEvent = () => {
 
     setLoading(true);
     axios
-      .get(" http://52.148.70.171/subscription", {
+      .get("https://binar8-jul-hendri.nandaworks.com/subscription", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

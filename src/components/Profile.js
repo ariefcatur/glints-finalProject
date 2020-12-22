@@ -27,7 +27,7 @@ const Profile = () => {
 
     axios
       .get(
-        ` http://52.148.70.171/auth/user/`, {
+        ` https://binar8-jul-hendri.nandaworks.com/auth/user/`, {
             headers: {Authorization : `Bearer ${token}`}
         }
       )

@@ -70,7 +70,7 @@ import Cookies from "js-cookie";
 // }
 
 const Dashboard = () => {
-  const urlSubscribe = " http://52.148.70.171/service";
+  const urlSubscribe = " https://binar8-jul-hendri.nandaworks.com/service";
   const [subscribes, setSubscribes] = useState([]);
   const [modal, setModal] = useState(false);
   const [isOpen, setIsOpen] = useState(true);
@@ -82,15 +82,15 @@ const Dashboard = () => {
   const [serviceId, setServiceId] = useState([]);
   const [card, setCard] = useState([]);
   const [cardId, setCardId] = useState(null);
-  const urlCard = " http://52.148.70.171/card";
+  const urlCard = " https://binar8-jul-hendri.nandaworks.com/card";
   const [chartData, setChartData] = useState({});
   const [dates, setDates] = useState([]);
   const [totals, setTotals] = useState([]);
-  const urlMonth = " http://52.148.70.171/chart/monthly";
+  const urlMonth = "https://binar8-jul-hendri.nandaworks.com/chart/monthly";
   const [chartWeek, setChartWeek] = useState({});
   const [weekMonth, setWeekMonth] = useState([]);
   const [totalWeek, setTotalWeek] = useState([]);
-  const urlWeek = " http://52.148.70.171/chart/weekly";
+  const urlWeek = " https://binar8-jul-hendri.nandaworks.com/chart/weekly";
   
   const history = useHistory();
 

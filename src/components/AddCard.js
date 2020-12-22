@@ -17,7 +17,7 @@ import {
 
 const AddCard = (props) => {
 
-  const urlAddCard = " http://52.148.70.171/card";
+  const urlAddCard = "https://binar8-jul-hendri.nandaworks.com/card";
 
   const { className } = props;
 

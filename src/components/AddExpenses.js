@@ -17,11 +17,11 @@ import {
 
 const AddExpenses = (props) => {
 
-  const urlExpense = " http://52.148.70.171/expense";
+  const urlExpense = "https://binar8-jul-hendri.nandaworks.com/expense";
 
-  const urlCard = " http://52.148.70.171/card";
+  const urlCard = " https://binar8-jul-hendri.nandaworks.com/card";
 
-  const urlCategories = " http://52.148.70.171/categories";
+  const urlCategories = " https://binar8-jul-hendri.nandaworks.com/categories";
 
   const token = Cookies.get("token");
 

@@ -17,7 +17,7 @@ import {
 const EditDebt = (props) => {
   const { className } = props;
 
-  const urlDebt = "http://52.148.70.171/debts/notes";
+  const urlDebt = "https://binar8-jul-hendri.nandaworks.com/debts/notes";
 
   const [results, setResults] = useState("");
   const [name, setName] = useState("");
@@ -52,7 +52,7 @@ const EditDebt = (props) => {
     };
 
     axios
-      .patch(`http://52.148.70.171/debts/update?id=${id}`, data, {
+      .patch(`https://binar8-jul-hendri.nandaworks.com/debts/update?id=${id}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

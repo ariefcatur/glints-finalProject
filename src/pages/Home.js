@@ -27,7 +27,7 @@ import {faAd, faCoins, faDigitalTachograph, faClipboard} from '@fortawesome/free
 import axios from 'axios';
 
 const Home = () =>{
-    const urlSubscribe = ' http://52.148.70.171/service';
+    const urlSubscribe = ' https://binar8-jul-hendri.nandaworks.com/service';
     const [subscribes, setSubscribes] = useState([]);
     const [activeTab, setActiveTab] = useState('1');
     const [loading, setLoading] = useState(false);

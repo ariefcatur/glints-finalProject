@@ -82,7 +82,12 @@ const ShowExpenses = () => {
                       <Button
                         size="sm"
                         onClick={() => {
-                          handleDelete(result.id);
+                          if (
+                            window.confirm(
+                              `Expense record of "${result.title}" is going to be deleted. Please click OK to confirm.`
+                            )
+                          )
+                            handleDelete(result.id);
                         }}
                         color="danger"
                         outline

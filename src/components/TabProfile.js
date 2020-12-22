@@ -20,6 +20,7 @@ import ShowExpenses from "./ShowExpense";
 import CheckStatus from "./Status";
 import Debt from "./AddDebt";
 import ShowDebt from "./ShowDebt";
+import EditDebt from "./EditDebt";
 import { ShoppingCart } from "react-feather";
 
 const TabProfile = () => {
@@ -124,9 +125,12 @@ const TabProfile = () => {
         </TabPane>
         <TabPane tabId="3">
           <Row className="rowright">
-            <Container>
+          <Container>
               <hr style={{ borderTop: "2px solid #c8c8c8" }} />
+              <Row style={{float:"right"}}>
               <Debt />
+              <EditDebt/>
+              </Row>
             </Container>
             <ShowDebt />
           </Row>

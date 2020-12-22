@@ -13,6 +13,13 @@
     top: 8px;
 }
 
+#transparant{
+  background-color:rgb(254, 254, 254);
+  color:black;
+  border-color:rgb(254, 254, 254) ;
+  font-size: 18px;
+}
+
   
 #transparant{
   background-color:rgb(254, 254, 254);
@@ -39,6 +46,11 @@
   text-align: center !important;
   padding-top: 25px;
   font-size: 20px;
+}
+
+.section {
+  text-align: center;
+  padding-left: 185px;
 }
 
 /* Desktop Version */

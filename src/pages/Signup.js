@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Signup.css";
-import { 
-  Modal, 
-  ModalHeader, 
-  ModalBody, 
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
   Button,
   Form,
   FormGroup,
@@ -42,7 +42,7 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
   const [message, setMessage] = useState();
-
+ 
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
 
@@ -112,7 +112,7 @@ const SignUp = (props) => {
         <Modal isOpen={modalSignUp} toggle={toggleSignUp} className={className}>
           <ModalHeader toggle={toggleSignUp}>
             <div className="ModalHeader">
-              <p className="SignTitle">Sign up for new account.</p>
+              <h3 className="section">Sign Up</h3>
             </div>
           </ModalHeader>
           <ModalBody>
@@ -139,6 +139,7 @@ const SignUp = (props) => {
                   placeholder="Enter email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                
               </FormGroup>
               <FormGroup className="form-group">
                 <Label id="SignUp">Password</Label>
@@ -175,8 +176,8 @@ const SignUp = (props) => {
       <div className="SignInModal">
         <Modal isOpen={modalSignIn} toggle={toggleSignIn} className={className}>
           <ModalHeader toggle={toggleSignIn}>
-          <div className="ModalHeader">
-              <p className="SignTitle">Please login to continue.</p>
+            <div className="ModalHeader">
+              <h3 className="section">Login</h3>
             </div>
           </ModalHeader>
           <ModalBody>
@@ -212,6 +213,13 @@ const SignUp = (props) => {
               >
                 Login
               </Button>
+              <p className="Login">
+                Don't have an account?{" "}
+                <Button id="submitButton" onClick={toggleSignUp}>
+                  {buttonLabel}Sign Up
+                </Button>
+                {/* <a onClick={toggleSignUp}>Log In</a> */}
+              </p>
             </Form>
           </ModalBody>
         </Modal>

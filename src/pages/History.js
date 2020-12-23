@@ -54,7 +54,7 @@ const History = () => {
   const [totalWeek, setTotalWeek] = useState([]);
   const [dates, setDates] = useState([]);
   const [totals, setTotals] = useState([]);
-  const [totalHistory, setTotalHistory] = useState({});
+  const [totalHistory, setTotalHistory] = useState([]);
   const urlMonth = "https://binar8-jul-hendri.nandaworks.com/chart/monthly";
   const urlWeek = "https://binar8-jul-hendri.nandaworks.com/chart/weekly";
 
@@ -101,7 +101,7 @@ const History = () => {
     axios
       .get(urlTotalHistory, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        console.log(res.data);
+        console.log("totalhistory" ,res.data);
         setTotalHistory(res.data);
         setIsLoading(false);
       })
@@ -275,7 +275,7 @@ const History = () => {
                               onClick={() => {
                                 if (
                                   window.confirm(
-                                    `Your ${history.service.name} subscription is about to be terminated. Click OK to confirm.`
+                                    "are you sure you wish to unsubscribe this item?"
                                   )
                                 )
                                   handleRemove(history.serviceId);

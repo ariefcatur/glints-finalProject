@@ -8,8 +8,9 @@
   font-weight: 500;
 }
 .section{
-  text-align:center;
+  text-align:center!important;
   font-weight: bold;
+  padding-left:0px!important;
 }
 .about{
   padding-top: 150px;

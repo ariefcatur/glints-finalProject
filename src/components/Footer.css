@@ -5,7 +5,12 @@ body {
   }
 
 .line {
+    border-top: #222222 solid 3px;
+}
+
+.line1 {
     border-top: #8F48EA solid 1px;
+    margin-top: 5px;
 }
 
 .rowFooter {
@@ -13,13 +18,26 @@ body {
 }
 
 .footer {
-    background-color: #fff;
-    padding-bottom: 0.5%;
+    background-color: #c2c2c2;
+    position: relative;
+    padding-bottom: 2px;
     bottom: 0;
-    left: 0;
-    margin-top: -25px;
+    width: 100%;
+    /* margin-top: -25px; */
 }
 
 .footerTable {
     font-size: 1em;
+    text-align: center;
+}
+
+.icons {
+    display: inline-block;
+    width: 100%;
+}
+
+.store {
+    width: 13%;
+    margin-left: 20px;
+    margin-right: 20px;
 }

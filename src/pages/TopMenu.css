@@ -19,6 +19,13 @@
   line-height: 1.5;
 }
 
+/* Style the navigation menu */
+.navbar {
+  width: 100%;
+  background-color: #fff;
+  overflow: auto;
+}
+
 #Menu {
   position: relative;
   border: none;

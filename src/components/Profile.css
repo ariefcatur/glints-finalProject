@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500&display=swap');
 
 body {
-  font-family: "Titillium Web", cursive;
+  font-family: "Rajdhani", cursive;
 }
 
 .line {
@@ -148,6 +148,27 @@ body {
   margin-bottom: 50px;
   opacity: 60%;
 }
+
+.subs6 {
+  background-image: url("../assets/sleep.png");
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  margin-bottom: 50px;
+  opacity: 60%;
+}
+
+.subs7 {
+  background-image: url("../assets/sleep.png");
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  opacity: 60%;
+}
+
+
 
 #cardphoto{
   margin-bottom:20px;

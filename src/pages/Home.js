@@ -353,12 +353,12 @@ const Home = (props) => {
                     src={subscribes.picture}
                     alt="subscribtion"
                   />
-                  <CardTitle
+                  {/* <CardTitle
                     tag="h6"
                     className="text-dark font-weight-bold text-center"
                   >
                     <h4>{subscribes.name}</h4>
-                  </CardTitle>
+                  </CardTitle> */}
                 </Card>
               </Col>
             ))}

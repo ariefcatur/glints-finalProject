@@ -268,14 +268,13 @@ const History = () => {
                             tag="h6"
                             className="text-dark font-weight-bold text-center"
                           >
-                            {history.service.name}
+                            <p><b>{history.service.name}</b></p>
                           </CardTitle>
-                          <Row>
                             <Button
                               onClick={() => {
                                 if (
                                   window.confirm(
-                                    "are you sure you wish to unsubscribe this item?"
+                                    `Your "${history.service.name}" service is about to be terminated. Please click OK to confirm.`
                                   )
                                 )
                                   handleRemove(history.serviceId);
@@ -283,9 +282,8 @@ const History = () => {
                               className="btn btn-primary btn-block"
                               id="button"
                             >
-                              Unsubscribe
+                              <b>Unsubscribe</b>
                             </Button>
-                          </Row>
                         </CardBody>
                       </Card>
                     </Col>

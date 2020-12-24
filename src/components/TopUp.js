@@ -40,18 +40,27 @@ const TopUp = (props) => {
 
   const handleSubmit = (e) => {
 
+    e.preventDefault()
+
     const data = {
-      saldo: saldo,
+      saldo: parseInt(saldo),
     };
 
-    axios
-      .patch(`https://binar8-jul-hendri.nandaworks.com/card?cardNumber=${cardNumber}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    // axios
+    //   .patch(`https://binar8-jul-hendri.nandaworks.com/card?cardNumber=${cardNumber}`, data, {
+    //     headers: { Authorization: `Bearer ${token}` },
+    //   })
+    axios({
+      method: 'PATCH',
+      url: `https://binar8-jul-hendri.nandaworks.com/card?cardNumber=${cardNumber}`,
+      headers: { Authorization: `Bearer ${token}` },
+      data: data,
+    })
       .then((res) => {
         console.log(res);
+        console.log("ini res.data top up");
         console.log(res.data);
-        return window.location.reload();
+        // return window.location.reload();
       });
   };
 

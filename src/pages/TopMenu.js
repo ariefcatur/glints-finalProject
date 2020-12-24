@@ -35,7 +35,7 @@ const TopMenu = (props) => {
 
   return (
     <Container fluid className="barnav" style={{backgroundColor:"#fefefe"}}>
-      <Navbar expand="md" style={{backgroundColor:"#fefefe", }}>
+      <Navbar expand="sm" style={{backgroundColor:"#fefefe", height:"100px"}}>
       <NavbarBrand className="lognav">
             <Link to="/dashboard">
               <img src={subsit} ></img>

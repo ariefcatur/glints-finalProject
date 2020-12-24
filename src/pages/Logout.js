@@ -6,8 +6,8 @@ const Logout = () => {
     Cookies.remove('token');
     Cookies.remove('username');
     Cookies.remove('status');
-    
     history.push('/');
+    return window.location.reload();
     return null;
 
 }

@@ -99,6 +99,7 @@ const SignUp = (props) => {
       Cookies.set("token", token, { expires: 1 });
       setUser(res.data);
       history.push(`/Dashboard`);
+      return window.location.reload();
     });
   };
 

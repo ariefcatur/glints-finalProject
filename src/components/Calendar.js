@@ -12,6 +12,7 @@ const CalendarEvent = () => {
   const [upComing, setUpComing] = useState([]);
   const [month, setMonth] = useState("");
   const [loading, setLoading] = useState(false);
+  const [checkSubs, setCheckSubs] = useState("");
 
   const token = Cookies.get("token");
 
@@ -36,6 +37,17 @@ const CalendarEvent = () => {
         );
         setLoading(false);
       });
+
+    axios
+      .get("https://binar8-jul-hendri.nandaworks.com/subscription", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setCheckSubs(res.data);
+      });
   }, []);
 
   let checkComingMonth = upComing.filter((e) => e.date.substr(5, 2) == month);
@@ -44,12 +56,15 @@ const CalendarEvent = () => {
     if (a.date < b.date) return -1;
     return a.date > b.date ? 1 : 0;
   });
+
   return (
-    <>
-      <Container className="mb-5 mt-5">
+    <Container>
       {loading && <Loading/>}
-      </Container>
-      {!loading && (
+      {checkSubs.length !== 0 ? (
+        // <Container className="mb-5 mt-5">
+        // {/* {loading && <Loading/>} */}
+        // </Container>
+        // {!loading && (
         <Container>
           <Row>
             <Col sm="8">
@@ -73,7 +88,13 @@ const CalendarEvent = () => {
               </Card>
             </Col>
             <Col sm="4">
-              <Card style={{ padding: "20px", minHeight: "605px", marginBottom:"50px" }}>
+              <Card
+                style={{
+                  padding: "20px",
+                  minHeight: "605px",
+                  marginBottom: "50px",
+                }}
+              >
                 <h4
                   style={{
                     color: "#222222",
@@ -92,8 +113,9 @@ const CalendarEvent = () => {
                   </h5>
                 ) : (
                   checkComingMonth.map((x) => (
-                    <p className="text-left" style={{marginBottom:"20px"}}>
-                      <b>{x.title}</b> service will be due on the <b>{x.date.substr(8, 2)}</b>th of this month.
+                    <p className="text-left" style={{ marginBottom: "20px" }}>
+                      <b>{x.title}</b> service will be due on the{" "}
+                      <b>{x.date.substr(8, 2)}</b>th of this month.
                     </p>
                   ))
                 )}
@@ -101,8 +123,21 @@ const CalendarEvent = () => {
             </Col>
           </Row>
         </Container>
+      ) : (
+        <Container className="text-align-center">
+          <Row style={{minHeight:"400px"}}>
+            <p>
+              <b>
+                <i>
+                  This page will be available after you subscribe something. So? What are you waiting for?
+                </i>
+              </b>
+            </p>
+          </Row>
+        </Container>
       )}
-    </>
+    </Container>
   );
 };
+
 export default CalendarEvent;

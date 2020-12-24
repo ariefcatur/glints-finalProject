@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import {
   Container,
   Row,
@@ -82,6 +82,7 @@ const Dashboard = () => {
   const [serviceId, setServiceId] = useState([]);
   const [card, setCard] = useState([]);
   const [cardId, setCardId] = useState(null);
+  const [checkCard, setCheckCard] = useState("");
   const urlCard = " https://binar8-jul-hendri.nandaworks.com/card";
   const [chartData, setChartData] = useState({});
   const [dates, setDates] = useState([]);
@@ -91,9 +92,8 @@ const Dashboard = () => {
   const [weekMonth, setWeekMonth] = useState([]);
   const [totalWeek, setTotalWeek] = useState([]);
   const urlWeek = " https://binar8-jul-hendri.nandaworks.com/chart/weekly";
-  
-  const history = useHistory();
 
+  const history = useHistory();
 
   const toggle = () => setModal(!modal);
   const collapse = () => {
@@ -117,6 +117,18 @@ const Dashboard = () => {
         setLoading(false);
       })
       .catch((err) => console.log(err));
+
+    axios
+      .get(urlCard, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setCheckCard(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     dataMonth();
     dataWeek();
@@ -170,7 +182,10 @@ const Dashboard = () => {
     return (
       <div>
         <Row className="justify-content-center mt-5">
-          <Spinner type="grow" style={{ width: '4rem', height: '4rem', color:'#8F48EA' }} />
+          <Spinner
+            type="grow"
+            style={{ width: "4rem", height: "4rem", color: "#8F48EA" }}
+          />
         </Row>
         <Row className="justify-content-center mt-3 font-weight-bold">
           Please wait...
@@ -297,37 +312,49 @@ const Dashboard = () => {
       </Container>
       <Container>
         <Row>
-          {subscribes.map((subscribes) => (
-            <Col xs="3" key={subscribes.id}>
-              <Card style={{ marginBottom: "50px" }}>
-                <CardImg
-                  top
-                  width="100%"
-                  height="170px"
-                  src={subscribes.picture}
-                  alt="subscribtion"
-                  style={{border:"0.5px solid grey"}}
-                />
-                <CardBody className="bg-dangers">
-                  <CardTitle
-                    tag="h6"
-                    className="text-dark font-weight-bold text-center"
-                  >
-                    <h5>{subscribes.name}</h5>
-                  </CardTitle>
-                  <Row>
-                    <Button
-                      onClick={() => subscribeDetails(subscribes.id)}
-                      className="btn btn-primary btn-block"
-                      id="button"
+          {checkCard.length !== 0 ? (
+            subscribes.map((subscribes) => (
+              <Col xs="3" key={subscribes.id}>
+                <Card style={{ marginBottom: "50px" }}>
+                  <CardImg
+                    top
+                    width="100%"
+                    height="170px"
+                    src={subscribes.picture}
+                    alt="subscribtion"
+                    style={{ border: "0.5px solid grey" }}
+                  />
+                  <CardBody className="bg-dangers">
+                    <CardTitle
+                      tag="h6"
+                      className="text-dark font-weight-bold text-center"
                     >
-                      Subcribe
-                    </Button>
-                  </Row>
-                </CardBody>
-              </Card>
-            </Col>
-          ))}
+                      <h5>{subscribes.name}</h5>
+                    </CardTitle>
+                    <Row>
+                      <Button
+                        onClick={() => subscribeDetails(subscribes.id)}
+                        className="btn btn-primary btn-block"
+                        id="button"
+                      >
+                        Subcribe
+                      </Button>
+                    </Row>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))
+          ) : (
+            <p>
+              <b>
+                <i>
+                  Oops! It seems like you haven't added any card yet. Please
+                  submit your card information in your profile page before using
+                  this feature.
+                </i>
+              </b>
+            </p>
+          )}
         </Row>
         <Row>
           <Modal isOpen={modal} toggle={toggle}>
@@ -335,20 +362,26 @@ const Dashboard = () => {
             <ModalBody>
               {subscribeId.map((subscribe) => (
                 <Col key={subscribe.id}>
-                  <CardTitle style={{textAlign:"center"}}><h5><strong>{subscribe.name}</strong></h5></CardTitle>
+                  <CardTitle style={{ textAlign: "center" }}>
+                    <h5>
+                      <strong>{subscribe.name}</strong>
+                    </h5>
+                  </CardTitle>
                   <CardImg
                     top
                     width="15%"
                     src={subscribe.picture}
-                    style={{border:"0.5px solid grey"}}
+                    style={{ border: "0.5px solid grey" }}
                     alt="subscribtion"
                   />
                   <CardBody>
-                    <CardText style={{textAlign:"justify"}}>
+                    <CardText style={{ textAlign: "justify" }}>
                       <p>{subscribe.description}</p>
                     </CardText>
                     <CardText>
-                      <p>Cost: <strong>IDR {subscribe.cost}</strong></p>
+                      <p>
+                        Cost: <strong>IDR {subscribe.cost}</strong>
+                      </p>
                     </CardText>
                     <Row>
                       <Col md="8">

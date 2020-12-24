@@ -29,6 +29,7 @@ import {
   faClipboard,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import '../components/Profile.css';
 
 const Home = () => {
   const urlSubscribe = " https://binar8-jul-hendri.nandaworks.com/service";
@@ -337,12 +338,12 @@ const Home = () => {
                     src={subscribes.picture}
                     alt="subscribtion"
                   />
-                  <CardTitle
+                  {/* <CardTitle
                     tag="h6"
                     className="text-dark font-weight-bold text-center"
                   >
                     <h4>{subscribes.name}</h4>
-                  </CardTitle>
+                  </CardTitle> */}
                 </Card>
               </Col>
             ))}

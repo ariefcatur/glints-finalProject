@@ -30,8 +30,8 @@ const TopMenu = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <Container fluid className="barnav" style={{backgroundColor:"#fefefe"}}>
-      <Navbar expand="md" style={{backgroundColor:"#fefefe", }}>
+    <div>
+      <Navbar expand="lg" className="navbar">
       <NavbarBrand className="lognav" href="/" >
             <Link to="/dashboard">
               <img src={subsit} ></img>
@@ -86,7 +86,7 @@ const TopMenu = (props) => {
           )}
         </Nav>
       </Navbar>
-    </Container>
+    </div>
   );
 };
 

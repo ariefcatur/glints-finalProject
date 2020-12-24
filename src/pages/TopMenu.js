@@ -44,13 +44,13 @@ const TopMenu = (props) => {
             <div className="body">
               <ul id="Menu">
                 <li>
-                <Button id="transparant">About</Button>
+                <Button id="transparant" >About</Button>
                 </li>
                 <li>
                 <Button id="transparant"> Product</Button>
                 </li>
                 <li>
-                 <Signup />
+                <Signup />
                 </li>
               </ul>
             </div>

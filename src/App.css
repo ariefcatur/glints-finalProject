@@ -8,8 +8,9 @@
   font-weight: 500;
 }
 .section{
-  text-align:center;
+  text-align:center!important;
   font-weight: bold;
+  padding-left:0px!important;
 }
 .about{
   padding-top: 150px;
@@ -60,7 +61,7 @@
 }
 .content{
   padding-top: 20px;
-  background: linear-gradient(269.56deg, rgba(237, 223, 223, 0.21) -4.24%, #FAFAFA 80.53%);
+  background-color: #e5e5e5;
   padding-bottom: 20px;
 }
 #button{

@@ -54,15 +54,15 @@ const History = () => {
   const [totalWeek, setTotalWeek] = useState([]);
   const [dates, setDates] = useState([]);
   const [totals, setTotals] = useState([]);
-  const [totalHistory, setTotalHistory] = useState({});
-  const urlMonth = "http://52.148.70.171/chart/monthly";
-  const urlWeek = "http://52.148.70.171/chart/weekly";
+  const [totalHistory, setTotalHistory] = useState([]);
+  const urlMonth = "https://binar8-jul-hendri.nandaworks.com/chart/monthly";
+  const urlWeek = "https://binar8-jul-hendri.nandaworks.com/chart/weekly";
 
   // console.log(token)
 
-  const urlHistory = "http://52.148.70.171/subscription";
-  const urlExpense = "http://52.148.70.171/expense";
-  const urlTotalHistory = "http://52.148.70.171/history";
+  const urlHistory = "https://binar8-jul-hendri.nandaworks.com/subscription";
+  const urlExpense = "https://binar8-jul-hendri.nandaworks.com/expense";
+  const urlTotalHistory = "https://binar8-jul-hendri.nandaworks.com/history";
 
   const toggle = () => setModal(!modal);
   const collapse = () => {
@@ -101,7 +101,7 @@ const History = () => {
     axios
       .get(urlTotalHistory, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        console.log(res.data);
+        console.log("totalhistory" ,res.data);
         setTotalHistory(res.data);
         setIsLoading(false);
       })
@@ -169,7 +169,7 @@ const History = () => {
   };
 
   const handleRemove = (id) => {
-    const url = ` http://52.148.70.171/subscription/${id}/`;
+    const url = ` https://binar8-jul-hendri.nandaworks.com/subscription/${id}/`;
     axios
       .delete(url, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
@@ -275,7 +275,7 @@ const History = () => {
                               onClick={() => {
                                 if (
                                   window.confirm(
-                                    `Your ${history.service.name} subscription is about to be terminated. Click OK to confirm.`
+                                    "are you sure you wish to unsubscribe this item?"
                                   )
                                 )
                                   handleRemove(history.serviceId);
@@ -366,11 +366,7 @@ const History = () => {
                           <h6 style={{ paddingTop: "15px" }}>
                             {subscribtion.repeat} : {subscribtion.service.name}{" "}
                           </h6>
-                          <Moment format="D MMM YYYY">
-                            <h6 style={{ paddingTop: "15px" }}>
-                              {subscribtion.startDate}
-                            </h6>
-                          </Moment>
+                          <Moment format="D MMM YYYY" >{subscribtion.startDate}</Moment>
                         </CardTitle>
                       </Col>
                       <Col xs="4">
@@ -417,12 +413,7 @@ const History = () => {
                       <Col xs="6" style={{ paddingTop: "15px" }}>
                         <CardTitle tag="h6" className="text-dark font-weight">
                           <h6>{expenses.title} </h6>
-                          <Moment format="D MMM YYYY">
-                            <h6 style={{ paddingTop: "15px" }}>
-                              {" "}
-                              {expenses.purchaseDate}
-                            </h6>
-                          </Moment>
+                          <Moment format="D MMM YYYY" >{expenses.purchaseDate}</Moment>
                         </CardTitle>
                       </Col>
                       <Col xs="6">

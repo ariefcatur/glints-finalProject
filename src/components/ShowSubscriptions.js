@@ -15,7 +15,7 @@ const ShowSubscriptions = () => {
   const [results, setResults] = useState("");
 
   const apiSubs =
-    " http://52.148.70.171/subscription";
+    " https://binar8-jul-hendri.nandaworks.com/subscription";
 
   const token = Cookies.get("token");
 

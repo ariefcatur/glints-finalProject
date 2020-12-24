@@ -15,7 +15,7 @@ import {Trash2} from 'react-feather';
 const ShowExpenses = () => {
   const [results, setResults] = useState("");
 
-  const urlCard = " http://52.148.70.171/card";
+  const urlCard = "https://binar8-jul-hendri.nandaworks.com/card";
 
   const token = Cookies.get("token");
 
@@ -44,7 +44,7 @@ const ShowExpenses = () => {
     };
 
     axios
-      .patch(`http://52.148.70.171/card?cardNumber=${cardNumber}`, data, {
+      .patch(`https://binar8-jul-hendri.nandaworks.com/card?cardNumber=${cardNumber}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

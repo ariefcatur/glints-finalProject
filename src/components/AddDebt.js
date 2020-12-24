@@ -23,7 +23,7 @@ const Debt = () => {
   const [dueDate, setDueDate] = useState("");
 
   const token = Cookies.get("token");
-  const urlDebt = "http://52.148.70.171/debts/add";
+  const urlDebt = "https://binar8-jul-hendri.nandaworks.com/debts/add";
 
   const [modal, setModal] = useState(false);
 

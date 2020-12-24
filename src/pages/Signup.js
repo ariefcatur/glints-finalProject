@@ -50,7 +50,8 @@ const SignUp = (props) => {
       data: "Registration is in progress...",
       type: "alert-warning"
     })
-    const urlSignUp = "  http://52.148.70.171/auth/register";
+    const urlSignUp =
+      "  https://binar8-jul-hendri.nandaworks.com/auth/register";
     const data = {
       fullName: fullName,
       email: email,
@@ -84,7 +85,8 @@ const SignUp = (props) => {
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
 
-    const urlSignIn = " http://52.148.70.171/auth/login";
+    const urlSignIn =
+      " https://binar8-jul-hendri.nandaworks.com/auth/login";
     const bodyData = {
       email: email,
       password: password,

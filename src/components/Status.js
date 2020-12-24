@@ -20,7 +20,7 @@ import expense from "../assets/expense.png";
 function CheckStatus() {
   const [results, setResults] = useState("");
 
-  const urlCard = " http://52.148.70.171/card";
+  const urlCard = " https://binar8-jul-hendri.nandaworks.com/card";
 
   const token = Cookies.get("token");
 

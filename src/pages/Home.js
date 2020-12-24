@@ -16,6 +16,7 @@ import {
   Spinner,
 } from "reactstrap";
 import subscribe from "./img/subscribe.svg";
+import Signup from "./Signup";
 import expense from "./img/expense.svg";
 import budgetting from "./img/budgetting.svg";
 import history from "./img/history.svg";
@@ -29,8 +30,10 @@ import {
   faClipboard,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import AOS from 'aos';
 
-const Home = () => {
+const Home = (props) => {
+
   const urlSubscribe = " https://binar8-jul-hendri.nandaworks.com/service";
   const [subscribes, setSubscribes] = useState([]);
   const [activeTab, setActiveTab] = useState("1");
@@ -48,6 +51,16 @@ const Home = () => {
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+    
+  const btnTitle2= [
+    "Try For Free",
+  ]
+  const bgcolor=[
+    "#8F48EA",
+  ]
+  const color=[
+    "white",
+  ]
 
   const addIcon = <FontAwesomeIcon icon={faAd} />;
   const addCoins = <FontAwesomeIcon icon={faCoins} />;
@@ -74,13 +87,16 @@ const Home = () => {
             <div className="logo">
               <h1>
                 <b>Stress Free</b>
+                {/* <a href="#about">Stress Free</a> */}
               </h1>
               <h1>
                 <b>Subscription Manager</b>
               </h1>
-              <Button width="80px" to="" className="btn " id="button">
-                Try For Free
-              </Button>
+              <Signup 
+              btnTitle={btnTitle2}
+              backgroundColor={bgcolor}
+              color={color}
+              />
             </div>
           </Col>
           <Col xs="7">
@@ -88,8 +104,8 @@ const Home = () => {
           </Col>
         </Row>
       </Container>
-      <Container fluid className="about">
-        <h1 className="section-title" style={{ color: "#003764" }}>
+      <Container fluid className="about" id="about" data-aos="fade-up">
+        <h1 className="section-title" id="#about" style={{ color: "#003764" }}>
           <b>About US</b>
         </h1>
         <div className="section-title-divider"></div>
@@ -321,7 +337,7 @@ const Home = () => {
         </section>
       </Container>
       <Container fluid className="popular">
-        <Container>
+        <Container id="service" data-aos="fade-up">
           <h1 className="section-title" style={{ color: "#003764" }}>
             <b>Popular Apps</b>
           </h1>

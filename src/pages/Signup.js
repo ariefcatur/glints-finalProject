@@ -16,6 +16,7 @@ import Login from "./Login";
 import Dashboard from "./Dashboard";
 import axios from "axios";
 import Cookies from "js-cookie";
+import swal from "sweetalert";
 
 const SignUp = (props) => {
   let history = useHistory();
@@ -42,6 +43,7 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
   const [message, setMessage] = useState();
+  const [isSubmitting, setIsSubmitting] = useState(false);
  
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
@@ -60,15 +62,16 @@ const SignUp = (props) => {
 
     axios.post(urlSignUp, data)
     .then((ress) => {
-      return <Alert color="success">You have registered successfully.</Alert>;
+      alert("Registered Successfully")
+      history.push(toggleSignIn);
+      // return <Alert color="success">You have registered successfully.</Alert>;
       // console.log(ress.bodyData);
       // <Alert color="primary">Mantav</Alert>;
     })
-    .then(() => {
-      history.push(toggleSignIn);
-    })
     .catch((err) => {
-      return console(err);
+      alert("Please fill the form correctly")
+      toggleSignIn(false);
+      history.push(toggleSignUp)
     })
     // .then((error, data)=>{
     //   // const hasError = "error" in data && data.error != null;
@@ -79,17 +82,34 @@ const SignUp = (props) => {
     // })
   };
 
+  const checkerLogin = () => {
+    //Password and Email Formatting
+    let mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    if (!email) {
+      setMessage("Email Must be Filled!");
+      return false;
+    } else if (!email.match(mailformat)) {
+      setMessage("Email Invalid!");
+      return false;
+    } else {
+      setIsSubmitting(true);
+    }
+   
+  };
+
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
 
-    const urlSignIn =
+    if (checkerLogin()!== false) {
+      const urlSignIn =
       " https://binar8-jul-hendri.nandaworks.com/auth/login";
-    const bodyData = {
+      const bodyData = {
       email: email,
       password: password,
     };
 
-    axios.post(urlSignIn, bodyData).then((res) => {
+    axios.post(urlSignIn, bodyData)
+    .then((res) => {
       console.log(res);
       const fullname = res.data.fullName;
       const email = res.data.email;
@@ -98,9 +118,31 @@ const SignUp = (props) => {
       Cookies.set("email", email, { expires: 1 });
       Cookies.set("token", token, { expires: 1 });
       setUser(res.data);
-      history.push(`/Dashboard`);
-      return window.location.reload();
+      history.push(`/Dashboard`); 
+      swal({
+        icon: "success",
+        title: "Success Login",
+        text: "let's book a field",
+        type: "success",
+        buttons: false,
+        timer: 3000,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      setIsSubmitting(false);
+      swal({
+        icon: "error",
+        title: "Wrong email or password",
+        text: "please try again",
+        type: "warning",
+        buttons: false,
+        timer: 2000,
+      });
     });
+
+    }
+     
   };
 
   return (

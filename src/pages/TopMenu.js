@@ -30,9 +30,9 @@ const TopMenu = (props) => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
-      <Navbar expand="lg" className="navbar">
-      <NavbarBrand className="lognav" href="/" >
+    <Container fluid className="barnav" style={{backgroundColor:"#fefefe"}}>
+      <Navbar expand="md" style={{backgroundColor:"#fefefe", }}>
+      <NavbarBrand className="lognav">
             <Link to="/dashboard">
               <img src={subsit} ></img>
             </Link>
@@ -43,15 +43,14 @@ const TopMenu = (props) => {
           {!checkLogin() && (
             <div className="body">
               <ul id="Menu">
-                <li className="liquid1"></li>
                 <li>
-                <Button id="transparant">About</Button>
+                <Button id="transparant" >About</Button>
                 </li>
                 <li>
                 <Button id="transparant"> Product</Button>
                 </li>
                 <li>
-                 <Signup />
+                <Signup />
                 </li>
               </ul>
             </div>
@@ -59,11 +58,6 @@ const TopMenu = (props) => {
           {checkLogin() && (
             
             <div>
-              {/* <NavbarBrand className="lognav" href="/" >
-            <Link to="/dashboard">
-              <img src={subsit} ></img>
-            </Link>
-            </NavbarBrand> */}
               <ul id="Menu" className="liquid1">
                 <li>
                   <Link to="/history">
@@ -86,7 +80,7 @@ const TopMenu = (props) => {
           )}
         </Nav>
       </Navbar>
-    </div>
+    </Container>
   );
 };
 

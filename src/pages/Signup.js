@@ -62,15 +62,16 @@ const SignUp = (props) => {
 
     axios.post(urlSignUp, data)
     .then((ress) => {
-      return <Alert color="success">You have registered successfully.</Alert>;
+      alert("Registered Successfully")
+      history.push(toggleSignIn);
+      // return <Alert color="success">You have registered successfully.</Alert>;
       // console.log(ress.bodyData);
       // <Alert color="primary">Mantav</Alert>;
     })
-    .then(() => {
-      history.push(toggleSignIn);
-    })
     .catch((err) => {
-      return console(err);
+      alert("Please fill the form correctly")
+      toggleSignIn(false);
+      history.push(toggleSignUp)
     })
     // .then((error, data)=>{
     //   // const hasError = "error" in data && data.error != null;
@@ -205,7 +206,7 @@ const SignUp = (props) => {
               </Button>
               <p className="Login">
                 Already have an account?{" "}
-                <Button  id="submitButtong" onClick={toggleSignIn}>
+                <Button  id="submitButton" onClick={toggleSignIn}>
                   {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}

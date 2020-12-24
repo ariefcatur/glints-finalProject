@@ -149,6 +149,27 @@ body {
   opacity: 60%;
 }
 
+.subs6 {
+  background-image: url("../assets/sleep.png");
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  margin-bottom: 50px;
+  opacity: 60%;
+}
+
+.subs7 {
+  background-image: url("../assets/sleep.png");
+  background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  justify-content: center;
+  opacity: 60%;
+}
+
+
+
 #cardphoto{
   margin-bottom:20px;
 }

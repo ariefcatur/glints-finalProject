@@ -30,6 +30,8 @@ import { Line } from "react-chartjs-2";
 import axios from "axios";
 import { checkLogin } from "../Helper";
 import Cookies from "js-cookie";
+import '../components/Profile.css'
+import sleep from '../assets/sleep.png'
 
 // const dataMonth= {
 //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
@@ -329,31 +331,51 @@ const Dashboard = () => {
                       tag="h6"
                       className="text-dark font-weight-bold text-center"
                     >
-                      <h5>{subscribes.name}</h5>
+                      <p>
+                        <b>{subscribes.name}</b>
+                      </p>
                     </CardTitle>
-                    <Row>
-                      <Button
-                        onClick={() => subscribeDetails(subscribes.id)}
-                        className="btn btn-primary btn-block"
-                        id="button"
-                      >
-                        Subcribe
-                      </Button>
-                    </Row>
+                    <Button
+                      onClick={() => subscribeDetails(subscribes.id)}
+                      className="btn btn-primary btn-block"
+                      id="button"
+                    >
+                      <b>Susbcribe</b>
+                    </Button>
                   </CardBody>
                 </Card>
               </Col>
             ))
           ) : (
-            <p>
-              <b>
-                <i>
-                  Oops! It seems like you haven't added any card yet. Please
-                  submit your card information in your profile page before using
-                  this feature.
-                </i>
-              </b>
-            </p>
+            <Container className="text-align-center">
+              <Container
+                style={{
+                  opacity: "60%",
+                  paddingTop: "30px",
+                }}
+              >
+                <p>
+                  <b>
+                    <i>
+                      Oops! It seems like you haven't added any card yet. Please
+                      submit your card information in your profile page before
+                      using this feature.
+                    </i>
+                  </b>
+                </p>
+                <Col className="subs6">
+                  <img
+                    src={sleep}
+                    alt=""
+                    style={{
+                      width: "50%",
+                      opacity: "0%",
+                      position: "center",
+                    }}
+                  />
+                </Col>
+              </Container>
+            </Container>
           )}
         </Row>
         <Row>
@@ -385,11 +407,6 @@ const Dashboard = () => {
                     </CardText>
                     <Row>
                       <Col md="8">
-                        {/* {card.map((cards)=>(
-                                <Select
-
-                                value={cards.cardBank}/>
-                            ))} */}
                         <Row>
                           <FormGroup>
                             <Input
@@ -419,7 +436,7 @@ const Dashboard = () => {
                           className="btn btn-primary"
                           id="button"
                         >
-                          Subscribe
+                          <b>Subscribe</b>
                         </Button>
                       </Col>
                     </Row>

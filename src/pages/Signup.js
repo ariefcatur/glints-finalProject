@@ -118,15 +118,17 @@ const SignUp = (props) => {
       Cookies.set("email", email, { expires: 1 });
       Cookies.set("token", token, { expires: 1 });
       setUser(res.data);
-      history.push(`/Dashboard`); 
+      history.push(`/Dashboard`);
       swal({
         icon: "success",
-        title: "Success Login",
+        title: "Login Success!",
         text: "let's book a field",
         type: "success",
         buttons: false,
         timer: 3000,
       });
+      return window.location.reload();
+      
     })
     .catch((err) => {
       console.log(err);

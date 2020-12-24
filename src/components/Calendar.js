@@ -7,6 +7,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import axios from "axios";
 import Cookies from "js-cookie";
 import Loading from "./Loading";
+import sleep from "../assets/sleep.png";
 
 const CalendarEvent = () => {
   const [upComing, setUpComing] = useState([]);
@@ -59,7 +60,6 @@ const CalendarEvent = () => {
 
   return (
     <Container>
-      {loading && <Loading/>}
       {checkSubs.length !== 0 ? (
         // <Container className="mb-5 mt-5">
         // {/* {loading && <Loading/>} */}
@@ -125,15 +125,26 @@ const CalendarEvent = () => {
         </Container>
       ) : (
         <Container className="text-align-center">
-          <Row style={{minHeight:"400px"}}>
+          <Container style={{ minHeight: "300px", opacity:"60%", paddingTop:"30px" }}>
             <p>
               <b>
                 <i>
-                  This page will be available after you subscribe something. So? What are you waiting for?
+                  You haven't subscribed anything, have you?
                 </i>
               </b>
             </p>
-          </Row>
+            <Col className="subs6">
+              <img
+                src={sleep}
+                alt=""
+                style={{
+                  width: "50%",
+                  opacity: "0%",
+                  position: "center",
+                }}
+              />
+            </Col>
+          </Container>
         </Container>
       )}
     </Container>

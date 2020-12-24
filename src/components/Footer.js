@@ -56,18 +56,6 @@ const Footer = () => {
               <img className="store" src={appstore} alt=""/>
               </Container>
           </Row>
-          {/* <Row>
-              <Container fluid className="icons" style={{ textAlign: "center" }}>
-                <p>
-                  <b>
-                    Angelia Purnamasari | Jul Hendri | Rifkli Danny Prakoso |
-                    Muhammad Agiel Nugraha | Ikhwan Bayu A S | Mochamad Dalvin |
-                    Muhammad Arief Catur Prakoso | Lingga Alif Pratama |
-                    Swastika Raisa
-                  </b>
-                </p>
-              </Container>
-          </Row> */}
           <b>
             <p className="footerTable">
               Copyright &copy; 2020 SubsItId.herokuapp.com

@@ -50,11 +50,11 @@ const Bells = () => {
   // }
   return (
     <div>
-      <div id="Popover1">
+      <div id="Popover1" >
         <Bell style={{cursor:"pointer", color:"#8f48ea"}}/>
       </div>
       <Popover
-        placement="bottom"
+        placement="right"
         isOpen={popoverOpen}
         target="Popover1"
         toggle={toggle}

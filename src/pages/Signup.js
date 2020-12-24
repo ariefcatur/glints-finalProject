@@ -59,15 +59,18 @@ const SignUp = (props) => {
 
     axios.post(urlSignUp, data)
     .then((ress) => {
-      return <Alert color="success">You have registered successfully.</Alert>;
-      // console.log(ress.bodyData);
-      // <Alert color="primary">Mantav</Alert>;
-    })
-    .then(() => {
       history.push(toggleSignIn);
+      // if (ress.response === 200) {
+      //   alert("Your register is success.")
+      //   history.push(toggleSignIn);
+      // } 
     })
+    // .then(() => {
+    //   history.push(toggleSignIn);
+    // })
     .catch((err) => {
-      return console(err);
+      alert("Your register is failed, please fill correctly.")
+      // return <Alert color="danger">Salah cuk</Alert>;
     })
     // .then((error, data)=>{
     //   // const hasError = "error" in data && data.error != null;
@@ -87,8 +90,9 @@ const SignUp = (props) => {
       password: password,
     };
 
-    axios.post(urlSignIn, bodyData).then((res) => {
-      console.log(res);
+    axios.post(urlSignIn, bodyData)
+    .then((res) => {
+      // console.log(res);
       const fullname = res.data.fullName;
       const email = res.data.email;
       const token = res.data.token;
@@ -96,8 +100,22 @@ const SignUp = (props) => {
       Cookies.set("email", email, { expires: 1 });
       Cookies.set("token", token, { expires: 1 });
       setUser(res.data);
-      history.push(`/Dashboard`);
-    });
+      history.push(`/Dashboard`)  
+      console.log("login", res);  
+    })
+    .catch((err) => {
+      // return <Alert color="danger">Salah cuk</Alert>;
+      if (err.res === 402) {
+        alert("Please fill your email and password")
+        // <Alert color="danger">Please fill your email and password</Alert>
+      } else if (err.res === 404) {
+        alert("Please fill your email and password correctly")
+        // <Alert color="danger">Please fill your email and password correctly</Alert>
+      } else {
+        alert("Wrong email or password")
+        // <Alert color="danger">Wrong email or password</Alert>
+      }
+    })
   };
 
   return (

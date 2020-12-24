@@ -16,16 +16,13 @@
 #transparant{
   background-color:rgb(254, 254, 254);
   color:black;
-  border-color:rgb(254, 254, 254) ;
+  
   font-size: 18px;
 }
 
-  
-#transparant{
-  background-color:rgb(254, 254, 254);
-  color:black;
-  border-color:rgb(254, 254, 254) ;
-  font-size: 18px;
+#transparant:hover {
+  background-color:#b085e9;
+  color: black;
 }
 
 .ModalHeader {

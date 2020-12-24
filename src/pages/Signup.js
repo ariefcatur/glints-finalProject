@@ -70,13 +70,13 @@ const SignUp = (props) => {
     .catch((err) => {
       return console(err);
     })
-    .then((error, data)=>{
-      const hasError = "error" in data && data.error != null;
-      setMessage({
-        data: error || "Registered Successfully",
-        type: error ? "alert-danger" : "alert-success",
-      })
-    })
+    // .then((error, data)=>{
+    //   // const hasError = "error" in data && data.error != null;
+    //   setMessage({
+    //     data: error || "Registered Successfully",
+    //     type: error ? "alert-danger" : "alert-success",
+    //   })
+    // })
   };
 
   const handleSubmitSignIn = (e) => {
@@ -163,7 +163,7 @@ const SignUp = (props) => {
               </Button>
               <p className="Login">
                 Already have an account?{" "}
-                <Button  id="submitButton" onClick={toggleSignIn}>
+                <Button  id="submitButtong" onClick={toggleSignIn}>
                   {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}

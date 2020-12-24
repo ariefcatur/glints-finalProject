@@ -70,13 +70,13 @@ const SignUp = (props) => {
     .catch((err) => {
       return console(err);
     })
-    // .then((error, data)=>{
-    //   // const hasError = "error" in data && data.error != null;
-    //   setMessage({
-    //     data: error || "Registered Successfully",
-    //     type: error ? "alert-danger" : "alert-success",
-    //   })
-    // })
+    .then((error, data)=>{
+      const hasError = "error" in data && data.error != null;
+      setMessage({
+        data: error || "Registered Successfully",
+        type: error ? "alert-danger" : "alert-success",
+      })
+    })
   };
 
   const handleSubmitSignIn = (e) => {

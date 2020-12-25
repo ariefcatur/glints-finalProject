@@ -14,6 +14,7 @@ import "./Profile.css";
 import debtPic from "../assets/debt2.png";
 import { Element } from "react-scroll";
 import Moment from "react-moment";
+import swal from "sweetalert";
 
 const ShowDebt = () => {
   const [debt, setDebt] = useState([]);
@@ -45,6 +46,14 @@ const ShowDebt = () => {
       })
       .then((res) => {
         console.log(res);
+        swal({
+          icon: "success",
+          title: "Done!",
+          text: "Your selected record has been deleted.",
+          type: "success",
+          buttons: "OK",
+          timer: 3000,
+        });  
         return window.location.reload();
       });
   };

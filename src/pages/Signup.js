@@ -62,7 +62,15 @@ const SignUp = (props) => {
 
     axios.post(urlSignUp, data)
     .then((ress) => {
-      alert("Registered Successfully")
+      // alert("Registered Successfully")
+      swal({
+        icon: "success",
+        title: "Great!",
+        text: "You have registered successfully.",
+        type: "success",
+        buttons: false,
+        timer: 5000,
+      });
       history.push(toggleSignIn);
       // return <Alert color="success">You have registered successfully.</Alert>;
       // console.log(ress.bodyData);
@@ -121,8 +129,8 @@ const SignUp = (props) => {
       history.push(`/Dashboard`);
       swal({
         icon: "success",
-        title: "Login Success!",
-        text: "let's book a field",
+        title: "Well Done!",
+        text: "You have login successfully.",
         type: "success",
         buttons: false,
         timer: 3000,

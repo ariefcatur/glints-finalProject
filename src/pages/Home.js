@@ -30,6 +30,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import '../components/Profile.css';
+import Signup from './Signup';
 
 const Home = () => {
   const urlSubscribe = " https://binar8-jul-hendri.nandaworks.com/service";
@@ -49,6 +50,10 @@ const Home = () => {
   const toggle = (tab) => {
     if (activeTab !== tab) setActiveTab(tab);
   };
+
+  const signup = () => {
+    return <Signup/>
+  }
 
   const addIcon = <FontAwesomeIcon icon={faAd} />;
   const addCoins = <FontAwesomeIcon icon={faCoins} />;
@@ -79,7 +84,7 @@ const Home = () => {
               <h1>
                 <b>Subscription Manager</b>
               </h1>
-              <Button width="80px" to="" className="btn " id="button">
+              <Button onClick={signup} width="80px" to="" className="btn " id="button" button>
                 Try For Free
               </Button>
             </div>

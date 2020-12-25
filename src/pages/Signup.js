@@ -20,7 +20,7 @@ import swal from "sweetalert";
 
 const SignUp = (props) => {
   let history = useHistory();
-  const { buttonLabel, className } = props;
+  const { buttonLabel, btnTitle, className, backgroundColor, color } = props;
 
   const [modalSignUp, setModalSignUp] = useState(false);
   const [modalSignIn, setModalSignIn] = useState(false);
@@ -37,6 +37,7 @@ const SignUp = (props) => {
     setModalSignIn(!modalSignIn);
     setModalSignUp(false);
   };
+
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -89,7 +90,9 @@ const SignUp = (props) => {
     //   })
     // })
   };
-
+  const btnTitle1 = [
+    "Sign Up",
+   ]
   const checkerLogin = () => {
     //Password and Email Formatting
     let mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -152,15 +155,18 @@ const SignUp = (props) => {
     });
 
     }
-     
+    
   };
 
   return (
     <div>
       <div className="SignUpModal">
         <div className="navigation">
-          <Button onClick={toggleSignUp}  id="transparant">{buttonLabel}Sign Up</Button>
+          <Button onClick={toggleSignUp}  id="transparant" style={{backgroundColor:`${backgroundColor}`, color:`${color}`}}>{btnTitle}</Button>
         </div>
+        {/* <div className="navigation">
+          <Button onClick={toggleSignUp}  id="transparant" feature={feature2}></Button>
+        </div> */}
 
         <Modal isOpen={modalSignUp} toggle={toggleSignUp} className={className}>
           <ModalHeader toggle={toggleSignUp}>

@@ -23,11 +23,15 @@ import { Calendar, PieChart } from 'react-feather';
 import CalendarEvent from "../components/Calendar";
 
 import Bells from "./Bells";
+import AOS from 'aos';
 
 const TopMenu = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
+  const featureBox1 = [
+    "Sign Up"
+  ];
 
   return (
     <Container fluid className="barnav" style={{backgroundColor:"#fefefe"}}>
@@ -44,13 +48,15 @@ const TopMenu = (props) => {
             <div className="body">
               <ul id="Menu">
                 <li>
-                <Button id="transparant" >About</Button>
+                <a href="#about"><Button id="transparant" >About</Button></a>
                 </li>
                 <li>
-                <Button id="transparant"> Product</Button>
+                <a href="#service"><Button id="transparant"> Service </Button></a>
                 </li>
                 <li>
-                <Signup />
+                <Signup 
+                  btnTitle={featureBox1}
+                />
                 </li>
               </ul>
             </div>

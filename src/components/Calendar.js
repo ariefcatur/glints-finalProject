@@ -125,7 +125,27 @@ const CalendarEvent = () => {
         </Container>
       ) : (
         <Container className="text-align-center">
-          <Container style={{ minHeight: "300px", opacity:"60%", paddingTop:"30px" }}>
+                      <Col sm="8">
+              <Card style={{ padding: "20px" }}>
+                <FullCalendar
+                  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                  // datesSet={(arg) => {
+                  //   console.log(arg);
+                  //   console.log(arg.view.currentStart.toISOString()); //starting visible date
+                  //   console.log(arg.view.currentEnd.toISOString()); //ending visible date
+                  //   setMonth(arg.view.currentEnd.toISOString().substr(5, 2));
+                  // }}
+                  initialView="dayGridMonth"
+                  // height ="100%"
+                  // events={upComing}
+                  // events={[
+                  // { title: "event 1", date: "2020-12-06" },
+                  // { title: "event 2", date: "2020-12-12" },
+                  //  ]}
+                />
+              </Card>
+            </Col>
+          {/* <Container style={{ minHeight: "300px", opacity:"60%", paddingTop:"30px" }}>
             <p>
               <b>
                 <i>
@@ -144,7 +164,7 @@ const CalendarEvent = () => {
                 }}
               />
             </Col>
-          </Container>
+          </Container> */}
         </Container>
       )}
     </Container>

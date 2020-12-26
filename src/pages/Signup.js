@@ -9,14 +9,14 @@ import {
   FormGroup,
   Label,
   Input,
-  Alert
- } from "reactstrap";
+  Alert,
+} from "reactstrap";
 import { useHistory } from "react-router-dom";
 import Login from "./Login";
 import Dashboard from "./Dashboard";
 import axios from "axios";
 import Cookies from "js-cookie";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const SignUp = (props) => {
   let history = useHistory();
@@ -38,21 +38,20 @@ const SignUp = (props) => {
     setModalSignUp(false);
   };
 
-
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState();
   const [message, setMessage] = useState();
   const [isSubmitting, setIsSubmitting] = useState(false);
- 
+
   const handleSubmitSignUp = (e) => {
     e.preventDefault();
 
     setMessage({
       data: "Registration is in progress...",
-      type: "alert-warning"
-    })
+      type: "alert-warning",
+    });
     const urlSignUp =
       "  https://binar8-jul-hendri.nandaworks.com/auth/register";
     const data = {
@@ -61,19 +60,24 @@ const SignUp = (props) => {
       password: password,
     };
 
-    axios.post(urlSignUp, data)
-    .then((ress) => {
-      alert("Registered Successfully")
-      history.push(toggleSignIn);
-      // return <Alert color="success">You have registered successfully.</Alert>;
-      // console.log(ress.bodyData);
-      // <Alert color="primary">Mantav</Alert>;
-    })
-    .catch((err) => {
-      alert("Please fill the form correctly")
-      toggleSignIn(false);
-      history.push(toggleSignUp)
-    })
+    axios
+      .post(urlSignUp, data)
+      .then((ress) => {
+        Swal.fire("Great!", "You have registered successfully.", "success");
+        history.push(toggleSignIn);
+        // return <Alert color="success">You have registered successfully.</Alert>;
+        // console.log(ress.bodyData);
+        // <Alert color="primary">Mantav</Alert>;
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        })
+        toggleSignIn(false);
+        history.push(toggleSignUp);
+      });
     // .then((error, data)=>{
     //   // const hasError = "error" in data && data.error != null;
     //   setMessage({
@@ -82,9 +86,7 @@ const SignUp = (props) => {
     //   })
     // })
   };
-  const btnTitle1 = [
-    "Sign Up",
-   ]
+  const btnTitle1 = ["Sign Up"];
   const checkerLogin = () => {
     //Password and Email Formatting
     let mailformat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
@@ -97,64 +99,63 @@ const SignUp = (props) => {
     } else {
       setIsSubmitting(true);
     }
-   
   };
 
   const handleSubmitSignIn = (e) => {
     e.preventDefault();
 
-    if (checkerLogin()!== false) {
-      const urlSignIn =
-      " https://binar8-jul-hendri.nandaworks.com/auth/login";
+    if (checkerLogin() !== false) {
+      const urlSignIn = " https://binar8-jul-hendri.nandaworks.com/auth/login";
       const bodyData = {
-      email: email,
-      password: password,
-    };
+        email: email,
+        password: password,
+      };
 
-    axios.post(urlSignIn, bodyData)
-    .then((res) => {
-      console.log(res);
-      const fullname = res.data.fullName;
-      const email = res.data.email;
-      const token = res.data.token;
-      Cookies.set("fullname", fullname, { expires: 1 });
-      Cookies.set("email", email, { expires: 1 });
-      Cookies.set("token", token, { expires: 1 });
-      setUser(res.data);
-      history.push(`/Dashboard`);
-      swal({
-        icon: "success",
-        title: "Login Success!",
-        text: "let's book a field",
-        type: "success",
-        buttons: false,
-        timer: 3000,
-      });
-      return window.location.reload();
-      
-    })
-    .catch((err) => {
-      console.log(err);
-      setIsSubmitting(false);
-      swal({
-        icon: "error",
-        title: "Wrong email or password",
-        text: "please try again",
-        type: "warning",
-        buttons: false,
-        timer: 2000,
-      });
-    });
-
+      axios
+        .post(urlSignIn, bodyData)
+        .then((res) => {
+          console.log(res);
+          const fullname = res.data.fullName;
+          const email = res.data.email;
+          const token = res.data.token;
+          Cookies.set("fullname", fullname, { expires: 1 });
+          Cookies.set("email", email, { expires: 1 });
+          Cookies.set("token", token, { expires: 1 });
+          setUser(res.data);
+          history.push(`/Dashboard`);
+          return window.location.reload();
+        })
+        .then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Well Done!",
+            text: "You have logged in successfully!",
+            showConfirmButton: false,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          setIsSubmitting(false);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
+        });
     }
-    
   };
 
   return (
     <div>
       <div className="SignUpModal">
         <div className="navigation">
-          <Button onClick={toggleSignUp}  id="transparant" style={{backgroundColor:`${backgroundColor}`, color:`${color}`}}>{btnTitle}</Button>
+          <Button
+            onClick={toggleSignUp}
+            id="transparant"
+            style={{ backgroundColor: `${backgroundColor}`, color: `${color}` }}
+          >
+            {btnTitle}
+          </Button>
         </div>
         {/* <div className="navigation">
           <Button onClick={toggleSignUp}  id="transparant" feature={feature2}></Button>
@@ -190,7 +191,6 @@ const SignUp = (props) => {
                   placeholder="Enter email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                
               </FormGroup>
               <FormGroup className="form-group">
                 <Label id="SignUp">Password</Label>
@@ -214,7 +214,7 @@ const SignUp = (props) => {
               </Button>
               <p className="Login">
                 Already have an account?{" "}
-                <Button  id="submitButton" onClick={toggleSignIn}>
+                <Button id="submitButton" onClick={toggleSignIn}>
                   {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}

@@ -26,6 +26,7 @@ import expense from "../assets/expense.png";
 import "../components/Profile.css";
 import Moment from "react-moment";
 import NumberFormat from 'react-number-format';
+import Swal from "sweetalert2";
 
 const options = {
   scales: {
@@ -59,8 +60,6 @@ const History = () => {
   const urlMonth = "https://binar8-jul-hendri.nandaworks.com/chart/monthly";
   const urlWeek = "https://binar8-jul-hendri.nandaworks.com/chart/weekly";
 
-  // console.log(token)
-
   const urlHistory = "https://binar8-jul-hendri.nandaworks.com/subscription";
   const urlExpense = "https://binar8-jul-hendri.nandaworks.com/expense";
   const urlTotalHistory = "https://binar8-jul-hendri.nandaworks.com/history";
@@ -82,7 +81,6 @@ const History = () => {
     axios
       .get(urlHistory, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        // console.log(res.data);
         setHistory(res.data);
         setIsLoading(false);
       })
@@ -91,7 +89,6 @@ const History = () => {
     axios
       .get(urlExpense, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        // console.log(res.data)
         setExpense(res.data);
         setIsLoading(false);
       })
@@ -115,7 +112,6 @@ const History = () => {
     axios
       .get(urlMonth, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        //  console.log(res);
         for (const dataObj of res.data) {
           month.push(dataObj.dates);
           pay.push(dataObj.totals);
@@ -136,7 +132,6 @@ const History = () => {
       .catch((err) => {
         console.log(err);
       });
-    // console.log(dates, totals)
   };
 
   const dataWeek = () => {
@@ -170,38 +165,30 @@ const History = () => {
   };
 
   const handleRemove = (id) => {
-    const url = ` https://binar8-jul-hendri.nandaworks.com/subscription/${id}/`;
-    axios
-      .delete(url, { headers: { Authorization: `Bearer ${token}` } })
-      .then((res) => {
-        console.log(res.data);
-        return window.location.reload();
-      })
-      .catch((err) => console.log(err));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are about to unsubscribe this service.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#BA8FF2",
+      cancelButtonColor: "#8B8B8B",
+      confirmButtonText: "Yes, I'm sure.",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const url = ` https://binar8-jul-hendri.nandaworks.com/subscription/${id}/`;
+        axios
+          .delete(url, { headers: { Authorization: `Bearer ${token}` } })
+          .then((res) => {
+            console.log(res.data);
+            return window.location.reload();
+          })
+          .catch((err) => console.log(err));    
+        Swal.fire("Done!", "You've been unsubscribed from this service.", "success");
+      }
+    });
+
   };
 
-  // const expenses = () =>{
-  //     setIsLoading(true);
-  //     axios.get(urlExpense, {headers : {Authorization : `Bearer ${token}`}})
-  //     .then((res)=>{
-  //         console.log(res.data)
-  //         setExpense(res.data);
-  //         setIsLoading(false);
-  //     })
-  //     .catch((err)=> console.log(err));
-  // }
-
-  // const subscribeDetails = (id) => {
-  //     setIsLoading(true);
-  //     const url =`http://3.0.91.163/service?id=${id}`
-  //     axios.get(url).then((res)=>{
-  //         console.log(res.data.subscribeId)
-  //         setSubscribeId(res.data);
-  //         setModal(!modal)
-  //         setIsLoading(false);
-  //     })
-  //     .catch((err)=> console.log(err));
-  // }
   return (
     <Container fluid className="content">
       <Container>
@@ -273,12 +260,7 @@ const History = () => {
                           </CardTitle>
                             <Button
                               onClick={() => {
-                                if (
-                                  window.confirm(
-                                    `Your "${history.service.name}" service is about to be terminated. Please click OK to confirm.`
-                                  )
-                                )
-                                  handleRemove(history.serviceId);
+                                handleRemove(history.serviceId);
                               }}
                               className="btn btn-primary btn-block"
                               id="button"
@@ -313,7 +295,7 @@ const History = () => {
             </Container>
           </Col>
 
-          <Col xs="4" style={{ backgroundColor: "white", padding: "7px" }}>
+          <Col xs="4" style={{ backgroundColor: "white", padding: "10px" }}>
             <h4>History</h4>
             <hr style={{ borderTop: "2px solid #c8c8c8" }} />
             <Card
@@ -321,7 +303,7 @@ const History = () => {
                 marginTop: "20px",
                 color: "white",
                 backgroundColor: "#8F48EA",
-                marginBottom: "25px",
+                marginBottom: "15px",
               }}
             >
               <Row style={{ marginBottom: "20px" }}>
@@ -347,16 +329,17 @@ const History = () => {
               }}
             >
               <h4>Subscriptions</h4>
-              <hr style={{ borderTop: "2px solid #c8c8c8" }} />
+              <hr style={{ borderTop: "2px solid #c8c8c8", marginRight:"5px" }} />
               {history.length !== 0 ? (
                 history.map((subscribtion, i) => (
                   <Card
                     key={i}
                     style={{
-                      padding: "5px",
+                      padding:"3px",
                       marginTop: "20px",
                       backgroundColor: "#f6f9fc",
                       marginBottom: "20px",
+                      marginRight:"5px",
                     }}
                   >
                     <Row>
@@ -397,15 +380,16 @@ const History = () => {
                 </Container>
               )}
               <h4>Expenses</h4>
-              <hr style={{ borderTop: "2px solid #c8c8c8" }} />
+              <hr style={{ borderTop: "2px solid #c8c8c8", marginRight:"5px" }} />
               {expense.length !== 0 ? (
                 expense.map((expenses, i) => (
                   <Card
                     key={i}
                     style={{
-                      marginTop: "20px",
+                      marginTop: "15px",
                       padding: "5px",
                       backgroundColor: "#f6f9fc",
+                      marginRight:"5px",
                     }}
                   >
                     <Row>

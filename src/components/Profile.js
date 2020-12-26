@@ -15,11 +15,15 @@ import "./Profile.css";
 import { User, Mail } from "react-feather";
 import Edit from "./EditProfile";
 import TabProfile from "./TabProfile";
+import FileUpload from "./UploadImg"
 
 const Profile = () => {
   const [users, setUsers] = useState("");
+  const [img, setImg] = useState("");
 
   const token = Cookies.get('token');
+
+  const urlUpload = "https://binar8-jul-hendri.nandaworks.com/files";
 
   useEffect(() => {
 
@@ -37,7 +41,8 @@ const Profile = () => {
       })
       .catch((error) => {
       console.log(error);
-      })
+      });
+
   }, []);
 
   return (
@@ -45,12 +50,14 @@ const Profile = () => {
       <Row>
         <Col xl="4" sm="12">
         <Card id="cardphoto">
-        <CardImg top src={avatar} at="" className="imgProfile" />
+          <FileUpload/>
         </Card>
           <Card id="profilecard">
             {users.length !== 0 ? (
               users.map((user)=> (
                 <CardBody key={user.id} className="cardBody">
+                  <CardImg top src={user.photo} at="" className="imgProfile" />
+
                
                 <Row className="rowright">
                   <Container>

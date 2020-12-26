@@ -422,7 +422,7 @@ const Dashboard = () => {
                               {card.length !== 0
                                 ? card.map((cards) => (
                                     <option value={cards.id}>
-                                      {cards.cardBank}
+                                      {cards.cardBank} - IDR {cards.saldo}
                                     </option>
                                   ))
                                 : ""}

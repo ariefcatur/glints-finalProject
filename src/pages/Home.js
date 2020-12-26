@@ -32,6 +32,7 @@ import {
 import axios from "axios";
 import AOS from 'aos';
 
+
 const Home = (props) => {
 
   const urlSubscribe = " https://binar8-jul-hendri.nandaworks.com/service";
@@ -61,6 +62,10 @@ const Home = (props) => {
   const color=[
     "white",
   ]
+
+  const signup = () => {
+    return <Signup/>
+  }
 
   const addIcon = <FontAwesomeIcon icon={faAd} />;
   const addCoins = <FontAwesomeIcon icon={faCoins} />;

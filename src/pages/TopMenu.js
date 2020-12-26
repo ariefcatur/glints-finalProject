@@ -21,7 +21,6 @@ import { checkLogin } from "../Helper";
 import ProfMenu from "./ProfMenu";
 import { Calendar, PieChart } from 'react-feather';
 import CalendarEvent from "../components/Calendar";
-
 import Bells from "./Bells";
 import AOS from 'aos';
 
@@ -62,7 +61,6 @@ const TopMenu = (props) => {
             </div>
           )}
           {checkLogin() && (
-            
             <div>
               <ul id="Menu" className="liquid1">
                 <li>

@@ -15,7 +15,10 @@ import visa from "../assets/visa.png";
 import master from "../assets/mastercard.png";
 import "./Profile.css";
 import expense from "../assets/expense.png";
+
+import NumberFormat from 'react-number-format';
 import Swal from "sweetalert2";
+
 
 function CheckStatus() {
   const [results, setResults] = useState("");
@@ -94,7 +97,7 @@ function CheckStatus() {
                         <strong>{result.cardNumber}</strong>
                       </CardTitle>
                       <CardTitle>
-                        <strong>IDR {result.saldo}</strong>
+                        <strong><NumberFormat value={result.saldo} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></strong>
                       </CardTitle>
                       <CardText>
                         Status :
@@ -139,7 +142,7 @@ function CheckStatus() {
                         <strong>{result.cardNumber}</strong>
                       </CardTitle>
                       <CardTitle>
-                        <strong>IDR {result.saldo}</strong>
+                        <strong> <NumberFormat value={result.saldo} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></strong>
                       </CardTitle>
                       <CardText>
                         Status :
@@ -188,7 +191,7 @@ function CheckStatus() {
                         <strong>{result.cardNumber}</strong>
                       </CardTitle>
                       <CardTitle>
-                        <strong>IDR {result.saldo}</strong>
+                        <strong> <NumberFormat value={result.saldo} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></strong>
                       </CardTitle>
                       <CardText>
                         Status :
@@ -237,7 +240,7 @@ function CheckStatus() {
                         <strong>{result.cardNumber}</strong>
                       </CardTitle>
                       <CardTitle>
-                        <strong>IDR {result.saldo}</strong>
+                        <strong> <NumberFormat value={result.saldo} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></strong>
                       </CardTitle>
                       <CardText>
                         Status :
@@ -282,7 +285,7 @@ function CheckStatus() {
                         <strong>{result.cardNumber}</strong>
                       </CardTitle>
                       <CardTitle>
-                        <strong>IDR {result.saldo}</strong>
+                        <strong> <NumberFormat value={result.saldo} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></strong>
                       </CardTitle>
                       <CardText>
                         Status :
@@ -327,7 +330,7 @@ function CheckStatus() {
                         <strong>{result.cardNumber}</strong>
                       </CardTitle>
                       <CardTitle>
-                        <strong>IDR {result.saldo}</strong>
+                        <strong> <NumberFormat value={result.saldo} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></strong>
                       </CardTitle>
                       <CardText>
                         Status :

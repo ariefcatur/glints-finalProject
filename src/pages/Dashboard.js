@@ -18,6 +18,7 @@ import {
   FormGroup,
   Input,
   Label,
+  Alert
 } from "reactstrap";
 import youtube from "./img/youtube.jpg";
 import hulu from "./img/hulu-logo.jpg";
@@ -32,6 +33,7 @@ import { checkLogin } from "../Helper";
 import Cookies from "js-cookie";
 import '../components/Profile.css'
 import sleep from '../assets/sleep.png'
+import NumberFormat from 'react-number-format';
 
 // const dataMonth= {
 //     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November'],
@@ -383,7 +385,7 @@ const Dashboard = () => {
             <ModalHeader toggle={toggle}></ModalHeader>
             <ModalBody>
               {subscribeId.map((subscribe) => (
-                <Col key={subscribe.id}>
+                <Row key={subscribe.id}>
                   <CardTitle style={{ textAlign: "center" }}>
                     <h5>
                       <strong>{subscribe.name}</strong>
@@ -396,18 +398,18 @@ const Dashboard = () => {
                     style={{ border: "0.5px solid grey" }}
                     alt="subscribtion"
                   />
-                  <CardBody>
+                  <CardBody style={{ marginBottom:"-25px" }}>
                     <CardText style={{ textAlign: "justify" }}>
                       <p>{subscribe.description}</p>
                     </CardText>
-                    <CardText>
+                    {/* <CardText>
                       <p>
                         Cost: <strong>IDR {subscribe.cost}</strong>
                       </p>
-                    </CardText>
-                    <Row>
-                      <Col md="8">
-                        <Row>
+                    </CardText> */}
+                    <Row style={{marginBottom: "-5px"}}>
+                      <Col md="7">
+                        
                           <FormGroup>
                             <Input
                               type="select"
@@ -428,20 +430,27 @@ const Dashboard = () => {
                                 : ""}
                             </Input>
                           </FormGroup>
-                        </Row>
+                        
                       </Col>
-                      <Col>
+                      <Col md="5">
+                      <Alert id="cost">
+                      <strong><NumberFormat value={subscribe.cost} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/> </strong>
+                      </Alert>
+                      </Col>
+                    </Row>
+                    <Row>
+                    <Col md="12">
                         <Button
                           onClick={subscribtion}
-                          className="btn btn-primary"
+                          className="btn btn-block"
                           id="button"
                         >
                           <b>Subscribe</b>
                         </Button>
-                      </Col>
+                    </Col>
                     </Row>
                   </CardBody>
-                </Col>
+                </Row>
               ))}
             </ModalBody>
           </Modal>

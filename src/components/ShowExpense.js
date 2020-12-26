@@ -7,6 +7,7 @@ import expense from "../assets/expense.png";
 import "./Profile.css";
 import {Element} from "react-scroll"
 import Moment from 'react-moment';
+import NumberFormat from 'react-number-format';
 
 
 const ShowExpenses = () => {
@@ -64,7 +65,7 @@ const ShowExpenses = () => {
               <tr>
                 <th style={{ width: "30%" }}>Date</th>
                 <th>Transaction</th>
-                <th>Currency</th>
+                
                 <th>Costs</th>
                 <th>Action</th>
               </tr>
@@ -76,8 +77,8 @@ const ShowExpenses = () => {
                   <tr>
                     <td className="text-center"><Moment format="D MMM YYYY" >{result.purchaseDate}</Moment></td>
                     <td className="text-center" style={{ width: "50%" }}>{result.title}</td>
-                    <td className="text-center">IDR</td>
-                    <td className="text-center">{result.total}</td>
+                    
+                    <td className="text-center"><NumberFormat value={result.total} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></td>
                     <td style={{ width: "100%" }} className="text-center">
                       <Button
                         size="sm"

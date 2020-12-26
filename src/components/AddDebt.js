@@ -14,6 +14,7 @@ import {
   Input,
 } from "reactstrap";
 import "./Profile.css";
+import NumberFormat from 'react-number-format';
 
 const Debt = () => {
   const [name, setName] = useState("");
@@ -50,6 +51,14 @@ const Debt = () => {
         console.log(error);
       });
   };
+  // $("input[data-type='currency']").on({
+  //   keyup: function() {
+  //     formatCurrency($(this));
+  //   },
+  //   blur: function() { 
+  //     formatCurrency($(this), "blur");
+  //   }
+  // });
 
   return (
     <div>
@@ -89,13 +98,19 @@ const Debt = () => {
                   ></Input>
                 </FormGroup>
                 <FormGroup>
-                  <Label for="cardType">Amount</Label>
+                  <Label for="cardType">Amount</Label><br/>
                   <Input
-                    type="number"
+                    type="text"
+                    pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?IDR" 
+                    data-type="currency"
                     name="cardType"
                     id="cardType"
                     onChange={(e) => setAmount(e.target.value)}
                   ></Input>
+                  
+                  {/* <NumberFormat thousandSeparator={true} prefix={'IDR '} 
+                  onChange={(e) => setAmount(e.target.value)}
+                  />  */}
                 </FormGroup>
                 <FormGroup>
                   <Label for="cardType">Type</Label>

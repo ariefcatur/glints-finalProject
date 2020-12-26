@@ -25,6 +25,7 @@ import glass from "../assets/glass.png";
 import expense from "../assets/expense.png";
 import "../components/Profile.css";
 import Moment from "react-moment";
+import NumberFormat from 'react-number-format';
 
 const options = {
   scales: {
@@ -331,7 +332,7 @@ const History = () => {
                 </Col>
                 <Col xs="6" style={{ paddingTop: "30px" }}>
                   <h6 style={{ float: "right" }}>
-                    <strong>IDR {totalHistory.total}</strong>{" "}
+                    <strong><NumberFormat value={totalHistory.total} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/> </strong>
                   </h6>
                 </Col>
               </Row>
@@ -359,7 +360,7 @@ const History = () => {
                     }}
                   >
                     <Row>
-                      <Col xs="8">
+                      <Col xs="7">
                         <CardTitle className="text-dark font-weight">
                           <h6 style={{ paddingTop: "15px" }}>
                             {subscribtion.repeat} : {subscribtion.service.name}{" "}
@@ -367,9 +368,9 @@ const History = () => {
                           <Moment format="D MMM YYYY" >{subscribtion.startDate}</Moment>
                         </CardTitle>
                       </Col>
-                      <Col xs="4">
+                      <Col xs="5">
                         <h6 style={{ float: "right", paddingTop: "15px" }}>
-                          IDR {subscribtion.service.cost}{" "}
+                        <NumberFormat value={subscribtion.service.cost} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/>
                         </h6>
                       </Col>
                     </Row>
@@ -416,7 +417,7 @@ const History = () => {
                       </Col>
                       <Col xs="6">
                         <h6 style={{ float: "right", paddingTop: "15px" }}>
-                          IDR {expenses.total}{" "}
+                        <NumberFormat value={expenses.total} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/>  
                         </h6>
                       </Col>
                     </Row>

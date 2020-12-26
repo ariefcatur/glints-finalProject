@@ -14,6 +14,7 @@ import "./Profile.css";
 import debtPic from "../assets/debt2.png";
 import { Element } from "react-scroll";
 import Moment from "react-moment";
+import NumberFormat from 'react-number-format';
 
 const ShowDebt = () => {
   const [debt, setDebt] = useState([]);
@@ -124,7 +125,7 @@ const ShowDebt = () => {
                         {debts.description}
                       </td>
                       <td style={{ paddingTop: "16px" }}>{debts.type}</td>
-                      <td style={{ paddingTop: "16px" }}>{debts.amount}</td>
+                      <td style={{ paddingTop: "16px" }}><NumberFormat value={debts.amount} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></td>
                       <td>
                         <Row style={{ justifyContent: "center" }}>
                           <Button

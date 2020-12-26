@@ -1,31 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom"
 import axios from "axios";
 import Cookies from "js-cookie";
-import {
-  Container,
-  Row,
-  Col,
-  Table,
-  Button,
-} from "reactstrap";
+import { Container, Row, Col, Table, Button } from "reactstrap";
 import { X } from "react-feather";
 import "./Profile.css";
 import debtPic from "../assets/debt2.png";
 import { Element } from "react-scroll";
 import Moment from "react-moment";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 
 const ShowDebt = () => {
-  const [debt, setDebt] = useState([]);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState("");
-  const [type, setType] = useState("");
-  const [dueDate, setDueDate] = useState("");
 
   const url = "https://binar8-jul-hendri.nandaworks.com/debts/notes";
   const token = Cookies.get("token");
+
+  const [debt, setDebt] = useState("");
 
   useEffect(() => {
     axios
@@ -40,64 +29,53 @@ const ShowDebt = () => {
   }, []);
 
   const handleDelete = (id) => {
-    axios
-      .delete(` https://binar8-jul-hendri.nandaworks.com/debts/delete?id=${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        console.log(res);
-        swal({
-          icon: "success",
-          title: "Done!",
-          text: "Your selected record has been deleted.",
-          type: "success",
-          buttons: "OK",
-          timer: 3000,
-        });  
-        return window.location.reload();
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#BA8FF2",
+      cancelButtonColor: "#8B8B8B",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(
+            ` https://binar8-jul-hendri.nandaworks.com/debts/delete?id=${id}`,
+            {
+              headers: { Authorization: `Bearer ${token}` },
+            }
+          )
+          .then((res) => {
+            console.log(res);
+            return window.location.reload();
+          });
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
   };
-
-  const handleSubmit = (id) => {
-    const data = {
-      name: name,
-      description: description,
-      amount: amount,
-      type: type,
-      dueDate: dueDate,
-    };
-
-    axios
-      .patch(`https://binar8-jul-hendri.nandaworks.com/debts/update?id=${id}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        return window.location.reload();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
 
   return (
     <Container>
       <Row className="tables">
         <Col xs="12">
-          <Row className="mb-0" style={{paddingLeft:"15px"}}>
-          <p style={{ fontSize: "10px", marginRight:"20px" }}>
-            <i>* <b>Payables</b> : what you owed.</i>
-          </p>
-          <p style={{ fontSize: "10px" }}>
-            <i>* <b>Receivables</b> : what others owed you.</i>
-          </p>
+          <Row className="mb-0" style={{ paddingLeft: "15px" }}>
+            <p style={{ fontSize: "10px", marginRight: "20px" }}>
+              <i>
+                * <b>Payables</b> : what you owed.
+              </i>
+            </p>
+            <p style={{ fontSize: "10px" }}>
+              <i>
+                * <b>Receivables</b> : what others owed you.
+              </i>
+            </p>
           </Row>
-          <Table hover style={{ backgroundColor: "whitesmoke", width: "100%" }} className="mt-0">
+          <Table
+            hover
+            style={{ backgroundColor: "whitesmoke", width: "100%" }}
+            className="mt-0"
+          >
             <Element
               ClassName="element"
               id="scroll-container"
@@ -112,9 +90,9 @@ const ShowDebt = () => {
                 style={{ backgroundColor: "#BA8FF2", width: "100%" }}
               >
                 <tr>
-                  <th>Due Date</th>
+                  <th style={{ width: "30%" }}>Due Date</th>
                   <th>Name</th>
-                  <th style={{ width: "25%" }}>Descriptions</th>
+                  <th style={{ width: "30%" }}>Descriptions</th>
                   <th>Type</th>
                   <th>Cost</th>
                   <th>Action</th>
@@ -139,12 +117,7 @@ const ShowDebt = () => {
                           <Button
                             size="sm"
                             onClick={() => {
-                              if (
-                                window.confirm(
-                                  `Debt record of "${debts.name} - ${debts.description}" is about to be deleted. Please click OK to confirm.`
-                                )
-                              )
-                                handleDelete(debts.id);
+                              handleDelete(debts.id);
                             }}
                             color="danger"
                             outline
@@ -154,16 +127,6 @@ const ShowDebt = () => {
                         </Row>
                       </td>
                     </tr>
-                    {/* <tr>
-                      <td colSpan="7">
-                        <p style={{ fontSize: "10px" }}>
-                          <i>* Payables : what you owed.</i>
-                        </p>
-                        <p style={{ fontSize: "10px" }}>
-                          <i>* Receivables : what others owed you.</i>
-                        </p>
-                      </td>
-                    </tr> */}
                   </tbody>
                 ))
               ) : (

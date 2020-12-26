@@ -35,25 +35,6 @@ const ShowExpenses = () => {
       });
   }, []);
 
-  const handleSubmit = (e) => {
-
-    e.prevenDefault();
-
-    const data = {
-      saldo: saldo,
-    };
-
-    axios
-      .patch(`https://binar8-jul-hendri.nandaworks.com/card?cardNumber=${cardNumber}`, data, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        return window.location.reload();
-      });
-  }
-
   const handleDelete = (id) => {
     axios
       .delete(`${urlCard}?cardNumber=${id}`, {

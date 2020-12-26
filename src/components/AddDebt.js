@@ -14,6 +14,7 @@ import {
   Input,
 } from "reactstrap";
 import "./Profile.css";
+import swal from "sweetalert";
 
 const Debt = () => {
   const [name, setName] = useState("");
@@ -44,6 +45,14 @@ const Debt = () => {
       .post(urlDebt, data, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         console.log(res.data);
+        swal({
+          icon: "success",
+          title: "Well Done!",
+          text: "You record have been added successfully.",
+          type: "success",
+          buttons: false,
+          timer: 3000,
+        });  
         return window.location.reload();
       })
       .catch((error) => {

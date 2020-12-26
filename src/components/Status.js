@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-// import Loading from './Loading'
 import {
   Container,
   Row,
@@ -16,6 +15,7 @@ import visa from "../assets/visa.png";
 import master from "../assets/mastercard.png";
 import "./Profile.css";
 import expense from "../assets/expense.png";
+import Swal from "sweetalert2";
 
 function CheckStatus() {
   const [results, setResults] = useState("");
@@ -27,15 +27,28 @@ function CheckStatus() {
   console.log(results);
 
   const handleDelete = (id) => {
-    axios
-      .delete(`${urlCard}?cardNumber=${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        return window.location.reload();
-      });
+    Swal.fire({
+      title: "Are you sure you want to remove this card?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#BA8FF2",
+      cancelButtonColor: "#8B8B8B",
+      confirmButtonText: "Yes, I'm sure!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`${urlCard}?cardNumber=${id}`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then((res) => {
+            console.log(res);
+            console.log(res.data);
+            return window.location.reload();
+          });
+        Swal.fire("Done!", "Your card has been removed.", "success");
+      }
+    });
   };
 
   useEffect(() => {
@@ -46,7 +59,6 @@ function CheckStatus() {
       .then((res) => {
         console.log(res.data);
         setResults(res.data);
-        // setLoading(true);
       })
       .catch((error) => {
         console.log(error);
@@ -253,7 +265,7 @@ function CheckStatus() {
                     style={{
                       backgroundColor: "whitesmoke",
                       color: "#222222",
-                      marginBottom:"3",
+                      marginBottom: "3",
                     }}
                   >
                     <CardBody>

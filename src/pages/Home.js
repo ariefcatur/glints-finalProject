@@ -30,14 +30,10 @@ import {
   faClipboard,
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-<<<<<<< HEAD
-import '../components/Profile.css';
-import Signup from './Signup';
-=======
 import AOS from 'aos';
 
+
 const Home = (props) => {
->>>>>>> d6d21ed8b5269016ebb258d5429a5454b647f497
 
   const urlSubscribe = " https://binar8-jul-hendri.nandaworks.com/service";
   const [subscribes, setSubscribes] = useState([]);
@@ -101,17 +97,11 @@ const Home = (props) => {
               <h1>
                 <b>Subscription Manager</b>
               </h1>
-<<<<<<< HEAD
-              <Button onClick={signup} width="80px" to="" className="btn " id="button" button>
-                Try For Free
-              </Button>
-=======
               <Signup 
               btnTitle={btnTitle2}
               backgroundColor={bgcolor}
               color={color}
               />
->>>>>>> d6d21ed8b5269016ebb258d5429a5454b647f497
             </div>
           </Col>
           <Col xs="7">

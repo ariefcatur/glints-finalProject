@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 import { X } from "react-feather";
 import expense from "../assets/expense.png";
 import "./Profile.css";
+import { Element } from "react-scroll";
 import Moment from 'react-moment';
 import NumberFormat from 'react-number-format';
 import Swal from "sweetalert2";
@@ -74,9 +75,8 @@ const ShowExpenses = () => {
                 style={{ backgroundColor: "#BA8FF2" }}
               >
                 <tr>
-                  <th style={{ width: "30%" }}>Date</th>
+                  <th style={{ width: "20%" }}>Date</th>
                   <th>Transaction</th>
-                  <th>Currency</th>
                   <th>Costs</th>
                   <th>Action</th>
                 </tr>
@@ -94,8 +94,8 @@ const ShowExpenses = () => {
                       <td className="text-center" style={{ width: "50%" }}>
                         {result.title}
                       </td>
-                      <td className="text-center">IDR</td>
-                      <td className="text-center">{result.total}</td>
+                      
+                      <td className="text-center"><NumberFormat value={result.total} displayType={'text'} thousandSeparator={true} prefix={'IDR '}/></td>
                       <td style={{ width: "100%" }} className="text-center">
                         <Button
                           size="sm"

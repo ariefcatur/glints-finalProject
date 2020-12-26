@@ -124,48 +124,64 @@ const CalendarEvent = () => {
           </Row>
         </Container>
       ) : (
-        <Container className="text-align-center">
-                      <Col sm="8">
-              <Card style={{ padding: "20px" }}>
-                <FullCalendar
-                  plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                  // datesSet={(arg) => {
-                  //   console.log(arg);
-                  //   console.log(arg.view.currentStart.toISOString()); //starting visible date
-                  //   console.log(arg.view.currentEnd.toISOString()); //ending visible date
-                  //   setMonth(arg.view.currentEnd.toISOString().substr(5, 2));
-                  // }}
-                  initialView="dayGridMonth"
-                  // height ="100%"
-                  // events={upComing}
-                  // events={[
-                  // { title: "event 1", date: "2020-12-06" },
-                  // { title: "event 2", date: "2020-12-12" },
-                  //  ]}
-                />
-              </Card>
-            </Col>
-          {/* <Container style={{ minHeight: "300px", opacity:"60%", paddingTop:"30px" }}>
-            <p>
-              <b>
-                <i>
-                  You haven't subscribed anything, have you?
-                </i>
-              </b>
-            </p>
-            <Col className="subs6">
-              <img
-                src={sleep}
-                alt=""
-                style={{
-                  width: "50%",
-                  opacity: "0%",
-                  position: "center",
-                }}
+        <Container style={{marginTop:"15px"}}>
+        <Row>
+          <Col sm="8">
+            <Card style={{ padding: "20px" }}>
+              <FullCalendar
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                // datesSet={(arg) => {
+                //   console.log(arg);
+                //   console.log(arg.view.currentStart.toISOString()); //starting visible date
+                //   console.log(arg.view.currentEnd.toISOString()); //ending visible date
+                //   setMonth(arg.view.currentEnd.toISOString().substr(5, 2));
+                // }}
+                initialView="dayGridMonth"
+                // height ="100%"
+                // events={upComing}
+                // events={[
+                // { title: "event 1", date: "2020-12-06" },
+                // { title: "event 2", date: "2020-12-12" },
+                //  ]}
               />
-            </Col>
-          </Container> */}
-        </Container>
+            </Card>
+          </Col>
+          <Col sm="4">
+            <Card
+              style={{
+                padding: "20px",
+                minHeight: "590px",
+                marginBottom: "50px",
+              }}
+            >
+              <h4
+                style={{
+                  color: "#222222",
+                }}
+                className="text-center"
+              >
+                <strong>Events</strong>
+              </h4>
+              <hr style={{ borderTop: "2px solid #c8c8c8" }} />
+              {checkComingMonth === undefined ||
+              checkComingMonth.length == 0 ? (
+                <h5 className="text-center my-5">
+                  <strong>
+                    <i>No event found in this month.</i>
+                  </strong>
+                </h5>
+              ) : (
+                checkComingMonth.map((x) => (
+                  <p className="text-left" style={{ marginBottom: "20px" }}>
+                    <b>{x.title}</b> service will be due on the{" "}
+                    <b>{x.date.substr(8, 2)}</b>th of this month.
+                  </p>
+                ))
+              )}
+            </Card>
+          </Col>
+        </Row>
+      </Container>
       )}
     </Container>
   );

@@ -16,7 +16,7 @@ import {
 import "./Profile.css";
 import Moment from "react-moment";
 import NumberFormat from 'react-number-format';
-import swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 const Debt = () => {
   const [name, setName] = useState("");
@@ -47,14 +47,14 @@ const Debt = () => {
       .post(urlDebt, data, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
         console.log(res.data);
-        swal({
-          icon: "success",
-          title: "Well Done!",
-          text: "You record have been added successfully.",
-          type: "success",
-          buttons: false,
-          timer: 3000,
-        });  
+        // Swal({
+        //   icon: "success",
+        //   title: "Well Done!",
+        //   text: "You record have been added successfully.",
+        //   type: "success",
+        //   buttons: false,
+        //   timer: 3000,
+        // });  
         return window.location.reload();
       })
       .catch((error) => {
@@ -150,7 +150,7 @@ const Debt = () => {
               <Button
                 block
                 type="submit"
-                onClick={toggle}
+                onClick={handleSubmit}
                 style={{ backgroundColor: "#8F48EA", color: "white" }}
               >
                 <strong>Add Debt</strong>

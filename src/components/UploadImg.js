@@ -1,16 +1,14 @@
 import React from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Container } from "reactstrap";
+import { Container, Button, Input, Row, Col } from "reactstrap";
 
 class FileUpload extends React.Component {
   constructor() {
     super();
     this.state = {
       fileName: "",
-      img:"",
     };
-
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
@@ -33,38 +31,34 @@ class FileUpload extends React.Component {
       })
       .then((res) => {
         console.warn(res);
-        this.setState({img: res})
+        return window.location.reload();
       });
   }
 
   render() {
     return (
       <Container>
-        <div className="row">
-          <div className="col-md-6">
-            <div className="form-row">
-              <div className="form-group col-md-6">
-                <input
-                  type="file"
-                  name="upload_file"
-                  onChange={this.handleInputChange}
-                />
-              </div>
-            </div>
-
-            <div className="form-row">
-              <div className="col-md-6">
-                <button
-                  type="submit"
-                  classNam  e="btn btn-dark"
-                  onClick={() => this.submit()}
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Row>
+          <Col>
+            <Input
+              type="file"
+              onChange={this.handleInputChange}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button
+              block
+              size="sm"
+              type="submit"
+              style={{backgroundColor:"#BA8FF2", marginBottom:"2%"}}
+              onClick={() => this.submit()}
+            >
+              <b>Save</b>
+            </Button>
+          </Col>
+        </Row>
       </Container>
     );
   }

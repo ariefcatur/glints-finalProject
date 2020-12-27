@@ -9,13 +9,19 @@ body {
 }
 
 .imgProfile {
-  border-radius: 100%;
-  width:80%!important;
+  width:82%!important;
  
   text-align: center;
   
   margin:10%;
-  /* border: #8f48ea solid 1px; */
+  border: whitesmoke solid 5px;
+}
+
+.thumbnail {
+  border-radius: 100%;
+  width:30px;
+  height: 30px;
+
 }
 
 .plus {

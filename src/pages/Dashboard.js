@@ -386,11 +386,11 @@ const Dashboard = () => {
             <ModalBody>
               {subscribeId.map((subscribe) => (
                 <Row key={subscribe.id}>
-                  <CardTitle style={{ textAlign: "center" }}>
-                    <h5>
+                  {/* <CardTitle style={{textAlign:"center"}}>
+                    <p>
                       <strong>{subscribe.name}</strong>
-                    </h5>
-                  </CardTitle>
+                    </p>
+                  </CardTitle> */}
                   <CardImg
                     top
                     width="15%"

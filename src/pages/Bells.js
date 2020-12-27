@@ -54,7 +54,7 @@ const Bells = () => {
         <Bell style={{cursor:"pointer", color:"#8f48ea"}}/>
       </div>
       <Popover
-        placement="bottom"
+        placement="right"
         isOpen={popoverOpen}
         target="Popover1"
         toggle={toggle}

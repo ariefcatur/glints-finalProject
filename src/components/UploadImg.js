@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Container, Button, Input, Row, Col } from "reactstrap";
+import Swal from 'sweetalert2';
 
 class FileUpload extends React.Component {
   constructor() {
@@ -31,6 +32,7 @@ class FileUpload extends React.Component {
       })
       .then((res) => {
         console.warn(res);
+        Swal.fire("Done!", "Your profile picture has been updated!", "success");
         return window.location.reload();
       });
   }

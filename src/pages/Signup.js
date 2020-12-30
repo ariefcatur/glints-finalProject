@@ -63,6 +63,7 @@ const SignUp = (props) => {
     axios
       .post(urlSignUp, data)
       .then((ress) => {
+        console.log(ress.data);
         Swal.fire("Great!", "You have registered successfully.", "success");
         history.push(toggleSignIn);
         // return <Alert color="success">You have registered successfully.</Alert>;
@@ -204,17 +205,19 @@ const SignUp = (props) => {
                 />
               </FormGroup>
               <Button
+                block
+                size="sm"
                 id="submitButton"
                 background-color="#8F48EA"
                 type="submit"
-                className="btn btn-block"
+                className="mt-5 mb-2"
                 onClick={toggleSignIn}
               >
                 Sign Up
               </Button>
               <p className="Login">
                 Already have an account?{" "}
-                <Button id="submitButton" onClick={toggleSignIn}>
+                <Button size="sm" id="submitButton" onClick={toggleSignIn}>
                   {buttonLabel}Login
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}
@@ -256,17 +259,19 @@ const SignUp = (props) => {
                 />
               </FormGroup>
               <Button
+                block
+                size="sm"
                 id="submitButton"
                 type="submit"
                 color="primary"
-                className="btn btn-block"
+                className="mt-5 mb-3"
                 onClick={toggleSignIn}
               >
                 Login
               </Button>
               <p className="Login">
                 Don't have an account?{" "}
-                <Button id="submitButton" onClick={toggleSignUp}>
+                <Button id="submitButton" size="sm" onClick={toggleSignUp}>
                   {buttonLabel}Sign Up
                 </Button>
                 {/* <a onClick={toggleSignUp}>Log In</a> */}

@@ -14,7 +14,7 @@ import "./Profile.css";
 import { User, Mail } from "react-feather";
 import Edit from "./EditProfile";
 import TabProfile from "./TabProfile";
-import FileUpload from "./UploadImg";
+import UploadModal from "./UploadModal";
 
 const Profile = () => {
   const [users, setUsers] = useState("");
@@ -46,19 +46,19 @@ const Profile = () => {
               ? users.map((user) => (
                   <CardBody key={user.id} className="cardBody">
                     <Row>
-                      <Container>
+                      <Container style={{ textAlign: "center" }}>
                         <CardImg
                           top
                           src={user.photo}
                           at=""
                           className="imgProfile"
                         />
-                        <FileUpload />
+                        <UploadModal />
                         <hr style={{ borderTop: "2px solid #c8c8c8" }} />
                       </Container>
                     </Row>
                     <CardTitle>
-                      <Container style={{textAlign:"center"}}>
+                      <Container style={{ textAlign: "center" }}>
                         <h5>
                           <b>{user.fullName}</b>
                         </h5>
@@ -66,8 +66,7 @@ const Profile = () => {
                           <strong>{user.email}</strong>
                         </p>
                       </Container>
-                      <Container style={{textAlign:"center"}}>
-                      </Container>
+                      <Container style={{ textAlign: "center" }}></Container>
                     </CardTitle>
                     <Row className="rowright">
                       <Container>
